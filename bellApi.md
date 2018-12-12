@@ -3,7 +3,7 @@
 版本号 | 完成日期 |生效时间| 修改人 | 变更描述
 ---- | ------- | ----- | ----- | -------
 1.0.1 | 2018.12.12 | 2018.12.12 16：35 | 忠琪 | 去除登录返回的logininfo对象只返回token，宝宝列表添加字段kid，新增接口 2.12 绑定推荐人邀请码，AccountCacheBean 新增字段 askCode,recommendCode
-
+1.0.2 | 2018.12.12 | 2018.12.12 20:00 | 忠琪 | 1.AccountBalanceBean 的useableAmount 改成 usableAmount 2.course >> unit courseItem >>lesson 涉及接口:2.1,4.1,5.1 
 
 ## API请求地址
 #### https://bell.beecloud.cn
@@ -291,18 +291,18 @@ askCode| String| 邀请码 | 是
 
 # 4.课件相关
 
-## 4.1 明细
-#### URL:   */api/course/items*
+## 4.1 课程
+#### URL:   */api/unit/lessons*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-courseId | long | 课件id | 是
+unitId | long | 课件id | 是
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-items  | List<Object> | 课件明细 | 参见附录 CourseItemBean
+lessons  | List<Object> | 课件明细 | 参见附录 LessonBean
 
 
 
@@ -315,7 +315,7 @@ items  | List<Object> | 课件明细 | 参见附录 CourseItemBean
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-courseitemId | long | 课件明细id | 是
+lessonId | long | 课件明细id | 是
 score | int | 分数/成绩 |是
 achievement | int | 评分 | 是
 timeConsuming | long | 耗时秒 | 是
@@ -411,11 +411,11 @@ status | String | A:选中 I:未选中
 age | int | 年龄
 
 
-### CourseItemBean
+### LessonBean
 参数名 | 类型 | 含义 
 ---- | ---- | ---- 
 id  | long | 课件明细id
-courseId | long | 课件id
+unitId | long | 课包id
 lesson | int | 第几节课
 title | String | 标题
 describe | String | 描述
