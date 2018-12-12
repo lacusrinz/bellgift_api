@@ -11,8 +11,9 @@
 #### 返回 resultCode 为 0 时为正常调用
 
 
-#1.Auth(以下接口无需token)
-##1.1 游客登录
+# 1.Auth(以下接口无需token)
+
+## 1.1 游客登录
 #### URL:   */api/auth/touristlogin*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -41,7 +42,7 @@ accountId  | long | 游客Id | 123456
 }
 
 
-##1.2 获取短信验证码
+## 1.2 获取短信验证码
 #### URL:   */api/auth/sms*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -52,7 +53,7 @@ mobile | String | 手机号码|是
 
 
 
-##1.3 手机登录
+## 1.3 手机登录
 #### URL:   */api/auth/login*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -74,7 +75,7 @@ accountId  | long | 用户id | 123456
 
 
 
-##1.4 获取微信跳转路径
+## 1.4 获取微信跳转路径
 #### URL:   */api/auth/wxredirect*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -89,7 +90,7 @@ accountId  | long | 用户id | 123456
 url  | String | 微信回调路径 | https://open.weixin.qq.com/connect/oauth2/authorize?appid=...... 
 
 
-##1.5 微信登录
+## 1.5 微信登录
 #### URL:   */api/auth/wxlogin*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -115,7 +116,7 @@ token  | String | token | 79767d55b2544d2c8594fecf1c21fa15
 accountId  | long | 用户id | 123456 
 
 
-##1.6 上传图片
+## 1.6 上传图片
 #### URL:   */api/auth/uploadimg*
 #### Method: *POST*
 #### 请求参数格式: *form-data* !!!!!
@@ -132,8 +133,9 @@ file | File | 图片文件 | 是
 url  | String | 图片外链url | http://pisgc0usp.bkt.clouddn.com/69974402bc7647a084b46cbdac45201f 
 
 
-#2.账户相关（需要 token 验证 ）
-##2.1 账户信息
+# 2.账户相关（需要 token 验证 ）
+
+## 2.1 账户信息
 #### URL:   */api/account/info*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -147,7 +149,7 @@ url  | String | 图片外链url | http://pisgc0usp.bkt.clouddn.com/69974402bc764
 info  | Object | 账户信息 | 参见附录 AccountCacheBean
 balance | Objcet | 资金账户 | 参见 #AccountBalanceBean
 
-##2.2 添加宝宝
+## 2.2 添加宝宝
 #### URL:   */api/account/addkid*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -163,7 +165,7 @@ avatar | String | 头像 | 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 
-##2.3 宝宝列表
+## 2.3 宝宝列表
 #### URL:   */api/account/kids*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -178,7 +180,7 @@ avatar | String | 头像 | 是
 kids | List<Object> | 宝宝列表 | 宝宝参见附录KidBean
 kid | Object | 当前选中的宝宝信息| 宝宝参见附录KidBean
 
-##2.4 切换宝宝
+## 2.4 切换宝宝
 #### URL:   */api/account/switchkid*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -192,7 +194,7 @@ kidId | Long | 需要切换的宝宝Id | 是
 ---- | ---- | ---- | ----
 
 
-##2.5 修改用户信息
+## 2.5 修改用户信息
 #### URL:   */api/account/update*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -206,7 +208,7 @@ avatar | String | 用户头像 | 否 填写认为修改
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 
-##2.6 修改宝宝信息
+## 2.6 修改宝宝信息
 #### URL:   */api/account/updatekid*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -228,7 +230,7 @@ avatar | String | 宝宝头像 | 否 填写认为修改
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 
-##2.7 手机号码绑定
+## 2.7 手机号码绑定
 #### URL:   */api/account/mobilebinding*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -243,7 +245,7 @@ code | String | 短信验证码 | 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 
-##2.8 用户资金账户
+## 2.8 用户资金账户
 #### URL:   */api/account/balance*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -257,7 +259,7 @@ code | String | 短信验证码 | 是
 ---- | ---- | ---- | ----
 balance | Objcet | 资金账户 | 参见 #AccountBalanceBean
 
-##2.9 用户优惠券列表
+## 2.9 用户优惠券列表
 #### URL:   */api/account/coupons*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -275,7 +277,7 @@ list | List<Object> | 优惠券列表 | 参见 #AccountCouponBean
 
 
 
-##2.10 微信绑定
+## 2.10 微信绑定
 #### URL:   */api/account/wxbinding*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -289,7 +291,7 @@ openId |String | 微信openId| 是
 ---- | ---- | ---- | ----
  
 
-##2.11 微信解绑
+## 2.11 微信解绑
 #### URL:   */api/account/wxunbinding*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -302,7 +304,7 @@ openId |String | 微信openId| 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 
-##2.12 绑定推荐人邀请码
+## 2.12 绑定推荐人邀请码
 #### URL:   */api/account/recommendcode*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -317,8 +319,9 @@ askCode| String| 邀请码 | 是
 
 
 
-#4.课件相关
-##4.1 明细
+# 4.课件相关
+
+## 4.1 明细
 #### URL:   */api/course/items*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -333,7 +336,8 @@ items  | List<Object> | 课件明细 | 参见附录 CourseItemBean
 
 
 
-#5.宝宝相关
+# 5.宝宝相关
+
 ## 5.1 上传学习记录
 #### URL:   */api/kid/study*
 #### Method: *POST*
@@ -350,7 +354,8 @@ accuracyRate | double | 正确率 | 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 
-#6.配置相关
+# 6.配置相关
+
 ## 6.1 主页配置
 #### URL:   */api/config/index*
 #### Method: *POST*
@@ -376,7 +381,8 @@ BANNER\_LIST\_HB| int |英语绘本 开关 | 0:不显示(限时免费)
 
 
 
-#7.文章
+# 7.文章
+
 ## 7.1 发现列表
 #### URL:   */api/article/findlist*
 #### Method: *POST*
@@ -484,7 +490,7 @@ status | String | 状态 A:未使用  L:锁定（使用中）
 orderId | String | 使用的订单id
 orderNo | String | 使用的订单号
 
-###WEIXINPAYMAP
+### WEIXINPAYMAP
 参数名 | 类型 | 含义 
 ---- | ---- | ---- 
 pay_sign| String | pay_sign
