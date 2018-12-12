@@ -1,8 +1,8 @@
 # 幼教接口
 
-版本号 | 完成日期 | 修改人 | 变更描述
----- | ------- | ----- | -------
-1.0.1 | 2018.12.12 | 忠琪 | 去除登录返回的logininfo对象只返回token，宝宝列表添加字段kid，新增接口 2.12 绑定推荐人邀请码，AccountCacheBean 新增字段 askCode,recommendCode
+版本号 | 完成日期 |生效时间| 修改人 | 变更描述
+---- | ------- | ----- | ----- | -------
+1.0.1 | 2018.12.12 | 2018.12.12 16：35 | 忠琪 | 去除登录返回的logininfo对象只返回token，宝宝列表添加字段kid，新增接口 2.12 绑定推荐人邀请码，AccountCacheBean 新增字段 askCode,recommendCode
 
 
 ## API请求地址
@@ -11,41 +11,8 @@
 #### 返回 resultCode 为 0 时为正常调用
 
 
-# 1.Auth(以下接口无需token)
 
-## 1.1 游客登录
-#### URL:   */api/auth/touristlogin*
-#### Method: *POST*
-#### 请求参数格式: *JSON: Map*
-### 传入参数
-参数名 | 类型 | 含义  | 是否必填
----- | ---- | ---- | ----
-deviceId | String | 设备唯一id|是
-deviceType | String | 设备类型 IOS/ANDROID |是
-
-
-### 返回参数
-参数名 | 类型 | 含义 | 示例
----- | ---- | ---- | ----
-token  | String | token | 79767d55b2544d2c8594fecf1c21fa15 
-accountId  | long | 游客Id | 123456 
-
-#### result 
-
-```
-{
-  "resultCode": 0,
-  "resultMsg": "登录成功",
-  "errorMsg": null,
-  "data": {
-    "accountId": 107,
-    "token": "79767d55b2544d2c8594fecf1c21fa15"
-  }
-}
-```
-
-
-## 1.2 获取短信验证码
+## 1.1 获取短信验证码
 #### URL:   */api/auth/sms*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -56,7 +23,7 @@ mobile | String | 手机号码|是
 
 
 
-## 1.3 手机登录
+## 1.2 手机登录
 #### URL:   */api/auth/login*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -78,7 +45,7 @@ accountId  | long | 用户id | 123456
 
 
 
-## 1.4 获取微信跳转路径
+## 1.3 获取微信跳转路径
 #### URL:   */api/auth/wxredirect*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -93,7 +60,7 @@ accountId  | long | 用户id | 123456
 url  | String | 微信回调路径 | https://open.weixin.qq.com/connect/oauth2/authorize?appid=...... 
 
 
-## 1.5 微信登录
+## 1.4 微信登录
 #### URL:   */api/auth/wxlogin*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -119,7 +86,7 @@ token  | String | token | 79767d55b2544d2c8594fecf1c21fa15
 accountId  | long | 用户id | 123456 
 
 
-## 1.6 上传图片
+## 1.5 上传图片
 #### URL:   */api/auth/uploadimg*
 #### Method: *POST*
 #### 请求参数格式: *form-data* !!!!!
