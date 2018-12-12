@@ -1,5 +1,10 @@
 # 幼教接口
 
+版本号 | 完成日期 | 修改人 | 变更描述
+---- | ------- | ----- | -------
+1.0.1 | 2018.12.12 | 忠琪 | 去除登录返回的logininfo对象只返回token，宝宝列表添加字段kid，新增接口 2.12 绑定推荐人邀请码，AccountCacheBean 新增字段 askCode,recommendCode
+
+
 ## API请求地址
 #### https://preschool.beecloud.cn
 #### 请求头里面 token 身份认证
@@ -501,17 +506,7 @@ timestamp | String | 时间戳（10位，秒）
 60 | 需要购买
 
 
-### 1.0.1 
-#### 更新时间 2018.12.12
-#####1.去除登录返回的 logininfo 对象 只返回token
-######   >> 1.1用户信息(资金) >> /api/account/info
-######   >> 1.2孩子信息 >> /api/account/kids
-######   >> 1.3 AccountCacheBean 中去除 kid,kids字段 改 >> /api/account/kids
 
-#####2.宝宝列表 添加字段 kid 详见 2.3 宝宝列表
-#####3.去除充值,主页接口,提现接口（暂时用不到）
-#####4. 新增接口 2.12 绑定推荐人邀请码
-#####5. AccountCacheBean 新增字段 askCode,recommendCode
 
 
 
@@ -574,7 +569,6 @@ timestamp | String | 时间戳（10位，秒）
 
       
    
-
 
 
 
