@@ -6,7 +6,7 @@
 
 
 ## API请求地址
-#### https://preschool.beecloud.cn
+#### https://bell.beecloud.cn
 #### 请求头里面 token 身份认证
 #### 返回 resultCode 为 0 时为正常调用
 
@@ -31,6 +31,8 @@ token  | String | token | 79767d55b2544d2c8594fecf1c21fa15
 accountId  | long | 游客Id | 123456 
 
 #### result 
+
+```
 {
   "resultCode": 0,
   "resultMsg": "登录成功",
@@ -40,6 +42,7 @@ accountId  | long | 游客Id | 123456
     "token": "79767d55b2544d2c8594fecf1c21fa15"
   }
 }
+```
 
 
 ## 1.2 获取短信验证码
