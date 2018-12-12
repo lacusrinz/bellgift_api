@@ -66,7 +66,7 @@ deviceType | String | 设备类型 IOS/ANDROID |否
 ---- | ---- | ---- | ----
 token  | String | token | 79767d55b2544d2c8594fecf1c21fa15 
 accountId  | long | 用户id | 123456 
-logininfo | Object | 登录用户对象 | 参见 附录 LoginResultBean
+
 
 
 ##1.4 获取微信跳转路径
@@ -83,22 +83,8 @@ logininfo | Object | 登录用户对象 | 参见 附录 LoginResultBean
 ---- | ---- | ---- | ----
 url  | String | 微信回调路径 | https://open.weixin.qq.com/connect/oauth2/authorize?appid=...... 
 
-##1.5 获取微信跳转路径
-#### URL:   */api/auth/wxredirect*
-#### Method: *POST*
-#### 请求参数格式: *JSON: Map*
-### 传入参数
-参数名 | 类型 | 含义  | 是否必填
----- | ---- | ---- | ----
 
-
-### 返回参数
-参数名 | 类型 | 含义 | 示例
----- | ---- | ---- | ----
-url  | String | 微信回调路径 | https://open.weixin.qq.com/connect/oauth2/authorize?appid=...... 
-
-
-##1.6 微信登录
+##1.5 微信登录
 #### URL:   */api/auth/wxlogin*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -122,10 +108,9 @@ sex| int | 性别 性别 0:女 1：男 | 是
 ---- | ---- | ---- | ----
 token  | String | token | 79767d55b2544d2c8594fecf1c21fa15 
 accountId  | long | 用户id | 123456 
-logininfo | Object | 登录用户对象 | 参见 附录 LoginResultBean
 
 
-##1.7 上传图片
+##1.6 上传图片
 #### URL:   */api/auth/uploadimg*
 #### Method: *POST*
 #### 请求参数格式: *form-data* !!!!!
@@ -185,7 +170,8 @@ avatar | String | 头像 | 是
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-kids | List<Object> | 宝宝列表 | 宝宝列表参见附录KidBean
+kids | List<Object> | 宝宝列表 | 宝宝参见附录KidBean
+kid | Object | 当前选中的宝宝信息| 宝宝参见附录KidBean
 
 ##2.4 切换宝宝
 #### URL:   */api/account/switchkid*
@@ -281,41 +267,10 @@ type |String | 优惠类型 COUPON:优惠券 SALE:折扣券| 否
 ---- | ---- | ---- | ----
 list | List<Object> | 优惠券列表 | 参见 #AccountCouponBean
 
-##2.10 充值
-#### URL:   */api/account/recharge*
-#### Method: *POST*
-#### 请求参数格式: *JSON: Map*
-### 传入参数
-参数名 | 类型 | 含义  | 是否必填
----- | ---- | ---- | ----
-channel |String | 微信APP WEIXIN| 是
-amount | int | 充值金额 单位：元|是
-
-### 返回参数
-参数名 | 类型 | 含义 | 示例
----- | ---- | ---- | ----
-billNo | String | 充值订单号 | 
-wxmap | Map<String,String> |微信支付参数 | 参见 WEIXINPAYMAP
-
-##2.11 充值列表
-#### URL:   */api/account/rechargelist*
-#### Method: *POST*
-#### 请求参数格式: *JSON: Map*
-### 传入参数
-参数名 | 类型 | 含义  | 是否必填
----- | ---- | ---- | ----
-status |String | 状态 I:待支付 S:成功 F:失败| 否
-billNo | String | 订单号|否
-skip | int | 其实位置 | 是
-limit | int | 显示多少条 | 是
-
-### 返回参数
-参数名 | 类型 | 含义 | 示例
----- | ---- | ---- | ----
-list | List<Object> | 充值记录 | 参见 # RechargeBean
 
 
-##2.12 微信绑定
+
+##2.10 微信绑定
 #### URL:   */api/account/wxbinding*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -329,7 +284,7 @@ openId |String | 微信openId| 是
 ---- | ---- | ---- | ----
  
 
-##2.13 微信解绑
+##2.11 微信解绑
 #### URL:   */api/account/wxunbinding*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -342,23 +297,19 @@ openId |String | 微信openId| 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 
-
-
-
-
-#3.主页（需要 token 验证 ）
-##3.1 主页内容
-#### URL:   */api/index*
+##2.12 绑定推荐人邀请码
+#### URL:   */api/account/recommendcode*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
+askCode| String| 邀请码 | 是
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-modules  | List<Object> | 主页排版module列表 | 参见附录 HomeChildBean
+
 
 
 #4.课件相关
@@ -444,11 +395,6 @@ list |List<Object>|  参见附录 ArticleBean
 
 
 ## 附录
-### LoginResultBean
-参数名 | 类型 | 含义 
----- | ---- | ---- 
-account  | Obejct | 用户信息 参见附录 AccountCacheBean
-
 ### AccountCacheBean
 参数名 | 类型 | 含义 
 ---- | ---- | ---- 
@@ -467,8 +413,9 @@ city  | String | 城市
 province  | String | 省份
 country  | String | 国家
 kidId  | long | 选中的宝宝id
-kid | Object | 选中的宝宝对象 参见附录KidBean
-kids |List<Object> | 宝宝列表参见附录KidBean
+askCode | String | 自己的邀请码 唯一（注册时自动生成）
+recommendCode | String | 推荐人/代理商的 邀请码
+
 
 ### KidBean
 参数名 | 类型 | 含义 
@@ -482,35 +429,6 @@ avatar | String | 头像
 status | String | A:选中 I:未选中
 age | int | 年龄
 
-
-### HomeChildBean
-参数名 | 类型 | 含义 
----- | ---- | ---- 
-count  | int | 一行显示的模块数量
-type  | String | TR 一行显示一个模块,TD 一行需要显示多个模块（得自适应）
-modules  | List<Object> | TD时展示模块列表 参见 ModuleBean
-module  | Object | TR时展示模块 参见 ModuleBean
-
-### ModuleBean
-参数名 | 类型 | 含义 
----- | ---- | ---- 
-id  | long | 模块id 可以使用查询
-key  | String | 模块唯一 key
-type | String | 模块类型 MODULE_COURSE:指定课程
-parentId | long | 上级模块id
-relationId | long | MODULE_COURSE:课程id
-title | String | 标题
-describe | String | 描述
-level | int | 模块等级
-icon | String |图标
-activity | Object | 活动 参见 ActivityBean
-
-### ActivityBean
-参数名 | 类型 | 含义 
----- | ---- | ---- 
-type  | String | 活动类型 LIMITTIME_FREE:限时免费
-startTime | long | 开始时间戳
-endTime | long | 结束时间戳
 
 ### CourseItemBean
 参数名 | 类型 | 含义 
@@ -571,34 +489,6 @@ prepay_id | String | prepay_id
 nonce_str |String | nonce_str
 timestamp | String | 时间戳（10位，秒）
 
-###RechargeBean
-参数名 | 类型 | 含义 
----- | ---- | ---- 
-id | long | 订单id
-accountId | long | 账户id
-billNo | String | 充值订单号
-amount | double | 充值金额
-channel | String | 充值渠道 WEIXIN:微信
-status | String | 订单状态 I:待支付 S:成功 F:失败
-remark | String | 备注
-finisTime | Date |完成时间(订单终态)
-createTime | Date | 创建时间
-
-###WithdrawBean
-参数名 | 类型 | 含义 
----- | ---- | ---- 
-id | long | 订单id
-accountId | long | 账户id
-billNo | String | 提现订单号
-amount | double | 提现金额
-status | String | 订单状态 I:待处理 S:提现完成 F:提现驳回
-message | String | 提现留言
-remark | String | 备注
-finisTime | Date |完成时间(订单终态)
-createTime | Date | 创建时间
-payImage | String | 打款凭证截图url
-
-
 
 
 
@@ -609,6 +499,23 @@ payImage | String | 打款凭证截图url
 0| 没有权限
 10 | 需要用户注册登录（非游客）
 60 | 需要购买
+
+
+### 1.0.1 
+#### 更新时间 2018.12.12
+#####1.去除登录返回的 logininfo 对象 只返回token
+######   >> 1.1用户信息(资金) >> /api/account/info
+######   >> 1.2孩子信息 >> /api/account/kids
+######   >> 1.3 AccountCacheBean 中去除 kid,kids字段 改 >> /api/account/kids
+
+#####2.宝宝列表 添加字段 kid 详见 2.3 宝宝列表
+#####3.去除充值,主页接口,提现接口（暂时用不到）
+#####4. 新增接口 2.12 绑定推荐人邀请码
+#####5. AccountCacheBean 新增字段 askCode,recommendCode
+
+
+
+   
 
 
 
