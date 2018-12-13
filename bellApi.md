@@ -4,6 +4,7 @@
 ---- | ------- | ----- | ----- | -------
 1.0.1 | 2018.12.12 | 2018.12.12 16：35 | 忠琪 | 去除登录返回的logininfo对象只返回token，宝宝列表添加字段kid，新增接口 2.12 绑定推荐人邀请码，AccountCacheBean 新增字段 askCode,recommendCode
 1.0.2 | 2018.12.12 | 2018.12.12 20:00 | 忠琪 | 1.AccountBalanceBean 的useableAmount 改成 usableAmount 2.course >> unit courseItem >>lesson 涉及接口:2.1,4.1,5.1 
+1.0.3 | 2018.12.13 | 2018.12.13 13:00 | 忠琪 | /api/config/index 添加跳转课包ids ,通过ids里面的id 向/api/unit/lessons 取课程 与后台数据交互统一
 
 ## API请求地址
 #### https://bell.beecloud.cn
@@ -339,12 +340,13 @@ accuracyRate | double | 正确率 | 是
 ---- | ---- | ---- | ----
 configs |Map| 模块配置是否显示 | 0 ：不显示
 activity |Map| 模块是否显示限免标签 | 0 ：不显示
+ids |Map | 模块跳转的课包id | 
 
 ### 返回参数
 key| 类型 | 含义 | 示例 
 ---- | ---- | ---- | ----
-BANNER_ZRPD| int |自然拼读 开关 | 0:不显示(限时免费)
-BANNER_ZXKC| int |主线课程 开关 | 0:不显示(限时免费)
+BANNER_ZRPD| int |自然拼读 开关/跳转的课包id | 0:不显示(限时免费)/课包id
+BANNER_ZXKC| int |主线课程 开关/跳转的课包id | 0:不显示(限时免费)/课包id
 BANNER\_LIST\_RG| int |英语儿歌 开关 | 0:不显示(限时免费)
 BANNER\_LIST\_GAME| int |互动游戏 开关 | 0:不显示(限时免费)
 BANNER\_LIST\_HB| int |英语绘本 开关 | 0:不显示(限时免费)
