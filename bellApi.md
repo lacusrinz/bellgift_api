@@ -5,6 +5,7 @@
 1.0.1 | 2018.12.12 | 2018.12.12 16：35 | 忠琪 | 去除登录返回的logininfo对象只返回token，宝宝列表添加字段kid，新增接口 2.12 绑定推荐人邀请码，AccountCacheBean 新增字段 askCode,recommendCode
 1.0.2 | 2018.12.12 | 2018.12.12 20:00 | 忠琪 | 1.AccountBalanceBean 的useableAmount 改成 usableAmount 2.course >> unit courseItem >>lesson 涉及接口:2.1,4.1,5.1 
 1.0.3 | 2018.12.13 | 2018.12.13 13:00 | 忠琪 | /api/config/index 添加跳转课包ids ,通过ids里面的id 向/api/unit/lessons 取课程 与后台数据交互统一
+2.0.0|2018.12.24 | - - | 忠琪 | 1. 【2.9 用户优惠券列表丰富帅选条件】2.【7.1发现，4.1 课程列表 新增返回参数】 3.【重做 5.1 学习】99.【新增接口:2.13,7.2,8.1】
 
 ## API请求地址
 #### https://bell.beecloud.cn
@@ -238,6 +239,9 @@ balance | Objcet | 资金账户 | 参见 #AccountBalanceBean
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
 type |String | 优惠类型 COUPON:优惠券 SALE:折扣券| 否
+status | String | 优惠券状态 | |否 I:过期 A:正常  S:已使用
+target | String | 使用范围 （优惠券可以精确到课包）,购买商品时精确帅选| 否 UNIT:课包 
+targetId| String | 目标id 根据target | UNIT 课包id
 
 
 ### 返回参数
@@ -288,10 +292,25 @@ askCode| String| 邀请码 | 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 
+## 2.13 绑定推荐人邀请码
+#### URL:   */api/account/changemobile*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+mobile| String| 手机号码 | 是
+code| String| 手机验证码 | 是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+
+
+
 
 
 # 4.课件相关
-
 ## 4.1 课程
 #### URL:   */api/unit/lessons*
 #### Method: *POST*
@@ -309,21 +328,21 @@ lessons  | List<Object> | 课件明细 | 参见附录 LessonBean
 
 # 5.宝宝相关
 
-## 5.1 上传学习记录
+## 5.1 学习
 #### URL:   */api/kid/study*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
+### !!打开任何素材前需要调用此方法，每个课件解锁需要保存进度上传自定义flag
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-lessonId | long | 课件明细id | 是
-score | int | 分数/成绩 |是
-achievement | int | 评分 | 是
-timeConsuming | long | 耗时秒 | 是
-accuracyRate | double | 正确率 | 是  
+type | String | 学习类型 LESSON:课件| 是
+id | long | 更新type LESSON：课件id |是
+flag int | 自定义学习位置| 是 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
+flag | int |学习位置 0:从新开始| 0
 
 # 6.配置相关
 
@@ -369,6 +388,37 @@ limit | int | 显示多少条 | 是
 参数名 | 类型 | 含义 
 ---- | ---- | ----  
 list |List<Object>|  参见附录 ArticleBean
+
+## 7.2 发现点击
+#### URL:   */api/article/findclick*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+id | long | 发现文章id | 是
+
+### 返回参数
+参数名 | 类型 | 含义 
+---- | ---- | ----  
+
+
+# 8.订单
+## 8.1 贝壳购买
+#### URL:   */api/order/buy*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+type | String | 商品类型 UNIT:课包| 是
+goodsId | long | 商品id UNIT：课包id| 是
+couponId | long | 优惠券id 大于0使用| 否
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+orderNo| String | 订单号
+
 
 
 
@@ -426,6 +476,7 @@ duration | int | 时长 单位：分钟
 scoreRule | String | 得分规则
 vip | int | 权限  参见 VIP
 unlock | boolean | 是否解锁
+auth| boolean | 是否有权限，判断是否购买
 
 ### ArticleBean
 参数名 | 类型 | 含义 
@@ -437,6 +488,8 @@ recommend | String | 引荐
 url | String | 引用文章url
 releaseTime | long | 发布时间戳
 image | String | 图片路径
+color | String | 色号
+count | long | 阅读数
 
 ### AccountBalanceBean
 参数名 | 类型 | 含义 
@@ -459,7 +512,6 @@ fullPrice| double | 满多少金额使用
 startTime | long | coupon 使用的开始时间戳
 endTime | long | coupon 使用的结束时间戳
 status | String | 状态 A:未使用  L:锁定（使用中）
-orderId | String | 使用的订单id
 orderNo | String | 使用的订单号
 
 ### WEIXINPAYMAP
