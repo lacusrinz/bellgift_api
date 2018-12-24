@@ -6,6 +6,7 @@
 1.0.2 | 2018.12.12 | 2018.12.12 20:00 | 忠琪 | 1.AccountBalanceBean 的useableAmount 改成 usableAmount 2.course >> unit courseItem >>lesson 涉及接口:2.1,4.1,5.1 
 1.0.3 | 2018.12.13 | 2018.12.13 13:00 | 忠琪 | /api/config/index 添加跳转课包ids ,通过ids里面的id 向/api/unit/lessons 取课程 与后台数据交互统一
 2.0.0|2018.12.23 | 2018.12.23 18:00 | 忠琪 | 1. 【2.9 用户优惠券列表丰富帅选条件】2.【7.1发现，4.1 课程列表 新增返回参数】 3.【重做 5.1 学习】99.【新增接口:2.13,7.2,8.1】
+2.0.1 | 2018.12.24 | | 魏德旺 | 新增接口【1.6 微信授权，2.14 充值（包括微信app，支付宝app支付两种方式） 3.1 绘本列表】。更新【5.1 支持绘本学习，绘本解锁】
 
 ## API请求地址
 #### https://bell.beecloud.cn
@@ -103,6 +104,23 @@ file | File | 图片文件 | 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 url  | String | 图片外链url | http://pisgc0usp.bkt.clouddn.com/69974402bc7647a084b46cbdac45201f 
+
+## 1.6 微信授权
+#### URL:   */api/auth/wxauth*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+code | String | 微信授权临时票据 | 是
+deviceId | String | 设备唯一id | 是
+deviceType | String | 设备类型。 可选值：IOS/ANDROID |是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+token  | String | token | 79767d55b2544d2c8594fecf1c21fa15 
+accountId  | long | 用户id | 123456 
 
 
 # 2.账户相关（需要 token 验证 ）
@@ -307,7 +325,59 @@ code| String| 手机验证码 | 是
 ---- | ---- | ---- | ----
 
 
+## 2.14 充值
+#### URL:   */api/account/recharge*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | String | Header信息 | 是
+channel | String | 渠道信息。可选值WX_APP/ALI_APP| 是
+amount | int | 充值金额，单位元 | 是
+returnUrl | String | 充值完成返回到页面 | 否
+title | String | 充值标题| 是
 
+### 微信支付和支付宝支付返回公共参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+billNo | String | 订单号 | RET2Z250C626E6U085
+content | Map | 支付参数 | 参照：微信支付附加参数 或 支付宝支付附加参数
+
+### [微信支付附加参数](https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_12&index=2)
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+app_id | String | 应用ID | wx8888888888888888
+partner_id | String | 商户号 | 1900000109
+prepay_id | String | 预支付交易会话ID | WX1217752501201407033233368018
+package | String | 扩展字段 | Sign=WXPay
+nonce_str | String | 随机字符串	| 5K8264ILTKCH16CQ2502SI8ZNMTM67VS
+timestamp | String | 时间戳 | 1412000000 
+pay_sign | String | 签名 | C380BEC2BFD727A4B6845133519F3AD6 
+id | String | 订单唯一标识符 | c73a020e-8e3f-4644-87a2-960c06fa1488
+
+### 支付宝支付附加参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+order_string | String | app支付请求参数字符串，主要包含商户的订单信息.key=value形式，以&连接。参数描述如参照[https://docs.open.alipay.com/204/105465/](https://docs.open.alipay.com/204/105465/)|charset=utf-8&method=alipay.trade.app.pay&sign=I....D%3D&notify_url=https%3A%2F%...8b757fd&version=1.0&app_id=2016070801592943&sign_type=RSA2&timestamp=2018-12-24+11%3A45%3A18&alipay_sdk=alipay-sdk-java-dynamicVersionNo&format=json&biz_content={\"out_trade_no\":\"REE2O321E1S3H0L4Z4\",\"total_amount\":\"1.0\",\"subject\":\"充值\",\"product_code\":\"QUICK_MSECURITY_PAY\"}
+id | String | 订单唯一标识符 | c73a020e-8e3f-4644-87a2-960c06fa1488
+
+# 3.绘本相关
+## 3.1 绘本列表
+#### URL:   */api/picturebook*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | String | Header信息| 是
+skip | String | 起始位置| 是
+limit | long | 条数 | 是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+list |List<Object>|  参见附录 PictureBookBean
 
 
 # 4.课件相关
@@ -336,8 +406,8 @@ lessons  | List<Object> | 课件明细 | 参见附录 LessonBean
 ### !!打开任何素材前需要调用此方法，每个课件解锁需要保存进度上传自定义flag
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-type | String | 学习类型 LESSON:课件| 是
-id | long | 更新type LESSON：课件id |是
+type | String | 学习类型 LESSON:课件/PICTUREBOOK：绘本| 是
+id | long | 更新type LESSON：课件id/PICTUREBOOK：绘本id |是
 flag int | 自定义学习位置| 是 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
@@ -535,7 +605,19 @@ timestamp | String | 时间戳（10位，秒）
 10 | 需要用户注册登录（非游客）
 60 | 需要购买
 
-
+### PictureBookBean
+参数名 | 类型 | 含义 
+---- | ---- | ---- 
+id | int | 绘本id
+title| String | 绘本标题
+description | String | 描述
+image | String | 图片路径
+author | String | 作者
+vip | int | 0不需要购买，1需要购买
+needShare | int | 0:不需要分享，1：需要分享
+price| double | 单价
+createTime | long | 绘本创建时间
+updateTime | long | 绘本更新时间
 
 
 
