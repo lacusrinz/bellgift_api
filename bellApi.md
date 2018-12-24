@@ -366,7 +366,6 @@ id | String | 订单唯一标识符 | c73a020e-8e3f-4644-87a2-960c06fa1488
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-token | String | Header信息| 是
 skip | String | 起始位置| 是
 limit | long | 条数 | 是
 
