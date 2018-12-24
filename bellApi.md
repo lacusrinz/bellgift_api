@@ -6,7 +6,7 @@
 1.0.2 | 2018.12.12 | 2018.12.12 20:00 | 忠琪 | 1.AccountBalanceBean 的useableAmount 改成 usableAmount 2.course >> unit courseItem >>lesson 涉及接口:2.1,4.1,5.1 
 1.0.3 | 2018.12.13 | 2018.12.13 13:00 | 忠琪 | /api/config/index 添加跳转课包ids ,通过ids里面的id 向/api/unit/lessons 取课程 与后台数据交互统一
 2.0.0|2018.12.23 | 2018.12.23 18:00 | 忠琪 | 1. 【2.9 用户优惠券列表丰富帅选条件】2.【7.1发现，4.1 课程列表 新增返回参数】 3.【重做 5.1 学习】99.【新增接口:2.13,7.2,8.1】
-2.0.1 | 2018.12.24 | | 魏德旺 | 新增接口【1.6 微信授权，2.14 充值（包括微信app，支付宝app支付两种方式） 3.1 绘本列表】。更新【5.1 支持绘本学习，绘本解锁】
+2.0.1 | 2018.12.24 | 2018.12.24 18:00 | 魏德旺 | 新增接口【1.6 微信授权，2.14 充值（包括微信app，支付宝app支付两种方式） 3.1 绘本列表 8.1获取微信appId】。更新【5.1 支持绘本学习，绘本解锁】
 
 ## API请求地址
 #### https://bell.beecloud.cn
@@ -167,7 +167,7 @@ avatar | String | 头像 | 是
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-kids | List<Object> | 宝宝列表 | 宝宝参见附录KidBean
+kids | List\<Object\> | 宝宝列表 | 宝宝参见附录KidBean
 kid | Object | 当前选中的宝宝信息| 宝宝参见附录KidBean
 
 ## 2.4 切换宝宝
@@ -216,10 +216,6 @@ avatar | String | 宝宝头像 | 否 填写认为修改
 ---- | ---- | ---- | ----
 
 
-### 返回参数
-参数名 | 类型 | 含义 | 示例
----- | ---- | ---- | ----
-
 ## 2.7 手机号码绑定
 #### URL:   */api/account/mobilebinding*
 #### Method: *POST*
@@ -265,7 +261,7 @@ targetId| String | 目标id 根据target | UNIT 课包id
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-list | List<Object> | 优惠券列表 | 参见 #AccountCouponBean
+list | List\<Object\> | 优惠券列表 | 参见 #AccountCouponBean
 
 
 
@@ -333,7 +329,7 @@ code| String| 手机验证码 | 是
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
 token | String | Header信息 | 是
-channel | String | 渠道信息。可选值WX_APP/ALI_APP| 是
+channel | String | 渠道信息。可选值WX\_APP / ALI\_APP| 是
 amount | int | 充值金额，单位元 | 是
 returnUrl | String | 充值完成返回到页面 | 否
 title | String | 充值标题| 是
@@ -377,7 +373,7 @@ limit | long | 条数 | 是
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-list |List<Object>|  参见附录 PictureBookBean
+list |List\<Object\>|  参见附录 PictureBookBean
 
 
 # 4.课件相关
@@ -392,7 +388,7 @@ unitId | long | 课件id | 是
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-lessons  | List<Object> | 课件明细 | 参见附录 LessonBean
+lessons  | List\<Object\> | 课件明细 | 参见附录 LessonBean
 
 
 
@@ -408,7 +404,7 @@ lessons  | List<Object> | 课件明细 | 参见附录 LessonBean
 ---- | ---- | ---- | ----
 type | String | 学习类型 LESSON:课件/PICTUREBOOK：绘本| 是
 id | long | 更新type LESSON：课件id/PICTUREBOOK：绘本id |是
-flag int | 自定义学习位置| 是 
+flag |int | 自定义学习位置| 是 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
@@ -457,7 +453,7 @@ limit | int | 显示多少条 | 是
 ### 返回参数
 参数名 | 类型 | 含义 
 ---- | ---- | ----  
-list |List<Object>|  参见附录 ArticleBean
+list |List\<Object\>|  参见附录 ArticleBean
 
 ## 7.2 发现点击
 #### URL:   */api/article/findclick*
@@ -481,13 +477,28 @@ id | long | 发现文章id | 是
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-type | String | 商品类型 UNIT:课包| 是
-goodsId | long | 商品id UNIT：课包id| 是
+type | String | 商品类型 UNIT:课包/PICTUREBOOK:绘本| 是
+goodsId | long | 商品id UNIT：课包id/PICTUREBOOK：绘本id| 是
 couponId | long | 优惠券id 大于0使用| 否
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 orderNo| String | 订单号
+
+# 8.APP信息
+##8.1 获取APPID
+#### URL:   */api/app*
+#### Method: *GET*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+app_id | app_id | 微信appId|
 
 
 
