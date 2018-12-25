@@ -329,16 +329,17 @@ code| String| 手机验证码 | 是
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
 token | String | Header信息 | 是
-channel | String | 渠道信息。可选值WX\_APP / ALI\_APP| 是
+channel | String | 渠道信息。ANDROID可选值WX\_APP / ALI\_APP。IOS值为IAP| 是
 amount | int | 充值金额，单位元 | 是
 returnUrl | String | 充值完成返回到页面 | 否
 title | String | 充值标题| 是
+deviceType | String | 设备类型，ANDROID/IOS| 是
 
 ### 微信支付和支付宝支付返回公共参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 billNo | String | 订单号 | RET2Z250C626E6U085
-content | Map | 支付参数 | 参照：微信支付附加参数 或 支付宝支付附加参数
+content | Map | 支付参数 | ANDROID参照：微信支付附加参数 或 支付宝支付附加参数
 
 ### [微信支付附加参数](https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_12&index=2)
 参数名 | 类型 | 含义 | 示例
