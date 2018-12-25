@@ -5,7 +5,7 @@
 1.0.1 | 2018.12.12 | 2018.12.12 16：35 | 忠琪 | 去除登录返回的logininfo对象只返回token，宝宝列表添加字段kid，新增接口 2.12 绑定推荐人邀请码，AccountCacheBean 新增字段 askCode,recommendCode
 1.0.2 | 2018.12.12 | 2018.12.12 20:00 | 忠琪 | 1.AccountBalanceBean 的useableAmount 改成 usableAmount 2.course >> unit courseItem >>lesson 涉及接口:2.1,4.1,5.1 
 1.0.3 | 2018.12.13 | 2018.12.13 13:00 | 忠琪 | /api/config/index 添加跳转课包ids ,通过ids里面的id 向/api/unit/lessons 取课程 与后台数据交互统一
-2.0.0|2018.12.23 | 2018.12.23 18:00 | 忠琪 | 1. 【2.9 用户优惠券列表丰富帅选条件】2.【7.1发现，4.1 课程列表 新增返回参数】 3.【重做 5.1 学习】99.【新增接口:2.13,7.2,8.1】
+2.0.0|2018.12.23 | 2018.12.23 18:00 | 忠琪 | 1. 【2.9 用户优惠券列表丰富帅选条件】2.【7.1发现，4.1 课程列表 新增返回参数】 3.【重做 2.12 兑换码兑换 5.1 学习】99.【新增接口:1.7,2.13,2.14,2.15,4.2,7.2,8.1】
 2.0.1 | 2018.12.24 | 2018.12.24 18:00 | 魏德旺 | 新增接口【1.6 微信授权，2.14 充值（包括微信app，支付宝app支付两种方式） 3.1 绘本列表 3.2 绘本下载 8.1获取微信appId】。更新【5.1 支持绘本学习，绘本解锁】
 
 ## API请求地址
@@ -14,7 +14,7 @@
 #### 返回 resultCode 为 0 时为正常调用
 
 
-
+# 1. AUTH (无需登录)
 ## 1.1 获取短信验证码
 #### URL:   */api/auth/sms*
 #### Method: *POST*
@@ -35,7 +35,6 @@ mobile | String | 手机号码|是
 ---- | ---- | ---- | ----
 mobile | String | 手机号码|是
 code| String | 短信验证码|是
-touristId |long | 游客Id,当前游客账号升级成手机用户,信息不丢失| 否
 deviceId | String | 设备唯一id|否
 deviceType | String | 设备类型 IOS/ANDROID |否
 
@@ -122,8 +121,23 @@ deviceType | String | 设备类型。 可选值：IOS/ANDROID |是
 token  | String | token | 79767d55b2544d2c8594fecf1c21fa15 
 accountId  | long | 用户id | 123456 
 
+## 1.7 预约账户绑定
+#### URL:   */api/auth/login*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+mobile | String | 手机号码|是
+code| String | 短信验证码|是
+askCode | String | 推荐用户的邀请码 | 是
 
-# 2.账户相关（需要 token 验证 ）
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+
+
+# 2.账户相关（需要 登录token 验证 ）
 
 ## 2.1 账户信息
 #### URL:   */api/account/info*
@@ -253,9 +267,9 @@ balance | Objcet | 资金账户 | 参见 #AccountBalanceBean
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
 type |String | 优惠类型 COUPON:优惠券 SALE:折扣券| 否
-status | String | 优惠券状态 | |否 I:过期 A:正常  S:已使用
-target | String | 使用范围 （优惠券可以精确到课包）,购买商品时精确帅选| 否 UNIT:课包 
-targetId| String | 目标id 根据target | UNIT 课包id
+status | String | 优惠券状态 I:过期 A:正常  S:已使用| |否 
+target | String | 使用范围 （优惠券可以精确到课包）,购买商品时精确帅选 UNIT:课包 PICTUREBOOK:绘本| 否 
+targetId| String | 目标id 根据target  UNIT 课包id , PICTUREBOOK 绘本id|否
 
 
 ### 返回参数
@@ -293,20 +307,21 @@ openId |String | 微信openId| 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 
-## 2.12 绑定推荐人邀请码
-#### URL:   */api/account/recommendcode*
+## 2.12 兑换
+#### URL:   */api/account/exchange*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-askCode| String| 邀请码 | 是
+exchangeCode| String| 兑换码 | 是
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
+goodsName | String | 商品名称 | 10元优惠券一张
 
-## 2.13 绑定推荐人邀请码
+## 2.13 变更绑定手机号码
 #### URL:   */api/account/changemobile*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -331,7 +346,6 @@ code| String| 手机验证码 | 是
 token | String | Header信息 | 是
 channel | String | 渠道信息。ANDROID可选值WX\_APP / ALI\_APP。IOS值为IAP| 是
 amount | int | 充值金额，单位元 | 是
-returnUrl | String | 充值完成返回到页面 | 否
 title | String | 充值标题| 是
 deviceType | String | 设备类型，ANDROID/IOS| 是
 
@@ -358,6 +372,46 @@ id | String | 订单唯一标识符 | c73a020e-8e3f-4644-87a2-960c06fa1488
 ---- | ---- | ---- | ----
 order_string | String | app支付请求参数字符串，主要包含商户的订单信息.key=value形式，以&连接。参数描述如参照[https://docs.open.alipay.com/204/105465/](https://docs.open.alipay.com/204/105465/)|charset=utf-8&method=alipay.trade.app.pay&sign=I....D%3D&notify_url=https%3A%2F%...8b757fd&version=1.0&app_id=2016070801592943&sign_type=RSA2&timestamp=2018-12-24+11%3A45%3A18&alipay_sdk=alipay-sdk-java-dynamicVersionNo&format=json&biz_content={\"out_trade_no\":\"REE2O321E1S3H0L4Z4\",\"total_amount\":\"1.0\",\"subject\":\"充值\",\"product_code\":\"QUICK_MSECURITY_PAY\"}
 id | String | 订单唯一标识符 | c73a020e-8e3f-4644-87a2-960c06fa1488
+
+
+## 2.15 充值列表
+#### URL:   */api/account/rechargelist*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | String | Header信息 | 是
+status | String | 充值状态  I:未支付  S:充值成功  F:充值失败| 否
+billNo | String | 充值订单号| 否
+
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+list | List<Obejct> | 充值订单列表 | 参见 RechargeBean
+
+
+## 2.15 意见反馈
+#### URL:   */api/account/opinion*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+images | String[] | 图片链接数组 | 是
+feedback | String | 反馈内容| 是
+deivceId | String | 设备id| 否
+deviceType | String | 设备类型| 否
+mobileModel | String | 手机型号 | 否
+
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+
+
+
 
 # 3.绘本相关
 ## 3.1 绘本列表
@@ -407,6 +461,23 @@ unitId | long | 课件id | 是
 lessons  | List\<Object\> | 课件明细 | 参见附录 LessonBean
 
 
+## 4.2 课程下载
+#### URL:   */api/unit/downloadlesson*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+
+####断点下载的方法是:*获取这个方法返回的连接,在头部添加,Range: bytes=<first-byte-pos>-<last-byte-pos>,例如:Range: bytes 1024-2048表示下载1024-2048的内容; Range: bytes 1024- 表示下载1024之后的内容,注意,这个是闭合区间,0-1实际下载的是第0个第1个两个字节*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+lessonId | long | 课程id | 是
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+url  | String | 下载链接 | 有效时间 1小时
+
+
+
 
 # 5.宝宝相关
 
@@ -420,7 +491,7 @@ lessons  | List\<Object\> | 课件明细 | 参见附录 LessonBean
 ---- | ---- | ---- | ----
 type | String | 学习类型 LESSON:课件/PICTUREBOOK：绘本| 是
 id | long | 更新type LESSON：课件id/PICTUREBOOK：绘本id |是
-flag |int | 自定义学习位置| 是 
+flag |int | 自定义学习位置 大于0:覆盖之前学习进度 0：会返回之前学习进度| 是 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
@@ -442,8 +513,9 @@ flag | int |学习位置 0:从新开始| 0
 configs |Map| 模块配置是否显示 | 0 ：不显示
 activity |Map| 模块是否显示限免标签 | 0 ：不显示
 ids |Map | 模块跳转的课包id | 
+picturebooks | List<Object> | 推荐绘本列表 | 参见 PictureBookBean
 
-### 返回参数
+### configs/activity MAP 对应
 key| 类型 | 含义 | 示例 
 ---- | ---- | ---- | ----
 BANNER_ZRPD| int |自然拼读 开关/跳转的课包id | 0:不显示(限时免费)/课包id
@@ -454,8 +526,7 @@ BANNER\_LIST\_HB| int |英语绘本 开关 | 0:不显示(限时免费)
 
 
 
-# 7.文章
-
+# 7.文章 (无需登录)
 ## 7.1 发现列表
 #### URL:   */api/article/findlist*
 #### Method: *POST*
@@ -486,7 +557,7 @@ id | long | 发现文章id | 是
 
 
 # 8.订单
-## 8.1 贝壳购买
+## 8.1 贝壳消费
 #### URL:   */api/order/buy*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -574,6 +645,7 @@ scoreRule | String | 得分规则
 vip | int | 权限  参见 VIP
 unlock | boolean | 是否解锁
 auth| boolean | 是否有权限，判断是否购买
+downloadSize | long | 下载文件大小 字节
 
 ### ArticleBean
 参数名 | 类型 | 含义 
@@ -608,7 +680,7 @@ num |double | COUPON:抵用金额  SALE: 打多少折
 fullPrice| double | 满多少金额使用
 startTime | long | coupon 使用的开始时间戳
 endTime | long | coupon 使用的结束时间戳
-status | String | 状态 A:未使用  L:锁定（使用中）
+status | String | 状态 A:未使用  S:已使用 I:已过期作废
 orderNo | String | 使用的订单号
 
 ### WEIXINPAYMAP
@@ -622,15 +694,21 @@ nonce_str |String | nonce_str
 timestamp | String | 时间戳（10位，秒）
 
 
+### RechargeBean
+参数名 | 类型 | 含义 
+---- | ---- | ---- 
+id| long | 订单id
+accountId | long | 账户id
+billNo | String | 充值订单号
+amount | double | 充值金额
+channel | String | 充值渠道 WX_APP：微信 ALI_APP：支付宝
+status | String | 状态 I：未支付 S:充值成功 F:充值失败
+remark | String | 备注
+finisTime | Date | 订单完成时间
+createTime | Date | 订单创建时间
 
 
 
-### VIP
-数值 | 含义 
-----  | ---- 
-0| 没有权限
-10 | 需要用户注册登录（非游客）
-60 | 需要购买
 
 ### PictureBookBean
 参数名 | 类型 | 含义 
@@ -640,9 +718,19 @@ title| String | 绘本标题
 description | String | 描述
 image | String | 图片路径
 author | String | 作者
+vip | int | 参见 VIP
+needShare | int | 是否需要 分享解锁 （VIP=0 时判断）
 price| double | 单价
 showCount| long | 显示点击数
 auth | boolean |是否有权限
+fileSize | long | 下载文件大小 字节
+
+### VIP
+数值 | 含义 
+----  | ---- 
+0| 没有权限
+10 | 需要用户注册登录（非游客）
+60 | 需要购买
 
 
 
