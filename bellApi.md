@@ -6,7 +6,7 @@
 1.0.2 | 2018.12.12 | 2018.12.12 20:00 | 忠琪 | 1.AccountBalanceBean 的useableAmount 改成 usableAmount 2.course >> unit courseItem >>lesson 涉及接口:2.1,4.1,5.1 
 1.0.3 | 2018.12.13 | 2018.12.13 13:00 | 忠琪 | /api/config/index 添加跳转课包ids ,通过ids里面的id 向/api/unit/lessons 取课程 与后台数据交互统一
 2.0.0|2018.12.23 | 2018.12.23 18:00 | 忠琪 | 1. 【2.9 用户优惠券列表丰富帅选条件】2.【7.1发现，4.1 课程列表 新增返回参数】 3.【重做 5.1 学习】99.【新增接口:2.13,7.2,8.1】
-2.0.1 | 2018.12.24 | 2018.12.24 18:00 | 魏德旺 | 新增接口【1.6 微信授权，2.14 充值（包括微信app，支付宝app支付两种方式） 3.1 绘本列表 8.1获取微信appId】。更新【5.1 支持绘本学习，绘本解锁】
+2.0.1 | 2018.12.24 | 2018.12.24 18:00 | 魏德旺 | 新增接口【1.6 微信授权，2.14 充值（包括微信app，支付宝app支付两种方式） 3.1 绘本列表 3.2 绘本下载 8.1获取微信appId】。更新【5.1 支持绘本学习，绘本解锁】
 
 ## API请求地址
 #### https://bell.beecloud.cn
@@ -366,6 +366,7 @@ id | String | 订单唯一标识符 | c73a020e-8e3f-4644-87a2-960c06fa1488
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
+token | String | Header信息 | 是
 skip | String | 起始位置| 是
 limit | long | 条数 | 是
 
@@ -373,6 +374,21 @@ limit | long | 条数 | 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 list |List\<Object\>|  参见附录 PictureBookBean
+
+## 3.2 绘本下载
+#### URL:   */api/picturebook/download*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | String | Header信息 | 是
+pictureBookId | long | 绘本id| 是
+lastOffset | long | 偏移量 | 是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
 
 
 # 4.课件相关
@@ -623,11 +639,9 @@ title| String | 绘本标题
 description | String | 描述
 image | String | 图片路径
 author | String | 作者
-vip | int | 0不需要购买，1需要购买
-needShare | int | 0:不需要分享，1：需要分享
 price| double | 单价
-createTime | long | 绘本创建时间
-updateTime | long | 绘本更新时间
+showCount| long | 显示点击数
+auth | boolean |是否有权限
 
 
 
