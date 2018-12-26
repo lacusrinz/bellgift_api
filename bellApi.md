@@ -428,7 +428,10 @@ limit | long | 条数 | 是
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-list |List\<Object\>|  参见附录 PictureBookBean
+data | List\<Object\>|  参见附录 PictureBookBean
+total| long | 总条数
+totalPages| int | 总页数
+
 
 ## 3.2 绘本下载
 #### URL:   */api/picturebook/download*
