@@ -5,7 +5,7 @@
 1.0.1 | 2018.12.12 | 2018.12.12 16：35 | 忠琪 | 去除登录返回的logininfo对象只返回token，宝宝列表添加字段kid，新增接口 2.12 绑定推荐人邀请码，AccountCacheBean 新增字段 askCode,recommendCode
 1.0.2 | 2018.12.12 | 2018.12.12 20:00 | 忠琪 | 1.AccountBalanceBean 的useableAmount 改成 usableAmount 2.course >> unit courseItem >>lesson 涉及接口:2.1,4.1,5.1 
 1.0.3 | 2018.12.13 | 2018.12.13 13:00 | 忠琪 | /api/config/index 添加跳转课包ids ,通过ids里面的id 向/api/unit/lessons 取课程 与后台数据交互统一
-2.0.0|2018.12.23 | 2018.12.23 18:00 | 忠琪 | 1. 【2.9 用户优惠券列表丰富帅选条件】2.【7.1发现，4.1 课程列表 新增返回参数】 3.【重做 2.12 兑换码兑换 5.1 学习】99.【新增接口:1.7,2.13,2.14,2.15,2.16,4.2,7.2,8.1】
+2.0.0|2018.12.23 | 2018.12.23 18:00 | 忠琪 | 1. 【2.9 用户优惠券列表丰富帅选条件】2.【7.1发现，4.1 课程列表 新增返回参数】 3.【重做 2.12 兑换码兑换 5.1 学习】99.【新增接口:1.7,2.13,2.14,2.15,2.16,2.17,4.2,7.2,8.1】
 2.0.1 | 2018.12.24 | 2018.12.24 18:00 | 魏德旺 | 新增接口【1.6 微信授权，2.14 充值（包括微信app，支付宝app支付两种方式） 3.1 绘本列表 3.2 绘本下载 9.1获取微信appId】。更新【5.1 支持绘本学习，绘本解锁】
 
 ## API请求地址
@@ -411,11 +411,31 @@ mobileModel | String | 手机型号 | 否
 ---- | ---- | ---- | ----
 
 
+## 2.17 我的推荐信息
+#### URL:   */api/account/recommendinfo*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+askCode | String | 我的邀请码 |
+recommendCode | String | 我绑定的邀请码
+accountCount | int | 我推荐人的数量
+couponCount | int | 我推荐获取的优惠券数量 
+couponSumAmount| double |我推荐获取的优惠券总额
+
+
+
 
 
 # 3.绘本相关
 ## 3.1 绘本列表
-#### URL:   */api/picturebook*
+#### URL:   */api/picturebook/list*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
@@ -428,9 +448,7 @@ limit | long | 条数 | 是
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-data | List\<Object\>|  参见附录 PictureBookBean
-total| long | 总条数
-totalPages| int | 总页数
+list | List\<Object\>|  参见附录 PictureBookBean
 
 
 ## 3.2 绘本下载
@@ -447,6 +465,21 @@ lastOffset | long | 偏移量 | 是
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
+
+
+## 3.3 绘本分享解锁
+#### URL:   */api/picturebook/share*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | String | Header信息 | 是
+pictureBookId | long | 绘本id| 是
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+
 
 
 # 4.课件相关
@@ -660,7 +693,6 @@ recommend | String | 引荐
 url | String | 引用文章url
 releaseTime | long | 发布时间戳
 image | String | 图片路径
-color | String | 色号
 count | long | 阅读数
 
 ### AccountBalanceBean
@@ -724,15 +756,18 @@ author | String | 作者
 vip | int | 参见 VIP
 needShare | int | 是否需要 分享解锁 （VIP=0 时判断）
 price| double | 单价
-showCount| long | 显示点击数
+count| long | 显示点击数
 auth | boolean |是否有权限
 fileSize | long | 下载文件大小 字节
+shareImage | String | 分享图片
+shareContent | String | 分享文案
+
 
 ### VIP
 数值 | 含义 
 ----  | ---- 
-0| 没有权限
-10 | 需要用户注册登录（非游客）
+0|  没有权限限制
+50 | 部分免费 部分需要购买
 60 | 需要购买
 
 
