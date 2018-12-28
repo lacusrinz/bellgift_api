@@ -5,7 +5,7 @@
 1.0.1 | 2018.12.12 | 2018.12.12 16：35 | 忠琪 | 去除登录返回的logininfo对象只返回token，宝宝列表添加字段kid，新增接口 2.12 绑定推荐人邀请码，AccountCacheBean 新增字段 askCode,recommendCode
 1.0.2 | 2018.12.12 | 2018.12.12 20:00 | 忠琪 | 1.AccountBalanceBean 的useableAmount 改成 usableAmount 2.course >> unit courseItem >>lesson 涉及接口:2.1,4.1,5.1 
 1.0.3 | 2018.12.13 | 2018.12.13 13:00 | 忠琪 | /api/config/index 添加跳转课包ids ,通过ids里面的id 向/api/unit/lessons 取课程 与后台数据交互统一
-2.0.0|2018.12.23 | 2018.12.23 18:00 | 忠琪 | 1. 【2.9 用户优惠券列表丰富帅选条件】2.【7.1发现，4.1 课程列表 新增返回参数】 3.【重做 2.12 兑换码兑换 5.1 学习】99.【新增接口:1.7,2.13,2.14,2.15,2.16,2.17,4.2,7.2,8.1】
+2.0.0|2018.12.23 | 2018.12.23 18:00 | 忠琪 | 1. 【2.9 用户优惠券列表丰富筛选条件】2.【7.1发现，4.1 课程列表 新增返回参数】 3.【重做 2.12 兑换码兑换 5.1 学习】99.【新增接口:1.7,2.13,2.14,2.15,2.16,2.17,4.2,7.2,8.1】
 2.0.1 | 2018.12.24 | 2018.12.24 18:00 | 魏德旺 | 新增接口【1.6 微信授权，2.14 充值（包括微信app，支付宝app支付两种方式） 3.1 绘本列表 3.2 绘本下载 9.1获取微信appId】。更新【5.1 支持绘本学习，绘本解锁】
 
 ## API请求地址
@@ -61,7 +61,7 @@
 &nbsp; &nbsp; [ 7.1 发现列表](#7.1)  
 &nbsp; &nbsp; [ 7.2 发现点击](#7.2)  
 
-[8.文章 ](#8)  
+[8.订单 ](#8)  
 &nbsp; &nbsp; [ 8.1 贝壳消费](#8.1)  
 
 
@@ -733,7 +733,7 @@ describe | String | 描述
 image | String | 图片路径
 duration | int | 时长 单位：分钟
 scoreRule | String | 得分规则
-vip | int | 权限  参见 VIP
+vip | int | 权限  参见 [VIP](#VIP)
 unlock | boolean | 是否解锁
 auth| boolean | 是否有权限，判断是否购买
 downloadSize | long | 下载文件大小 字节
@@ -808,7 +808,7 @@ title| String | 绘本标题
 description | String | 描述
 image | String | 图片路径
 author | String | 作者
-vip | int | 参见 VIP
+vip | int | 参见 [VIP](#VIP)
 needShare | int | 是否需要 分享解锁 （VIP=0 时判断）
 price| double | 单价
 count| long | 显示点击数
