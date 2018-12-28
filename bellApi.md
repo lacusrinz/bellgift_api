@@ -13,9 +13,62 @@
 #### 请求头里面 token 身份认证
 #### 返回 resultCode 为 0 时为正常调用
 
+## 目录
+[1.AUTH (无需登录)](#1)  
+ &nbsp; &nbsp; [ 1.1获取短信验证码](#1.1)  
+ &nbsp; &nbsp; [ 1.2手机登录](#1.2)  
+ &nbsp; &nbsp; [ 1.3 获取微信跳转路径](#1.3)  
+ &nbsp; &nbsp; [ 1.4 微信登录](#1.4)  
+ &nbsp; &nbsp; [ 1.5 上传图片](#1.5)  
+ &nbsp; &nbsp; [ 1.6 微信授权](#1.6)  
+ &nbsp; &nbsp; [ 1.7 预约账户绑定](#1.7)  
+ 
+ [2.账户操作](#2)  
+&nbsp; &nbsp; [ 2.1 账户信息](#2.1)  
+&nbsp; &nbsp; [ 2.2 添加宝宝](#2.2)  
+&nbsp; &nbsp; [ 2.3 宝宝列表](#2.3)  
+&nbsp; &nbsp; [ 2.4 切换宝宝](#2.4)  
+&nbsp; &nbsp; [ 2.5 修改用户信息](#2.5)  
+&nbsp; &nbsp; [ 2.6 修改宝宝信息](#2.6)  
+&nbsp; &nbsp; [ 2.7 手机号码绑定](#2.7)  
+&nbsp; &nbsp; [ 2.8 用户资金账户](#2.8)  
+&nbsp; &nbsp; [ 2.9 用户优惠券列表](#2.9)  
+&nbsp; &nbsp; [ 2.10 微信绑定](#2.10)  
+&nbsp; &nbsp; [ 2.11 微信解绑](#2.11)  
+&nbsp; &nbsp; [ 2.12 兑换](#2.12)  
+&nbsp; &nbsp; [ 2.13 变更绑定手机号码](#2.13)  
+&nbsp; &nbsp; [ 2.14 充值](#2.14)  
+&nbsp; &nbsp; [ 2.15 充值列表](#2.15)  
+&nbsp; &nbsp; [ 2.16 意见反馈](#2.16)  
+&nbsp; &nbsp; [ 2.17 我的推荐信息](#2.17)  
 
-# 1. AUTH (无需登录)
-## 1.1 获取短信验证码
+ [3.绘本相关](#3)  
+&nbsp; &nbsp; [ 3.1 绘本列表](#3.1)  
+&nbsp; &nbsp; [ 3.2 绘本下载](#3.2)  
+&nbsp; &nbsp; [ 3.3 绘本分享解锁](#3.3)  
+
+ [4.课件相关](#4)  
+&nbsp; &nbsp; [ 4.1 课程列表](#4.1)  
+&nbsp; &nbsp; [ 4.2 课程下载](#4.2)  
+
+ [5.宝宝相关](#5)  
+&nbsp; &nbsp; [ 5.1学习/(获取/上传 学习记录)](#5.1)  
+
+[6.配置相关(无需登录)](#6)  
+&nbsp; &nbsp; [ 6.1 主页配置](#6.1)  
+
+[7.文章 (无需登录)](#7)  
+&nbsp; &nbsp; [ 7.1 发现列表](#7.1)  
+&nbsp; &nbsp; [ 7.2 发现点击](#7.2)  
+
+[8.文章 ](#8)  
+&nbsp; &nbsp; [ 8.1 贝壳消费](#8.1)  
+
+
+
+
+# <h2 id='1'>1. AUTH (无需登录)</h2>
+## <h3 id='1.1'>1.1 获取短信验证码</h3>
 #### URL:   */api/auth/sms*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -26,7 +79,7 @@ mobile | String | 手机号码|是
 
 
 
-## 1.2 手机登录
+## <h3 id='1.2'>1.2 手机登录</h3>
 #### URL:   */api/auth/login*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -47,7 +100,7 @@ accountId  | long | 用户id | 123456
 
 
 
-## 1.3 获取微信跳转路径
+## <h3 id='1.3'>1.3 获取微信跳转路径</h3>
 #### URL:   */api/auth/wxredirect*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -62,7 +115,7 @@ accountId  | long | 用户id | 123456
 url  | String | 微信回调路径 | https://open.weixin.qq.com/connect/oauth2/authorize?appid=...... 
 
 
-## 1.4 微信登录
+##  <h3 id='1.4'>1.4 微信登录</h3>
 #### URL:   */api/auth/wxlogin*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -88,7 +141,7 @@ token  | String | token | 79767d55b2544d2c8594fecf1c21fa15
 accountId  | long | 用户id | 123456 
 
 
-## 1.5 上传图片
+##  <h3 id='1.5'>1.5 上传图片</h3>
 #### URL:   */api/auth/uploadimg*
 #### Method: *POST*
 #### 请求参数格式: *form-data* !!!!!
@@ -104,7 +157,7 @@ file | File | 图片文件 | 是
 ---- | ---- | ---- | ----
 url  | String | 图片外链url | http://pisgc0usp.bkt.clouddn.com/69974402bc7647a084b46cbdac45201f 
 
-## 1.6 微信授权
+## <h3 id='1.6'>1.6 微信授权</h3>
 #### URL:   */api/auth/wxauth*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -121,7 +174,7 @@ deviceType | String | 设备类型。 可选值：IOS/ANDROID |是
 token  | String | token | 79767d55b2544d2c8594fecf1c21fa15 
 accountId  | long | 用户id | 123456 
 
-## 1.7 预约账户绑定
+## <h3 id='1.7'>1.7 预约账户绑定</h3>
 #### URL:   */api/auth/login*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -137,9 +190,9 @@ askCode | String | 推荐用户的邀请码 | 是
 ---- | ---- | ---- | ----
 
 
-# 2.账户相关（需要 登录token 验证 ）
+# <h2 id='2'>2.账户相关</h2>
 
-## 2.1 账户信息
+## <h3 id='2.1'>2.1 账户信息</h3>
 #### URL:   */api/account/info*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -150,10 +203,10 @@ askCode | String | 推荐用户的邀请码 | 是
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-info  | Object | 账户信息 | 参见附录 AccountCacheBean
-balance | Objcet | 资金账户 | 参见 #AccountBalanceBean
+info  | Object | 账户信息 | 参见附录 [AccountCacheBean](#AccountCacheBean)
+balance | Objcet | 资金账户 | 参见 [AccountBalanceBean](#AccountBalanceBean)
 
-## 2.2 添加宝宝
+## <h3 id='2.2'>2.2 添加宝宝</h3>
 #### URL:   */api/account/addkid*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -169,7 +222,7 @@ avatar | String | 头像 | 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 
-## 2.3 宝宝列表
+##  <h3 id='2.3'>2.3 宝宝列表</h3>
 #### URL:   */api/account/kids*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -181,10 +234,10 @@ avatar | String | 头像 | 是
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-kids | List\<Object\> | 宝宝列表 | 宝宝参见附录KidBean
-kid | Object | 当前选中的宝宝信息| 宝宝参见附录KidBean
+kids | List\<Object\> | 宝宝列表 | 宝宝参见附录 [KidBean](#KidBean)
+kid | Object | 当前选中的宝宝信息| 宝宝参见附录[KidBean](#KidBean)
 
-## 2.4 切换宝宝
+##  <h3 id='2.4'>2.4 切换宝宝</h3>
 #### URL:   */api/account/switchkid*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -198,7 +251,7 @@ kidId | Long | 需要切换的宝宝Id | 是
 ---- | ---- | ---- | ----
 
 
-## 2.5 修改用户信息
+##  <h3 id='2.5'>2.5 修改用户信息</h3>
 #### URL:   */api/account/update*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -212,7 +265,7 @@ avatar | String | 用户头像 | 否 填写认为修改
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 
-## 2.6 修改宝宝信息
+##  <h3 id='2.6'>2.6 修改宝宝信息</h3>
 #### URL:   */api/account/updatekid*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -230,7 +283,7 @@ avatar | String | 宝宝头像 | 否 填写认为修改
 ---- | ---- | ---- | ----
 
 
-## 2.7 手机号码绑定
+##  <h3 id='2.7'>2.7 手机号码绑定</h3>
 #### URL:   */api/account/mobilebinding*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -245,7 +298,7 @@ code | String | 短信验证码 | 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 
-## 2.8 用户资金账户
+## <h3 id='2.8'>2.8 用户资金账户</h3>
 #### URL:   */api/account/balance*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -257,16 +310,16 @@ code | String | 短信验证码 | 是
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-balance | Objcet | 资金账户 | 参见 #AccountBalanceBean
+balance | Objcet | 资金账户 | 参见 [AccountBalanceBean](#AccountBalanceBean)
 
-## 2.9 用户优惠券列表
+## <h3 id='2.9'>2.9 用户优惠券列表</h3>
 #### URL:   */api/account/coupons*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-type |String | 优惠类型 COUPON:优惠券 SALE:折扣券| 否
+type |String | 优惠类型 COUPON:现金券 SALE:折扣券| 否
 status | String | 优惠券状态 I:过期 A:正常  S:已使用| |否 
 target | String | 使用范围 （优惠券可以精确到课包）,购买商品时精确帅选 UNIT:课包 PICTUREBOOK:绘本| 否 
 targetId| String | 目标id 根据target  UNIT 课包id , PICTUREBOOK 绘本id|否
@@ -275,12 +328,12 @@ targetId| String | 目标id 根据target  UNIT 课包id , PICTUREBOOK 绘本id|�
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-list | List\<Object\> | 优惠券列表 | 参见 #AccountCouponBean
+list | List\<Object\> | 优惠券列表 | 参见 [AccountCouponBean](#AccountCouponBean)
 
 
 
 
-## 2.10 微信绑定
+## <h3 id='2.10'>2.10 微信绑定</h3>
 #### URL:   */api/account/wxbinding*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -294,7 +347,7 @@ openId |String | 微信openId| 是
 ---- | ---- | ---- | ----
  
 
-## 2.11 微信解绑
+## <h3 id='2.11'>2.11 微信解绑</h3>
 #### URL:   */api/account/wxunbinding*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -307,7 +360,7 @@ openId |String | 微信openId| 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 
-## 2.12 兑换
+## <h3 id='2.12'>2.12 兑换</h3>
 #### URL:   */api/account/exchange*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -321,7 +374,7 @@ exchangeCode| String| 兑换码 | 是
 ---- | ---- | ---- | ----
 goodsName | String | 商品名称 | 10元优惠券一张
 
-## 2.13 变更绑定手机号码
+## <h3 id='2.13'>2.13 变更绑定手机号码</h3>
 #### URL:   */api/account/changemobile*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -336,7 +389,8 @@ code| String| 手机验证码 | 是
 ---- | ---- | ---- | ----
 
 
-## 2.14 充值
+## <h3 id='2.14'>2.14 充值</h3>
+
 #### URL:   */api/account/recharge*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -374,7 +428,8 @@ order_string | String | app支付请求参数字符串，主要包含商户的�
 id | String | 订单唯一标识符 | c73a020e-8e3f-4644-87a2-960c06fa1488
 
 
-## 2.15 充值列表
+## <h3 id='2.15'>2.15 充值列表</h3>
+
 #### URL:   */api/account/rechargelist*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -389,10 +444,10 @@ billNo | String | 充值订单号| 否
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-list | List<Obejct> | 充值订单列表 | 参见 RechargeBean
+list | List<Obejct> | 充值订单列表 | 参见 [RechargeBean](#RechargeBean)
 
 
-## 2.16 意见反馈
+## <h3 id='2.16'>2.16 意见反馈</h3>
 #### URL:   */api/account/opinion*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -411,7 +466,7 @@ mobileModel | String | 手机型号 | 否
 ---- | ---- | ---- | ----
 
 
-## 2.17 我的推荐信息
+## <h3 id='2.17'>2.17 我的推荐信息</h3>
 #### URL:   */api/account/recommendinfo*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -433,8 +488,8 @@ couponSumAmount| double |我推荐获取的优惠券总额
 
 
 
-# 3.绘本相关
-## 3.1 绘本列表
+# <h2 id='3'>3.绘本相关</h2>
+## <h3 id='3.1'>3.1 绘本列表</h3>
 #### URL:   */api/picturebook/list*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -448,10 +503,10 @@ limit | long | 条数 | 是
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-list | List\<Object\>|  参见附录 PictureBookBean
+list | List\<Object\>|  参见附录 [PictureBookBean](#PictureBookBean)
 
 
-## 3.2 绘本下载
+## <h3 id='3.2'>3.2 绘本下载</h3>
 #### URL:   */api/picturebook/download*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -467,7 +522,7 @@ lastOffset | long | 偏移量 | 是
 ---- | ---- | ---- | ----
 
 
-## 3.3 绘本分享解锁
+## <h3 id='3.3'>3.3 绘本分享解锁</h3>
 #### URL:   */api/picturebook/share*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -482,8 +537,8 @@ pictureBookId | long | 绘本id| 是
 
 
 
-# 4.课件相关
-## 4.1 课程
+# <h2 id='4'>4.课件相关</h2>
+## <h3 id='4.1'>4.1 课程</h3>
 #### URL:   */api/unit/lessons*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -494,10 +549,12 @@ unitId | long | 课件id | 是
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-lessons  | List\<Object\> | 课件明细 | 参见附录 LessonBean
+lessons  | List\<Object\> | 课件明细 | 参见附录 [LessonBean](#LessonBean)
+
+### PS: auth=true，unlock=true才能看，auth=true,unlock=false,不能看，因为前面的课还没学完，auth=false，unlock=false，表示前面有课没学完，并且这个课需要购买才能学（同样提示“学完钱前面的课”）。auth=false，unlock=true表示前面的课已经学完了，但是这个课程需要购买才能学
 
 
-## 4.2 课程下载
+## <h3 id='4.2'>4.2 课程下载</h3>
 #### URL:   */api/unit/downloadlesson*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -515,9 +572,8 @@ url  | String | 下载链接 | 有效时间 1小时
 
 
 
-# 5.宝宝相关
-
-## 5.1 学习
+# <h2 id='5'>5.宝宝相关</h2>
+## <h3 id='5.1'>5.1 学习</h3>
 #### URL:   */api/kid/study*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -533,9 +589,8 @@ flag |int | 自定义学习位置 大于0:覆盖之前学习进度 0：会返回
 ---- | ---- | ---- | ----
 flag | int |学习位置 0:从新开始| 0
 
-# 6.配置相关
-
-## 6.1 主页配置
+# <h2 id='6'>6.配置相关(无需登录)</h2>
+## <h3 id='6.1'>6.1 主页配置</h3>
 #### URL:   */api/config/index*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -549,7 +604,7 @@ flag | int |学习位置 0:从新开始| 0
 configs |Map| 模块配置是否显示 | 0 ：不显示
 activity |Map| 模块是否显示限免标签 | 0 ：不显示
 ids |Map | 模块跳转的课包id | 
-picturebooks | List<Object> | 推荐绘本列表 | 参见 PictureBookBean
+picturebooks | List<Object> | 推荐绘本列表 | 参见 [PictureBookBean](#PictureBookBean)
 
 ### configs/activity MAP 对应
 key| 类型 | 含义 | 示例 
@@ -562,8 +617,8 @@ BANNER\_LIST\_HB| int |英语绘本 开关 | 0:不显示(限时免费)
 
 
 
-# 7.文章 (无需登录)
-## 7.1 发现列表
+# <h2 id='7'>7.文章 (无需登录)</h2>
+## <h3 id='7.1'> 7.1 发现列表</h3>
 #### URL:   */api/article/findlist*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -576,9 +631,9 @@ limit | int | 显示多少条 | 是
 ### 返回参数
 参数名 | 类型 | 含义 
 ---- | ---- | ----  
-list |List\<Object\>|  参见附录 ArticleBean
+list |List\<Object\>|  参见附录 [ArticleBean](#ArticleBean)
 
-## 7.2 发现点击
+## <h3 id='7.2'> 7.2 发现点击</h3>
 #### URL:   */api/article/findclick*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -592,8 +647,8 @@ id | long | 发现文章id | 是
 ---- | ---- | ----  
 
 
-# 8.订单
-## 8.1 贝壳消费
+# <h2 id='8'>8.订单</h2>
+## <h3 id='8.1'> 8.1 贝壳消费</h3>
 #### URL:   */api/order/buy*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -608,8 +663,8 @@ couponId | long | 优惠券id 大于0使用| 否
 ---- | ---- | ---- | ----
 orderNo| String | 订单号
 
-# 9.APP信息
-##9.1 获取APPID
+# <h2 id='9'>9.APP信息</h2>
+##<h3 id='9.1'> 9.1 获取APPID</h3>
 #### URL:   */api/app*
 #### Method: *GET*
 #### 请求参数格式: *JSON: Map*
@@ -632,7 +687,7 @@ app_id | app_id | 微信appId|
 
 
 ## 附录
-### AccountCacheBean
+### <h3 id='AccountCacheBean'>AccountCacheBean</h3>
 参数名 | 类型 | 含义 
 ---- | ---- | ---- 
 id  | Long | 账户id
@@ -654,7 +709,7 @@ askCode | String | 自己的邀请码 唯一（注册时自动生成）
 recommendCode | String | 推荐人/代理商的 邀请码
 
 
-### KidBean
+### <h3 id='KidBean'> KidBean </h3>
 参数名 | 类型 | 含义 
 ---- | ---- | ---- 
 id  | Long | 宝宝id
@@ -667,7 +722,7 @@ status | String | A:选中 I:未选中
 age | int | 年龄
 
 
-### LessonBean
+###  <h3 id='LessonBean'> LessonBean </h3>
 参数名 | 类型 | 含义 
 ---- | ---- | ---- 
 id  | long | 课件明细id
@@ -683,7 +738,7 @@ unlock | boolean | 是否解锁
 auth| boolean | 是否有权限，判断是否购买
 downloadSize | long | 下载文件大小 字节
 
-### ArticleBean
+### <h3 id='ArticleBean'> ArticleBean </h3>
 参数名 | 类型 | 含义 
 ---- | ---- | ---- 
 id | int | 文章id
@@ -695,7 +750,7 @@ releaseTime | long | 发布时间戳
 image | String | 图片路径
 count | long | 阅读数
 
-### AccountBalanceBean
+### <h3 id='AccountBalanceBean'> AccountBalanceBean </h3>
 参数名 | 类型 | 含义 
 ---- | ---- | ---- 
 accountId | long | 用户账户id
@@ -703,14 +758,14 @@ amount | Double | 账户总金额
 freezeAmount | Double | 账户冻结金额
 useableAmount | Double | 真实可用金额
 
-### AccountCouponBean
+### <h3 id='AccountCouponBean'> AccountCouponBean </h3>
 参数名 | 类型 | 含义 
 ---- | ---- | ---- 
 id | long | 优惠券id
 couponId | long | 优惠券模板id
 title | String | 标题
 accountId | long | 账户id
-type | String | 类型 COUPON:优惠券 SALE:折扣券
+type | String | 类型 COUPON:现金券 SALE:折扣券
 num |double | COUPON:抵用金额  SALE: 打多少折
 fullPrice| double | 满多少金额使用
 startTime | long | coupon 使用的开始时间戳
@@ -718,7 +773,7 @@ endTime | long | coupon 使用的结束时间戳
 status | String | 状态 A:未使用  S:已使用 I:已过期作废
 orderNo | String | 使用的订单号
 
-### WEIXINPAYMAP
+### <h3 id='WEIXINPAYMAP'> WEIXINPAYMAP </h3>
 参数名 | 类型 | 含义 
 ---- | ---- | ---- 
 pay_sign| String | pay_sign
@@ -729,7 +784,7 @@ nonce_str |String | nonce_str
 timestamp | String | 时间戳（10位，秒）
 
 
-### RechargeBean
+### <h3 id='RechargeBean'> RechargeBean </h3>
 参数名 | 类型 | 含义 
 ---- | ---- | ---- 
 id| long | 订单id
@@ -745,7 +800,7 @@ createTime | Date | 订单创建时间
 
 
 
-### PictureBookBean
+### <h3 id='PictureBookBean'> PictureBookBean </h3>
 参数名 | 类型 | 含义 
 ---- | ---- | ---- 
 id | int | 绘本id
@@ -763,7 +818,7 @@ shareImage | String | 分享图片
 shareContent | String | 分享文案
 
 
-### VIP
+### <h3 id='VIP'> VIP </h3>
 数值 | 含义 
 ----  | ---- 
 0|  没有权限限制
