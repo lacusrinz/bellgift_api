@@ -551,7 +551,7 @@ unitId | long | 课件id | 是
 ---- | ---- | ---- | ----
 lessons  | List\<Object\> | 课件明细 | 参见附录 [LessonBean](#LessonBean)
 
-### PS: auth=true，unlock=true才能看，auth=true,unlock=false,不能看，因为前面的课还没学完，auth=false，unlock=false，表示前面有课没学完，并且这个课需要购买才能学（同样提示“学完钱前面的课”）。auth=false，unlock=true表示前面的课已经学完了，但是这个课程需要购买才能学
+### PS: auth=true，unlock=true能学习课程；auth=true,unlock=false,不能学习课程，因为前面的课还没学完；auth=false，unlock=false，表示前面有课没学完，并且这个课需要购买才能学。auth=false，unlock=true表示前面的课已经学完了，但是这个课程需要购买才能学
 
 
 ## <h3 id='4.2'>4.2 课程下载</h3>
@@ -559,7 +559,7 @@ lessons  | List\<Object\> | 课件明细 | 参见附录 [LessonBean](#LessonBean
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 
-####断点下载的方法是:*获取这个方法返回的连接,在头部添加,Range: bytes=<first-byte-pos>-<last-byte-pos>,例如:Range: bytes 1024-2048表示下载1024-2048的内容; Range: bytes 1024- 表示下载1024之后的内容,注意,这个是闭合区间,0-1实际下载的是第0个第1个两个字节*
+####断点下载的方法是:*获取这个方法返回的连接,在头部添加,Range: bytes=<first-byte-pos>-<last-byte-pos>,例如:Range: bytes=1024-2048表示下载1024-2048的内容; Range: bytes=1024- 表示下载1024之后的内容,注意,这个是闭合区间,0-1实际下载的是第0个第1个两个字节*
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
