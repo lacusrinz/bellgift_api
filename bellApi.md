@@ -41,6 +41,7 @@
 &nbsp; &nbsp; [ 2.15 充值列表](#2.15)  
 &nbsp; &nbsp; [ 2.16 意见反馈](#2.16)  
 &nbsp; &nbsp; [ 2.17 我的推荐信息](#2.17)  
+&nbsp; &nbsp; [ 2.18 内购服务器订单验证](#2.18)  
 
  [3.绘本相关](#3)  
 &nbsp; &nbsp; [ 3.1 绘本列表](#3.1)  
@@ -407,7 +408,8 @@ deviceType | String | 设备类型，ANDROID/IOS| 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 billNo | String | 订单号 | RET2Z250C626E6U085
-content | Map | 支付参数 | ANDROID参照：微信支付附加参数 或 支付宝支付附加参数
+content | Map | 支付参数 | ANDROID 返回参照：微信支付附加参数 或 支付宝支付附加参数
+productId | String | ios内购产品id | IOS 内购返回
 
 ### [微信支付附加参数](https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_12&index=2)
 参数名 | 类型 | 含义 | 示例
@@ -483,6 +485,22 @@ recommendCode | String | 我绑定的邀请码
 accountCount | int | 我推荐人的数量
 couponCount | int | 我推荐获取的优惠券数量 
 couponSumAmount| double |我推荐获取的优惠券总额
+
+
+## <h3 id='2.18'>2.18 内购回调</h3>
+#### URL:   */api/account/recommendinfo*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+certificate | String | ios 支付凭证
+orderNo | String | 支付订单号
 
 
 
@@ -791,11 +809,13 @@ id| long | 订单id
 accountId | long | 账户id
 billNo | String | 充值订单号
 amount | double | 充值金额
-channel | String | 充值渠道 WX_APP：微信 ALI_APP：支付宝
+num | Double | 充值等换贝壳数量
+channel | String | 充值渠道 WX_APP：微信 ALI_APP：支付宝 IAP：IOS内购
 status | String | 状态 I：未支付 S:充值成功 F:充值失败
 remark | String | 备注
 finisTime | Date | 订单完成时间
 createTime | Date | 订单创建时间
+tradeNo | String | 外部订单号
 
 
 
