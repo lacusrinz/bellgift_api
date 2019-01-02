@@ -408,7 +408,7 @@ deviceType | String | 设备类型，ANDROID/IOS| 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 billNo | String | 订单号 | RET2Z250C626E6U085
-content | Map | 支付参数 | ANDROID 返回参照：微信支付附加参数 或 支付宝支付附加参数
+content | String | 支付参数 | ANDROID 返回参照：微信支付附加参数 JSONString 或 支付宝支付附加参数
 productId | String | ios内购产品id | IOS 内购返回
 
 ### [微信支付附加参数](https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_12&index=2)
@@ -421,13 +421,13 @@ package | String | 扩展字段 | Sign=WXPay
 nonce_str | String | 随机字符串	| 5K8264ILTKCH16CQ2502SI8ZNMTM67VS
 timestamp | String | 时间戳 | 1412000000 
 pay_sign | String | 签名 | C380BEC2BFD727A4B6845133519F3AD6 
-id | String | 订单唯一标识符 | c73a020e-8e3f-4644-87a2-960c06fa1488
+
 
 ### 支付宝支付附加参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 order_string | String | app支付请求参数字符串，主要包含商户的订单信息.key=value形式，以&连接。参数描述如参照[https://docs.open.alipay.com/204/105465/](https://docs.open.alipay.com/204/105465/)|charset=utf-8&method=alipay.trade.app.pay&sign=I....D%3D&notify_url=https%3A%2F%...8b757fd&version=1.0&app_id=2016070801592943&sign_type=RSA2&timestamp=2018-12-24+11%3A45%3A18&alipay_sdk=alipay-sdk-java-dynamicVersionNo&format=json&biz_content={\"out_trade_no\":\"REE2O321E1S3H0L4Z4\",\"total_amount\":\"1.0\",\"subject\":\"充值\",\"product_code\":\"QUICK_MSECURITY_PAY\"}
-id | String | 订单唯一标识符 | c73a020e-8e3f-4644-87a2-960c06fa1488
+
 
 
 ## <h3 id='2.15'>2.15 充值列表</h3>
