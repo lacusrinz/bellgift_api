@@ -408,7 +408,7 @@ deviceType | String | 设备类型，ANDROID/IOS| 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 billNo | String | 订单号 | RET2Z250C626E6U085
-content | String | 支付参数 | ANDROID 返回参照：微信支付附加参数 JSONString 或 支付宝支付附加参数
+content | Map | 支付参数 | ANDROID 返回参照：微信支付附加参数 JSONString 或 支付宝支付附加参数
 productId | String | ios内购产品id | IOS 内购返回
 
 ### [微信支付附加参数](https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_12&index=2)
