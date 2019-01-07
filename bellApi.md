@@ -494,13 +494,13 @@ couponSumAmount| double |我推荐获取的优惠券总额
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-
+certificate | String | ios 支付凭证 | 是
+orderNo | String | 支付订单号 | 是
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-certificate | String | ios 支付凭证
-orderNo | String | 支付订单号
+
 
 
 
