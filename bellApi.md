@@ -488,7 +488,7 @@ couponSumAmount| double |我推荐获取的优惠券总额
 
 
 ## <h3 id='2.18'>2.18 内购回调</h3>
-#### URL:   */api/account/recommendinfo*
+#### URL:   */api/account/iosnotify*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
