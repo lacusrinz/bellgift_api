@@ -456,6 +456,7 @@ list | List<Obejct> | 充值订单列表 | 参见 [RechargeBean](#RechargeBean)
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
+token | String | Header信息 | 是
 images | String[] | 图片链接数组 | 是
 feedback | String | 反馈内容| 是
 deivceId | String | 设备id| 否
@@ -475,6 +476,7 @@ mobileModel | String | 手机型号 | 否
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
+token | String | Header信息 | 是
 
 
 ### 返回参数
@@ -494,6 +496,7 @@ couponSumAmount| double |我推荐获取的优惠券总额
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
+token | String | Header信息 | 是
 certificate | String | ios 支付凭证 | 是
 orderNo | String | 支付订单号 | 是
 
@@ -725,6 +728,7 @@ country  | String | 国家
 kidId  | long | 选中的宝宝id
 askCode | String | 自己的邀请码 唯一（注册时自动生成）
 recommendCode | String | 推荐人/代理商的 邀请码
+shareImage | String | 分享url 含自己推广二维码图片的url
 
 
 ### <h3 id='KidBean'> KidBean </h3>
