@@ -482,6 +482,7 @@ token | String | Header信息 | 是
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
+startDate | String | 开始日期 | 2019.02.03
 askCode | String | 我的邀请码 |
 recommendCode | String | 我绑定的邀请码
 accountCount | int | 我推荐人的数量
