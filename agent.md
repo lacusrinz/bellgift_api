@@ -11,8 +11,9 @@
  &nbsp; &nbsp; [ 1.2获取短信验证码](#1.2)  
  &nbsp; &nbsp; [ 1.3 手机短信验证 ](#1.3)  
  &nbsp; &nbsp; [ 1.4 保存代理信息 ](#1.4)  
- &nbsp; &nbsp; [ 1.5 创建推广图片 ](#1.5)  
- &nbsp; &nbsp; [ 1.6 消息列表 ](#1.6)  
+ &nbsp; &nbsp; [ 1.5 创建推广图片 ](#1.5)     
+ &nbsp; &nbsp; [ 1.6 消息列表 ](#1.6)     
+ &nbsp; &nbsp; [ 1.7 消息标记已读 ](#1.7)   
  [2.微信API ](#2)  
  &nbsp; &nbsp; [ 2.1微信授权获取code](#2.1)  
  &nbsp; &nbsp; [ 2.2 微信授权获取openid](#2.2)  
@@ -49,8 +50,9 @@ status  | string | 代理商状态 |  N 尚未申请 P 待审核 A 成功  I 失
 	  "resultMsg": "OK",
 	  "errorMsg": null,
 	  "data": {
-	    "status": "P",
-	    "agent": {
+	    "status": "P", //代理商状态
+	    "unreadNum" : 2, //消息未读总计
+	    "agent": { //代理详细信息
 	      "id": 1,
 	      "mobile": "159xxxx", //手机号
 	      "name": "jason", //姓名
@@ -184,6 +186,7 @@ limit|	int |	查询的条数, 默认为10 | 否
 	        "type": "WITHDRAW_SUCCESS",
 	        "title": "提现成功通知", //通知标题
 	        "message": "你的报酬已经提现成功,提现金额202.0元.", //通知详情
+	        "mark_read" : "0"  //是否已读 "0" 未读 "1" 已读
 	        "createTime": 1546941470000, //创建时间
 	        "updateTime": 1546941470000
 	      },
@@ -193,6 +196,24 @@ limit|	int |	查询的条数, 默认为10 | 否
 	        .....
 	      }  
 	 }
+## <h3 id='1.7'>1.7 消息标记已读</h3>
+#### URL:   /wx/notice/markRead
+#### Method: POST
+#### 请求参数格式: json
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+id | int | 消息记录ID	 | 是 
+
+### 返回结果
+	
+	{
+	  "resultCode": 0,
+	  "resultMsg": "OK",
+	  "errorMsg": null,
+	  "data": "标记成功"
+	}
+
 	 
 # <h2 id='2'>2 微信API </h2>
 ## <h3 id='2.1'>2.1 微信授权获取code</h3>
