@@ -14,6 +14,7 @@
  &nbsp; &nbsp; [ 1.5 创建推广图片 ](#1.5)     
  &nbsp; &nbsp; [ 1.6 消息列表 ](#1.6)     
  &nbsp; &nbsp; [ 1.7 消息标记已读 ](#1.7)   
+ &nbsp; &nbsp; [ 1.8 审核失败确认 ](#1.8)  
  [2.微信API ](#2)  
  &nbsp; &nbsp; [ 2.1微信授权获取code](#2.1)  
  &nbsp; &nbsp; [ 2.2 微信授权获取openid](#2.2)  
@@ -66,6 +67,7 @@ status  | string | 代理商状态 |  N 尚未申请 P 待审核 A 成功  I 失
 	      "openid": "ofEy7uK2JsSOXVpHHYErRPtrdVWg", 
 	      "avatar": "https://example.com", //头像
 	      "status": "P", //审核状态
+	      "isConfirm" : "0" //"0" 未确认 "1" 已确认
 	      "reason": "",
 	      "remark": "非常赞", // 推广优势
 	      "createTime": 1546950315000,
@@ -124,6 +126,7 @@ code| String | 短信验证码|是
 mobile | String | 手机号码|是
 name| String | 姓名|是
 wechat| String | 微信号 |是
+avatar| String | 微信头像 | 否
 province| String | 省 |是
 city | String | 市 |是
 district| String | 区 |是
@@ -213,6 +216,23 @@ id | int | 消息记录ID	 | 是
 	  "errorMsg": null,
 	  "data": "标记成功"
 	}
+
+## <h3 id='1.8'>1.8 审核失败确认</h3>
+#### URL:   /wx/agent/confirm
+#### Method: GET
+#### 请求参数格式: 
+### 传入参数
+
+### 返回结果
+	
+	{
+	  "resultCode": 0,
+	  "resultMsg": "OK",
+	  "errorMsg": null,
+	  "data": "确认成功"
+	}
+	
+	
 
 	 
 # <h2 id='2'>2 微信API </h2>
