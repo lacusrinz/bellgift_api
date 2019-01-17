@@ -51,6 +51,7 @@
  [4.课件相关](#4)  
 &nbsp; &nbsp; [ 4.1 课程列表](#4.1)  
 &nbsp; &nbsp; [ 4.2 课程下载](#4.2)  
+&nbsp; &nbsp; [ 4.3 课包信息](#4.3)  
 
  [5.宝宝相关](#5)  
 &nbsp; &nbsp; [ 5.1学习/(获取/上传 学习记录)](#5.1)  
@@ -592,6 +593,20 @@ lessonId | long | 课程id | 是
 url  | String | 下载链接 | 有效时间 1小时
 
 
+## <h3 id='4.3'>4.3 课包信息</h3>
+#### URL:   */api/unit/info*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+unitId | long | 课件id | 是
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+info  | Object | 课包信息 | 参见附录 [UnitBean](#UnitBean)
+
+
 
 
 # <h2 id='5'>5.宝宝相关</h2>
@@ -842,6 +857,18 @@ fileSize | long | 下载文件大小 字节
 shareImage | String | 分享图片
 shareContent | String | 分享文案
 
+### <h3 id='UnitBean'> UnitBean </h3>
+参数名 | 类型 | 含义 
+---- | ---- | ---- 
+id | long | 课包id
+title| String | 课包标题
+describe | String | 描述
+image | String | 图片路径
+minAge | int | 适合最小年龄
+maxAge | int | 适合最大年龄
+price | double | 售价
+vip | int | 参见 [VIP](#VIP)
+ 
 
 ### <h3 id='VIP'> VIP </h3>
 数值 | 含义 
