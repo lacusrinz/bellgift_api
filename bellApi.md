@@ -864,7 +864,8 @@ tradeNo | String | 外部订单号
 id | int | 绘本id
 title| String | 绘本标题
 description | String | 描述
-image | String | 图片路径
+icon | String | 列表图标路径
+image | String | 封面图片路径
 author | String | 作者
 vip | int | 参见 [VIP](#VIP)
 needShare | int | 是否需要 分享解锁 （VIP=0 时判断）
