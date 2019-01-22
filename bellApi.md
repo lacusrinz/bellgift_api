@@ -444,6 +444,8 @@ order_string | String | app支付请求参数字符串，主要包含商户的�
 token | String | Header信息 | 是
 status | String | 充值状态  I:未支付  S:充值成功  F:充值失败| 否
 billNo | String | 充值订单号| 否
+skip | String | 起始位置| 是
+limit | long | 条数 | 是
 
 
 ### 返回参数
