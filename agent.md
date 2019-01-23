@@ -27,6 +27,8 @@
  &nbsp; &nbsp; [ 3.3 提现](#3.3)  
  &nbsp; &nbsp; [ 3.4 提现列表](#3.4)  
  &nbsp; &nbsp; [ 3.5 统计](#3.5)  
+ &nbsp; &nbsp; [ 3.6 下级列表](#3.6)  
+ &nbsp; &nbsp; [ 3.7 下级统计](#3.7)  
  
  
  
@@ -135,6 +137,7 @@ job | int | 职业 |是
 friendsNum | int |  好友数 |是
 purchased | String | 是否购买 | 1 是 0 否
 remark | String | 推广优势 | 是
+askCode | String | 代理商邀码(传了则认为是下级代理,无需审核) | 否
 
 ### 返回结果
 	
@@ -480,6 +483,75 @@ skip | int | 其实位置 | 否
 	    ]
 	  }
 	}
+	
+	
+## <h3 id='3.6'>3.6 下级代理列表</h3>
+#### URL:   /wx/authagent/childlist
+#### Method: POST
+#### 请求参数格式: json
+### 传入参数
+
+
+### 返回参数
+参数名 | 类型 |  含义 | 示例
+---- | ---- | ---- | ----
+skip | int | 其实位置
+limit | int | 显示数量
+
+#### 返回结果
+	{
+	  "resultCode": 0,
+	  "resultMsg": "OK",
+	  "errorMsg": null,
+	  "data": {
+	    "list": [
+	      {
+	        "id": 1100, //代理id
+	        "parentId": 999,//上级代理id
+	        "mobile": "15250080210",//手机号码
+	        "name": "wz下级1",// 昵称
+	        "wechat": "测试误删!!!",//微信号
+	        "openid": "wzq1",//openid
+	        "avatar": "",//头像
+	        "askCount": 1,//已邀请用户
+	        "askPayCount": 1//已付费用户
+	      }
+	    ]
+	  }
+	}
+	
+	
+## <h3 id='3.7'>3.7 下级代理报表</h3>
+#### URL:   /wx/authagent/childreport
+#### Method: POST
+#### 请求参数格式: json
+### 传入参数
+
+
+### 返回参数
+参数名 | 类型 |  含义 | 示例
+---- | ---- | ---- | ----
+skip | int | 其实位置
+limit | int | 显示数量
+
+#### 返回结果
+	{
+	  "resultCode": 0,
+	  "resultMsg": "OK",
+	  "errorMsg": null,
+	  "data": {
+	    "childCount": 3,//下级大使数
+	    "list": [
+	      {
+	        "month": 1546272000000,// 月份时间戳
+	        "amount": 10// 下级代理返利收入
+	      },
+	    ],
+	    "payChildCount": 2//返利大使数
+
+	  }
+	}
+
    
 
 
