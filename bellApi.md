@@ -877,6 +877,8 @@ auth | boolean |是否有权限
 fileSize | long | 下载文件大小 字节
 shareImage | String | 分享图片
 shareContent | String | 分享文案
+androidShareUrl| String | 安卓分享路径
+iosShareUrl | String | ios 分享路劲
 
 ### <h3 id='UnitBean'> UnitBean </h3>
 参数名 | 类型 | 含义 
