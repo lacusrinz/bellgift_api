@@ -802,7 +802,7 @@ accountId  | long | 用户id | 123456
 # <h2 id='11'>11. 微信订阅号平台上账户操作(需登录)</h2>
 ## <h3 id='11.1'>11.1 充值</h3>
 
-#### URL:   */api/account/recharge*
+#### URL:   * /api/officialaccount/recharge*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
@@ -841,7 +841,7 @@ order_string | String | app支付请求参数字符串，主要包含商户的�
 
 ## <h3 id='11.2'>11.2 退出账号</h3>
 
-#### URL:   */api/account/recharge*
+#### URL:   * /api/officialaccount/logout*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
