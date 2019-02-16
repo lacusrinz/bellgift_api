@@ -8,6 +8,7 @@
 2.0.0|2018.12.23 | 2018.12.23 18:00 | 忠琪 | 1. 【2.9 用户优惠券列表丰富筛选条件】2.【7.1发现，4.1 课程列表 新增返回参数】 3.【重做 2.12 兑换码兑换 5.1 学习】99.【新增接口:1.7,2.13,2.14,2.15,2.16,2.17,4.2,7.2,8.1】
 2.0.1 | 2018.12.24 | 2018.12.24 18:00 | 魏德旺 | 新增接口【1.6 微信授权，2.14 充值（包括微信app，支付宝app支付两种方式） 3.1 绘本列表 3.2 绘本下载 9.1获取微信appId】。更新【5.1 支持绘本学习，绘本解锁】
 2.0.2 | 2019.1.17 | 2019.1.17 16:00 | 忠琪 | 新增接口【4.3 课包信息，8.2 贝壳数量计算】
+2.0.2 | 2019.2.16 | 2019.2.16 11:00 | 魏德旺| 新增接口【10，11】
 
 ## API请求地址
 #### https://bell.beecloud.cn
@@ -67,6 +68,16 @@
 [8.订单 ](#8)  
 &nbsp; &nbsp; [ 8.1 贝壳消费](#8.1)  
 &nbsp; &nbsp; [ 8.2 贝壳数量计算](#8.2)  
+
+[10.微信订阅号Auth (无需登录)](#10)  
+ &nbsp; &nbsp; [ 10.1获取短信验证码](#10.1)  
+ &nbsp; &nbsp; [ 10.2手机登录](#10.2)  
+ &nbsp; &nbsp; [ 10.3 获取微信跳转路径](#10.3)  
+ &nbsp; &nbsp; [ 10.4 微信认证登录](#10.4)  
+
+[11.微信订阅号平台上账户操作(需登录)](#11)  
+ &nbsp; &nbsp; [ 11.1 充值](#11.1)  
+ &nbsp; &nbsp; [ 11.2 退出账号](#11.2)   
 
 
 
@@ -736,11 +747,111 @@ payAmount| double | 消费贝壳数量
 app_id | app_id | 微信appId|
 
 
+# <h2 id='10'>10. 微信订阅号Auth (无需登录)</h2>
+## <h3 id='10.1'>[ 10.1获取短信验证码](#1.1) </h3>
 
 
+## <h3 id='10.2'>10.2 手机登录</h3>
+#### URL:   */api/auth/officialaccount/login*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+mobile | String | 手机号码|是
+code| String | 短信验证码|是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+token  | String | token | 79767d55b2544d2c8594fecf1c21fa15 
+accountId  | long | 用户id | 123456 
 
 
+## <h3 id='10.3'>10.3 获取微信跳转路径</h3>
+#### URL:   */api/auth/officialaccount/wxredirect*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
 
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+url  | String | 微信回调路径 | https://open.weixin.qq.com/connect/oauth2/authorize?appid=...... 
+
+
+## <h3 id='10.4'>10.4 微信认证登录</h3>
+#### URL:   */api/auth/wxauth*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+code | String | 微信授权临时票据 | 是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+token  | String | token | 79767d55b2544d2c8594fecf1c21fa15 
+accountId  | long | 用户id | 123456 
+
+
+# <h2 id='11'>11. 微信订阅号平台上账户操作(需登录)</h2>
+## <h3 id='11.1'>11.1 充值</h3>
+
+#### URL:   */api/account/recharge*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | String | Header信息 | 是
+channel | String | 渠道信息。可选值WX\_APP / ALI\_APP| 是
+amount | int | 充值金额，单位元 | 是
+title | String | 充值标题| 是
+deviceType | String | 设备类型，ANDROID/IOS| 是
+
+### 微信支付和支付宝支付返回公共参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+billNo | String | 订单号 | RET2Z250C626E6U085
+content | Map | 支付参数 | 返回参照：微信支付附加参数 JSONString 或 支付宝支付附加参数
+productId | String |  | 
+
+### [微信支付附加参数](https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_12&index=2)
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+app_id | String | 应用ID | wx8888888888888888
+partner_id | String | 商户号 | 1900000109
+prepay_id | String | 预支付交易会话ID | WX1217752501201407033233368018
+package | String | 扩展字段 | Sign=WXPay
+nonce_str | String | 随机字符串	| 5K8264ILTKCH16CQ2502SI8ZNMTM67VS
+timestamp | String | 时间戳 | 1412000000 
+pay_sign | String | 签名 | C380BEC2BFD727A4B6845133519F3AD6 
+
+
+### 支付宝支付附加参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+order_string | String | app支付请求参数字符串，主要包含商户的订单信息.key=value形式，以&连接。参数描述如参照[https://docs.open.alipay.com/204/105465/](https://docs.open.alipay.com/204/105465/)|charset=utf-8&method=alipay.trade.app.pay&sign=I....D%3D&notify_url=https%3A%2F%...8b757fd&version=1.0&app_id=2016070801592943&sign_type=RSA2&timestamp=2018-12-24+11%3A45%3A18&alipay_sdk=alipay-sdk-java-dynamicVersionNo&format=json&biz_content={\"out_trade_no\":\"REE2O321E1S3H0L4Z4\",\"total_amount\":\"1.0\",\"subject\":\"充值\",\"product_code\":\"QUICK_MSECURITY_PAY\"}
+
+
+## <h3 id='11.2'>11.2 退出账号</h3>
+
+#### URL:   */api/account/recharge*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | String | Header信息 | 是
+
+### 微信支付和支付宝支付返回公共参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ---- 
 
 
 ## 附录
