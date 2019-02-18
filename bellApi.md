@@ -810,7 +810,7 @@ accountId  | long | 用户id | 123456
 ---- | ---- | ---- | ----
 token | String | Header信息 | 是
 amount | int | 充值金额，单位元 | 是
-title | String | 充值标题| 是
+title | String | 充值标题| 否
 deviceType | String | 设备类型，ANDROID/IOS| 是
 
 ### 微信支付和支付宝支付返回公共参数
