@@ -809,7 +809,6 @@ accountId  | long | 用户id | 123456
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
 token | String | Header信息 | 是
-channel | String | 渠道信息。可选值WX\_APP / ALI\_APP| 是
 amount | int | 充值金额，单位元 | 是
 title | String | 充值标题| 是
 deviceType | String | 设备类型，ANDROID/IOS| 是
@@ -818,26 +817,7 @@ deviceType | String | 设备类型，ANDROID/IOS| 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 billNo | String | 订单号 | RET2Z250C626E6U085
-content | Map | 支付参数 | 返回参照：微信支付附加参数 JSONString 或 支付宝支付附加参数
-productId | String |  | 
-
-### [微信支付附加参数](https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_12&index=2)
-参数名 | 类型 | 含义 | 示例
----- | ---- | ---- | ----
-app_id | String | 应用ID | wx8888888888888888
-partner_id | String | 商户号 | 1900000109
-prepay_id | String | 预支付交易会话ID | WX1217752501201407033233368018
-package | String | 扩展字段 | Sign=WXPay
-nonce_str | String | 随机字符串	| 5K8264ILTKCH16CQ2502SI8ZNMTM67VS
-timestamp | String | 时间戳 | 1412000000 
-pay_sign | String | 签名 | C380BEC2BFD727A4B6845133519F3AD6 
-
-
-### 支付宝支付附加参数
-参数名 | 类型 | 含义 | 示例
----- | ---- | ---- | ----
-order_string | String | app支付请求参数字符串，主要包含商户的订单信息.key=value形式，以&连接。参数描述如参照[https://docs.open.alipay.com/204/105465/](https://docs.open.alipay.com/204/105465/)|charset=utf-8&method=alipay.trade.app.pay&sign=I....D%3D&notify_url=https%3A%2F%...8b757fd&version=1.0&app_id=2016070801592943&sign_type=RSA2&timestamp=2018-12-24+11%3A45%3A18&alipay_sdk=alipay-sdk-java-dynamicVersionNo&format=json&biz_content={\"out_trade_no\":\"REE2O321E1S3H0L4Z4\",\"total_amount\":\"1.0\",\"subject\":\"充值\",\"product_code\":\"QUICK_MSECURITY_PAY\"}
-
+sign | String | 充值签名 | 
 
 ## <h3 id='11.2'>11.2 退出账号</h3>
 
