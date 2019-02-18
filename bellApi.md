@@ -9,6 +9,8 @@
 2.0.1 | 2018.12.24 | 2018.12.24 18:00 | 魏德旺 | 新增接口【1.6 微信授权，2.14 充值（包括微信app，支付宝app支付两种方式） 3.1 绘本列表 3.2 绘本下载 9.1获取微信appId】。更新【5.1 支持绘本学习，绘本解锁】
 2.0.2 | 2019.1.17 | 2019.1.17 16:00 | 忠琪 | 新增接口【4.3 课包信息，8.2 贝壳数量计算】
 2.0.2 | 2019.2.16 | 2019.2.16 11:00 | 魏德旺| 新增接口【10，11】
+2.1.0 | 2019.2.18 | 2019.2.18 16:00 | 忠琪 | 新增接口【儿歌相关,收藏相关】,账户分开Ios安卓不通用
+
 
 ## API请求地址
 #### https://bell.beecloud.cn
@@ -57,6 +59,7 @@
 
  [5.宝宝相关](#5)  
 &nbsp; &nbsp; [ 5.1学习/(获取/上传 学习记录)](#5.1)  
+&nbsp; &nbsp; [ 5.2收藏](#5.2)  
 
 [6.配置相关(无需登录)](#6)  
 &nbsp; &nbsp; [ 6.1 主页配置](#6.1)  
@@ -78,6 +81,12 @@
 [11.微信订阅号平台上账户操作(需登录)](#11)  
  &nbsp; &nbsp; [ 11.1 充值](#11.1)  
  &nbsp; &nbsp; [ 11.2 退出账号](#11.2)   
+ 
+ [12.儿歌相关](#12)  
+ &nbsp; &nbsp; [ 12.1 儿歌分类列表](#12.1)  
+ &nbsp; &nbsp; [ 12.2 儿歌列表](#12.2)   
+ &nbsp; &nbsp; [ 12.3 儿歌下载](#12.3)   
+
 
 
 
@@ -642,6 +651,21 @@ finish| boolean | 是否已学完 （true:表示已学完,解锁下节课时）|
 ---- | ---- | ---- | ----
 flag | int |学习位置 0:从新开始| 0
 
+## <h3 id='5.2'>5.2 收藏</h3>
+#### URL:   */api/kid/collect*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+type | String | 类型 LESSON:课件/PICTUREBOOK：绘本 UNIT:课包 KIDSONG:儿歌| 是
+targetId | long | 对应类型的 材料id |是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+
+
 # <h2 id='6'>6.配置相关(无需登录)</h2>
 ## <h3 id='6.1'>6.1 主页配置</h3>
 #### URL:   */api/config/index*
@@ -834,6 +858,61 @@ token | String | Header信息 | 是
 ---- | ---- | ---- | ---- 
 
 
+
+
+# <h2 id='12'>12.儿歌相关</h2>
+##<h3 id='12.1'> 12.1 儿歌分类</h3>
+#### URL:   */api/song/categorys*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | String | Header信息 | 是
+device_id | String | Header信息 | 是
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+list | List<Object> | 分类列表| 参见 [SelectedDto](#SelectedDto)
+
+
+
+##<h3 id='12.2'> 12.2 儿歌列表</h3>
+#### URL:   */api/song/list*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | String | Header信息 | 是
+device_id | String | Header信息 | 是
+category | String | 分类 | 否 （参见 12.1）[SelectedDto](#SelectedDto)
+skip | int | 分页其实位置 |是
+limit | int | 分页数量 | 是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+list | List<Object> | 分类列表| 参见 [KidSongBean](#KidSongBean)
+
+
+## <h3 id='12.3'>12.3 儿歌下载</h3>
+#### URL:   */api/song/download*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+
+####断点下载的方法是:*获取这个方法返回的连接,在头部添加,Range: bytes=<first-byte-pos>-<last-byte-pos>,例如:Range: bytes 1024-2048表示下载1024-2048的内容; Range: bytes 1024- 表示下载1024之后的内容,注意,这个是闭合区间,0-1实际下载的是第0个第1个两个字节*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+songId | long | 课程id | 是
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+url  | String | 下载链接 | 有效时间 1小时
+
+
+
 ## 附录
 ### <h3 id='AccountCacheBean'>AccountCacheBean</h3>
 参数名 | 类型 | 含义 
@@ -982,6 +1061,25 @@ minAge | int | 适合最小年龄
 maxAge | int | 适合最大年龄
 price | double | 售价
 vip | int | 参见 [VIP](#VIP)
+
+
+### <h3 id='SelectedDto'> SelectedDto </h3>
+参数名 | 类型 | 含义 
+---- | ---- | ---- 
+key | String | key
+value| String | 值（描述）
+
+### <h3 id='KidSongBean'> KidSongBean </h3>
+参数名 | 类型 | 含义 
+---- | ---- | ---- 
+id | long | id
+title | String | 标题
+image | String | image
+categorySrc | String | 分类描述
+collect | boolean | 是否收藏
+
+
+
  
 
 ### <h3 id='VIP'> VIP </h3>
