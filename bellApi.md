@@ -809,7 +809,7 @@ accountId  | long | 用户id | 123456
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
 token | String | Header信息 | 是
-amount | int | 充值金额，单位元 | 是
+amount | float | 充值金额，单位元 | 是
 title | String | 充值标题| 否
 deviceType | String | 设备类型，ANDROID/IOS| 是
 
