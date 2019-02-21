@@ -804,17 +804,17 @@ accountId  | long | 用户id | 123456
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-url  | String | 微信回调路径 | https://open.weixin.qq.com/connect/oauth2/authorize?appid=...... 
+url  | String | 微信回调路径 | https://open.weixin.qq.com/connect/qrconnect?appid=?appid=...... 
 
 
 ## <h3 id='10.4'>10.4 微信认证登录</h3>
-#### URL:   */api/auth/wxauth*
+#### URL:   */api/auth/wxlogin*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-code | String | 微信授权临时票据 | 是
+unionId  | String | 同一个微信开放平台帐号下的移动应用、网站应用和公众帐号，用户的unionid是唯一的 | 是
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
