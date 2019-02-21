@@ -808,7 +808,7 @@ url  | String | 微信回调路径 | https://open.weixin.qq.com/connect/qrconnec
 
 
 ## <h3 id='10.4'>10.4 微信认证登录</h3>
-#### URL:   */api/auth/wxlogin*
+#### URL:   */api/auth/officialaccount/wxlogin*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
