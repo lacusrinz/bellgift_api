@@ -10,6 +10,7 @@
 2.0.2 | 2019.1.17 | 2019.1.17 16:00 | 忠琪 | 新增接口【4.3 课包信息，8.2 贝壳数量计算】
 2.0.2 | 2019.2.16 | 2019.2.16 11:00 | 魏德旺| 新增接口【10，11】
 2.1.0 | 2019.2.18 | 2019.2.18 16:00 | 忠琪 | 新增接口【儿歌相关,收藏相关】,账户分开Ios安卓不通用
+2.1.1 | 2019.2.25 | 2019.2.25 16:00 | 忠琪 | 新增接口【1.8，1.9】,修改【1.4 微信登录前需要调1.8验证是否注册过，未注册过的需要获取手机信息一并传入； 【全局】用户类型添加类型：TOURIST（游客模式）】
 
 
 ## API请求地址
@@ -26,6 +27,8 @@
  &nbsp; &nbsp; [ 1.5 上传图片](#1.5)  
  &nbsp; &nbsp; [ 1.6 微信授权](#1.6)  
  &nbsp; &nbsp; [ 1.7 预约账户绑定](#1.7)  
+ &nbsp; &nbsp; [ 1.8 openId 验证是否存在](#1.8)  
+ &nbsp; &nbsp; [ 1.9 游客登录](#1.9) 
  
  [2.账户操作](#2)  
 &nbsp; &nbsp; [ 2.1 账户信息](#2.1)  
@@ -149,13 +152,14 @@ url  | String | 微信回调路径 | https://open.weixin.qq.com/connect/oauth2/a
 deviceId | String | 设备唯一id | 是
 deviceType | String | 设备类型 IOS/ANDROID |是
 openid | String | 微信授权登录id | 是
-touristId |long | 游客Id,当前游客账号升级成手机用户,信息不丢失| 否
 nickname | String | 昵称 | 否
 avatar| String | 头像 | 否
 city| String | 城市 | 否
 country| String | 国家 | 否
 province| String | 省份 | 否
 sex| int | 性别 性别 0:女 1：男 | 是
+mobile| String | 手机号码 | 1.8 false 未注册过必传
+code| String | 手机验证码 | 1.8 false 未注册过必传
 
 
 ### 返回参数
@@ -213,6 +217,36 @@ askCode | String | 推荐用户的邀请码 | 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 
+## <h3 id='1.8'>1.8 微信openId验证是否存在</h3>
+#### URL:   */api/auth/openidcheck*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+openid | String | 微信openid|是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+isHave | boolean | 是否存在 true:存在，false:不存在，需要授权后先获取手机号码|
+
+
+## <h3 id='1.9'>1.9 游客登录</h3>
+#### URL:   */api/auth/touristlogin*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+deviceType | String | 设备类型 IOS/ANDROID|是
+deviceId | String | 设备ID|是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+token  | String | token | 79767d55b2544d2c8594fecf1c21fa15 
+accountId  | long | 用户id | 123456 
 
 # <h2 id='2'>2.账户相关</h2>
 
@@ -919,7 +953,7 @@ url  | String | 下载链接 | 有效时间 1小时
 ---- | ---- | ---- 
 id  | Long | 账户id
 account  | String | 账号
-type  | String | 账户类型
+type  | String | 账户类型 NORMAL:正常登录用户,TOURIST：游客模式
 lastLoginTime  | Long | 最后登录时间戳
 continuityLoginDays  | Integer | 连续登录天数
 status  | String | 账户状态
