@@ -181,7 +181,7 @@ num | int |数量 | 是
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
- 
+orderId | long | 订单id | 1
   
 <h3 id='2.2'>2.2取消订单</h3>
 
@@ -236,6 +236,7 @@ orderStatus | string | 订单状态 |CANCEL
 status | string |状态 |A  
 createTime  | long | 订单创建时间 |1551232090000 
 updateTime  | long | 修改时间 |1551321146000 
+leftTime | long | 支付剩余时间| 60 
 
 
 
