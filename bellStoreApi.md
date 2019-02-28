@@ -6,7 +6,7 @@
 
 
 ## API请求地址
-#### https://bell.beecloud.cn
+#### https//182.92.3.98:4590
 #### 请求头里面 token 身份认证
 #### 返回 resultCode 为 0 时为正常调用
 
