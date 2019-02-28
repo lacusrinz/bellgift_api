@@ -83,7 +83,9 @@
 
 [11.微信订阅号平台上账户操作(需登录)](#11)  
  &nbsp; &nbsp; [ 11.1 充值](#11.1)  
- &nbsp; &nbsp; [ 11.2 退出账号](#11.2)   
+ &nbsp; &nbsp; [ 11.2 退出账号](#11.2)    
+ &nbsp; &nbsp; [ 11.3 账户token验证](#11.3)
+    
  
  [12.儿歌相关](#12)  
  &nbsp; &nbsp; [ 12.1 儿歌分类列表](#12.1)  
@@ -824,6 +826,7 @@ code| String | 短信验证码|是
 ---- | ---- | ---- | ----
 token  | String | token | 79767d55b2544d2c8594fecf1c21fa15 
 accountId  | long | 用户id | 123456 
+nickname | String | 用户昵称 | 
 
 
 ## <h3 id='10.3'>10.3 获取微信跳转路径</h3>
@@ -855,6 +858,7 @@ unionId  | String | 同一个微信开放平台帐号下的移动应用、网站
 ---- | ---- | ---- | ----
 token  | String | token | 79767d55b2544d2c8594fecf1c21fa15 
 accountId  | long | 用户id | 123456 
+nickname | String | 用户昵称 | 
 
 
 # <h2 id='11'>11. 微信订阅号平台上账户操作(需登录)</h2>
@@ -890,6 +894,24 @@ token | String | Header信息 | 是
 ### 微信支付和支付宝支付返回公共参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ---- 
+
+
+## <h3 id='11.3'>11.3 token验证失效</h3>
+
+#### URL:   * /api/officialaccount/tokencheck*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | String | Header信息 | 是
+
+### 微信支付和支付宝支付返回公共参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ---- 
+login | boolean | 是否已经登录过 | true
+accountId  | long | 用户id | 123456 
+nickname | String | 用户昵称 | 
 
 
 
