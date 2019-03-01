@@ -6,7 +6,7 @@
 
 
 ## API请求地址
-#### https//182.92.3.98:4590
+#### http://182.92.3.98:4590
 #### 请求头里面 token 身份认证
 #### 返回 resultCode 为 0 时为正常调用
 
@@ -146,7 +146,7 @@ updateTime | long |修改时间| 1551144795000
 <h2 id='2'>2.订单操作 (需登录)</h2>
 <h3 id='2.1'>2.1下单</h3>
 
-#### URL:   * /api/commodity/doc*
+#### URL:   * /api/order/create*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
