@@ -94,14 +94,14 @@ selling | int |待支付商品数量（暂时未用到） | 2
 hot | int | 热销产品 0:非（默认） 1:是 | 否
 limit | int |查询总数，默认20 | 否
 skip | int | 分页用到 | 否
-type | int | 商品列表必填 ALL/STATIONERY/TOY | 否
+type | int | 商品列表必填,默认全部 STATIONERY/TOY | 否
 sorts | array | 排序方式 | 否
 
 ### 排序方式
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
 orderField | string | 排序方式，默认创建时间排序 PRICE/TOTALSALES/HOT | 否
-orderType | string | 升序/降序，默认升序 ASC/DESC| 否
+orderType | string | 升序/降序，默认降序 ASC/DESC| 否
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
