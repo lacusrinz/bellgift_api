@@ -3,6 +3,7 @@
 版本号 | 完成日期 |生效时间| 修改人 | 变更描述
 ---- | ------- | ----- | ----- | -------
 1.0.1 | 2019.2.28 | 2019.2.28 15：00 | wdw | 1商品信息，2订单操作
+1.0.2 | 2019.3.4 | 2019.3.4 12：00 | wdw | 3.Auth认证：sms/mobile login/wx register/wx login 
 
 
 ## API请求地址
@@ -16,10 +17,16 @@
  &nbsp; &nbsp; [ 1.2商品列表](#1.2)  
  &nbsp; &nbsp; [ 1.3商品图文描述 ](#1.3)  
  
- [2.订单操作（需登录）](#2)  
+[2.订单操作（需登录）](#2)  
 &nbsp; &nbsp; [ 2.1下单](#2.1)  
 &nbsp; &nbsp; [ 2.2取消订单](#2.2)  
 &nbsp; &nbsp; [ 2.3订单列表](#2.3)  
+
+[3.AUTH (无需登录)](#3)  
+ &nbsp; &nbsp; [ 3.1获取短信验证码](#3.1)  
+ &nbsp; &nbsp; [ 3.2手机登录](#3.2)  
+ &nbsp; &nbsp; [ 3.3微信注册](#3.3)  
+ &nbsp; &nbsp; [ 3.4微信登录](#3.4)  
 
 
 <h2 id='1'>1.商品信息 (需登录)</h2>
@@ -31,7 +38,6 @@
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-token | String | token | 是
 id  | long | 商品id | 是
 
 ### 返回参数
@@ -61,7 +67,8 @@ updateTime | long |修改时间| 1551144795000
 selling | int |待支付商品数量（暂时未用到） | 2   
 docId | long |商品图文描述id| 1   
 resourceIds | string |商品资源id,数组表示| [1,2,3]   
-resources | array |见商品资源详情 |   
+resources | array |见商品资源详情 | 
+context | string |商品描述 | `<p><img src="http://preqiniu.beecloud.cn/1dcc0d473dd1426087addf302fe4c2b5"/></p><p><span style="text-decoration: underline;">三扥结婚</span></p><ol class=" list-paddingleft-2" style="list-style-type: decimal;"><li><p>23</p><p>&nbsp; &nbsp; &nbsp;三扥看带坑距</p></li></ol><p>sdf<span style="color: rgb(118, 146, 60);">sdfsdf<span style="color: rgb(255, 255, 0);">dsfgdfg<span style="color: rgb(36, 64, 97);">dsg</span></span></span><br/></p><p><br/></p>`
 
 ### 商品资源详情 
 参数名 | 类型 | 含义 | 示例
@@ -152,23 +159,11 @@ updateTime | long |修改时间| 1551144795000
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-city | string | 市 | 是
-county | string |县 | 是
-province | string |省 | 是
-road | string |街道 | 是
-detail | string |详情 | 否
-name | string |名称 | 是
-phone | string |电话 | 是
+addressId | long | 用户收件地址id | 是
 remark | string |备注 | 否
-commonCouponId | long |通用优惠券 | 否
-couponIds | array |优惠券 | 否
-disAmount |  int |优惠金额 | 否
+couponId | long |通用优惠券 | 否
 freightCost | int |运费 | 是
-payAmount | int |支付费用 | 是
-totalAmount | int |总费用 | 是
-totalNum | int |总数量 | 是
 orders | array | 见商品资源信息 | 是
-  
 
 ### 商品资源信息 
 参数名 | 类型 | 含义  | 是否必填
@@ -182,6 +177,9 @@ num | int |数量 | 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 orderId | long | 订单id | 1
+payAmount | int |支付费用 | 是
+disAmount |  int |优惠金额 | 否
+totalNum | int | 总数量 | 是
   
 <h3 id='2.2'>2.2取消订单</h3>
 
@@ -238,8 +236,69 @@ createTime  | long | 订单创建时间 |1551232090000
 updateTime  | long | 修改时间 |1551321146000 
 leftTime | long | 支付剩余时间| 60 
 
+<h2 id='3'>3. AUTH (无需登录)</h2>
+<h3 id='3.1'>3.1 获取短信验证码</h3>
+#### URL:   * /api/auth/sms *
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+mobile | String | 手机号码|是
 
+<h3 id='3.2'>3.2 手机登录</h3>
+#### URL:   * /api/auth/login *
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+mobile | String | 手机号码|是
+code| String | 短信验证码|是
 
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+token  | String | token | 79767d55b2544d2c8594fecf1c21fa15 
+accountId  | long | 用户id | 123456 
+
+<h3 id='3.3'>3.3 微信注册</h3>
+#### URL:   * /api/auth/wxregister *
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+avatar| String | 头像 | 否
+city| String | 城市 | 否
+country| String | 国家 | 否
+province| String | 省份 | 否
+sex| int | 性别 性别 0:女 1：男 | 是
+mobile| String | 手机号码 | 1.8 false 未注册过必传
+code| String | 手机验证码 | 1.8 false 未注册过必传
+nickname | String | 昵称 | 否
+wxUuid | String | 微信unionid | 是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+token  | String | token | 79767d55b2544d2c8594fecf1c21fa15 
+accountId  | long | 用户id | 123456 
+ 
+<h3 id='3.4'>3.4 微信登录</h3>
+#### URL:   * /api/auth/wxlogin *
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+wxUuid | String | 微信unionid | 是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+token  | String | token | 79767d55b2544d2c8594fecf1c21fa15 
+accountId  | long | 用户id | 123456 
 
 
 
