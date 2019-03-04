@@ -10,7 +10,7 @@
 #### http://182.92.3.98:4590
 #### 请求头里面 token 身份认证
 #### 返回 resultCode 为 0 时为正常调用
-目前可用1.1，1.2
+
 
 ## 目录
 [1.商品信息 (需登录)](#1)  
@@ -156,8 +156,7 @@ orderId | long | 订单号 | 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 
-<h3 id='2.3'>2.3订单列表</h3>
-
+## <h3 id='2.3'>2.3订单列表</h3>
 #### URL:   * /api/order *
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -167,21 +166,29 @@ orderId | long | 订单号 | 是
 orderStatus | string |订单状态 PAYING(待付款)/CANCEL/PAID（待发货）/SENT（已发货）/COMPLETED（已完成） | 是
 skip |int | 从第几条查询
 limit| int |查询总数
+
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-orderNo | long |订单号 | BS3332L028Q9B952E3
-leftTime | long | 支付剩余时间| 60 
-payAmount  | int | 支付金额 |2000 
-orderCommodities | array|
+total  | long |总数 |
+list  | array |具体见商品列表 |
 
+### 商品列表
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-title| string |标题 |
-thumbnail|string |缩略图 |
-model|string |型号| 颜色
-properties|string | 内容| 绿色
-num|int |件数|4
+orderNo | string |订单号 | BS3332L028Q9B952E3
+leftTime | int | 剩余支付时间| 60 
+payAmount  | int | 支付金额 |2000 
+orderCommodities | array|见orderCommodities
+
+### orderCommodities
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+title| string |标题 |贴纸
+thumbnail|string |缩略图 |http://qimg.hxnews.com/2019/0130/1548847547525.jpg
+colorNum |string |型号 |颜色
+properties|string | 内容 | 百变方块
+num| int |件数|4
 price|long | 价格 | 233
 
 
