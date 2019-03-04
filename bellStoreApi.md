@@ -29,9 +29,8 @@
  &nbsp; &nbsp; [ 3.4微信登录](#3.4)  
 
 
-<h2 id='1'>1.商品信息 (需登录)</h2>
-<h3 id='1.1'>1.1商品详情</h3>
-
+# <h2 id='1'>1.商品信息 (需登录)</h2>
+## <h3 id='1.1'>1.1商品详情</h3>
 #### URL:   * /api/commodity/detail*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -85,8 +84,7 @@ createTime | long |创建时间| 1551144795000
 updateTime | long |修改时间| 1551144795000  
 selling | int |待支付商品数量（暂时未用到） | 2   
             
-<h3 id='1.2'>1.2商品列表</h3>
-
+## <h3 id='1.2'>1.2商品列表</h3>
 #### URL:   * /api/commodity*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -122,8 +120,7 @@ label |string | 主产品标签 | 课程配套教具
 showPrice |int | 产品价格,单位分 | 37800
 totalSales |int | 销量 | DICTIONARY
 
-<h3 id='1.3'>1.3商品图文描述</h3>
-
+## <h3 id='1.3'>1.3商品图文描述</h3>
 #### URL:   * /api/commodity/doc*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -150,9 +147,8 @@ createTime | long |创建时间| 1551144795000
 updateTime | long |修改时间| 1551144795000  
 
 
-<h2 id='2'>2.订单操作 (需登录)</h2>
-<h3 id='2.1'>2.1下单</h3>
-
+# <h2 id='2'>2.订单操作 (需登录)</h2>
+## <h3 id='2.1'>2.1下单</h3>
 #### URL:   * /api/order/create*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -181,8 +177,7 @@ payAmount | int |支付费用 | 是
 disAmount |  int |优惠金额 | 否
 totalNum | int | 总数量 | 是
   
-<h3 id='2.2'>2.2取消订单</h3>
-
+## <h3 id='2.2'>2.2取消订单</h3>
 #### URL:   * /api/order/cancel *
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -236,8 +231,9 @@ createTime  | long | 订单创建时间 |1551232090000
 updateTime  | long | 修改时间 |1551321146000 
 leftTime | long | 支付剩余时间| 60 
 
-<h2 id='3'>3. AUTH (无需登录)</h2>
-<h3 id='3.1'>3.1 获取短信验证码</h3>
+# <h2 id='3'>3. AUTH (无需登录)</h2>
+
+## <h3 id='3.1'>3.1 获取短信验证码</h3>
 #### URL:   * /api/auth/sms *
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -247,6 +243,7 @@ leftTime | long | 支付剩余时间| 60
 mobile | String | 手机号码|是
 
 <h3 id='3.2'>3.2 手机登录</h3>
+
 #### URL:   * /api/auth/login *
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -262,7 +259,8 @@ code| String | 短信验证码|是
 token  | String | token | 79767d55b2544d2c8594fecf1c21fa15 
 accountId  | long | 用户id | 123456 
 
-<h3 id='3.3'>3.3 微信注册</h3>
+## <h3 id='3.3'>3.3 微信注册</h3>
+
 #### URL:   * /api/auth/wxregister *
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -285,7 +283,8 @@ wxUuid | String | 微信unionid | 是
 token  | String | token | 79767d55b2544d2c8594fecf1c21fa15 
 accountId  | long | 用户id | 123456 
  
-<h3 id='3.4'>3.4 微信登录</h3>
+## <h3 id='3.4'>3.4 微信登录</h3>
+
 #### URL:   * /api/auth/wxlogin *
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
