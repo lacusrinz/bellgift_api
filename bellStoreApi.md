@@ -62,6 +62,7 @@ showPrice |int | 产品价格,单位分 | 37800
 context | string |商品描述 | `<p><img src="http://preqiniu.beecloud.cn/1dcc0d473dd1426087addf302fe4c2b5"/></p><p><span style="text-decoration: underline;">三扥结婚</span></p><ol class=" list-paddingleft-2" style="list-style-type: decimal;"><li><p>23</p><p>&nbsp; &nbsp; &nbsp;三扥看带坑距</p></li></ol><p>sdf<span style="color: rgb(118, 146, 60);">sdfsdf<span style="color: rgb(255, 255, 0);">dsfgdfg<span style="color: rgb(36, 64, 97);">dsg</span></span></span><br/></p><p><br/></p>` 
 resources | array |见商品资源详情 | 
 specifications |array |见产品参数 | 
+colorNum| string | 色号| 颜色/尺寸等
 
 ### 商品资源详情 
 参数名 | 类型 | 含义 | 示例
@@ -77,7 +78,7 @@ price |int | 产品价格,单位分 | 37800
 thumbnail |string | 缩率图 | http://qimg.hxnews.com/2019/0130/1548847547525.jpg
 stock |int | 库存 | 2344
 properties| string | 属性| 绿色
-colorNum| string | 色号| 颜色/尺寸等
+
  
             
 ## <h3 id='1.2'>1.2商品列表</h3>
@@ -167,7 +168,7 @@ orderId | long | 订单号 | 是
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-orderStatus | string |订单状态 PAYING(待付款)/CANCEL/PAID（待发货）/SENT（已发货）/COMPLETED（已完成） | 是
+orderStatus | string |订单状态 PAYING(待付款)/CANCEL(已取消)/PAID（待发货）/SENT（已发货）/COMPLETED（已完成） | 是
 skip |int | 从第几条查询
 limit| int |查询总数
 
