@@ -77,6 +77,7 @@ price |int | 产品价格,单位分 | 37800
 thumbnail |string | 缩率图 | http://qimg.hxnews.com/2019/0130/1548847547525.jpg
 stock |int | 库存 | 2344
 properties| string | 属性| 绿色
+colorNum| string | 色号| 颜色/尺寸等
  
             
 ## <h3 id='1.2'>1.2商品列表</h3>
