@@ -154,6 +154,7 @@ url  | String | 微信回调路径 | https://open.weixin.qq.com/connect/oauth2/a
 deviceId | String | 设备唯一id | 是
 deviceType | String | 设备类型 IOS/ANDROID |是
 openid | String | 微信授权登录id | 是
+wxUuid | String | 微信授权唯一 unionid | 是
 nickname | String | 昵称 | 否
 avatar| String | 头像 | 否
 city| String | 城市 | 否
@@ -227,6 +228,7 @@ askCode | String | 推荐用户的邀请码 | 是
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
 openid | String | 微信openid|是
+wxUuid | String | 微信授权唯一 unionid | 是
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
@@ -401,6 +403,7 @@ list | List\<Object\> | 优惠券列表 | 参见 [AccountCouponBean](#AccountCou
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
 openId |String | 微信openId| 是
+wxUuid | String | 微信授权唯一 unionid | 是
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
@@ -1021,6 +1024,7 @@ vip | int | 权限  参见 [VIP](#VIP)
 unlock | boolean | 是否解锁
 auth| boolean | 是否有权限，判断是否购买
 downloadSize | long | 下载文件大小 字节
+version | int | 版本号 
 
 ### <h3 id='ArticleBean'> ArticleBean </h3>
 参数名 | 类型 | 含义 
