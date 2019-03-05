@@ -24,10 +24,8 @@
 
 [3.AUTH (无需登录)](#3)  
  &nbsp; &nbsp; [ 3.1获取短信验证码](#3.1)  
- &nbsp; &nbsp; [ 3.2手机登录](#3.2)   
- &nbsp; &nbsp; [ 3.3微信注册](#3.3)  
- &nbsp; &nbsp; [ 3.4微信登录](#3.4)  
- &nbsp; &nbsp; [ 3.5wxUuid验证是否存在](#3,5)
+ &nbsp; &nbsp; [ 3.2微信登录](#3.2)  
+ &nbsp; &nbsp; [ 3.3wxUuid验证是否存在](#3.3)
  
  [4.Banner (需登录)](#4)  
  &nbsp; &nbsp; [ 4.1Banner列表](#4.1)  
@@ -209,25 +207,8 @@ price|long | 价格 | 233
 ---- | ---- | ---- | ----
 mobile | String | 手机号码|是
 
-<h3 id='3.2'>3.2 手机登录</h3>
 
-#### URL:   * /api/auth/login *
-#### Method: *POST*
-#### 请求参数格式: *JSON: Map*
-### 传入参数
-参数名 | 类型 | 含义  | 是否必填
----- | ---- | ---- | ----
-mobile | String | 手机号码|是
-code| String | 短信验证码|是
-
-### 返回参数
-参数名 | 类型 | 含义 | 示例
----- | ---- | ---- | ----
-token  | String | token | 79767d55b2544d2c8594fecf1c21fa15 
-accountId  | long | 用户id | 123456 
-
-
-## <h3 id='3.4'>3.4 微信登录</h3>
+## <h3 id='3.2'>3.2 微信登录</h3>
 #### URL:   * /api/auth/wxlogin *
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -251,7 +232,7 @@ token  | String | token | 79767d55b2544d2c8594fecf1c21fa15
 accountId  | long | 用户id | 123456 
 
 
-## <h3 id='3.5'>3.5 微信wxUuid验证是否存在</h3>
+## <h3 id='3.3'>3.3 微信wxUuid验证是否存在</h3>
 #### URL:   */api/auth/wxuuidcheck*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
