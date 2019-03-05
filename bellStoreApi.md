@@ -29,6 +29,13 @@
  
  [4.Banner (需登录)](#4)  
  &nbsp; &nbsp; [ 4.1Banner列表](#4.1)  
+ 
+ [5.地址管理 (需登录)](#5)  
+ &nbsp; &nbsp; [ 5.1地址添加](#5.1)
+ &nbsp; &nbsp; [ 5.2地址删除](#5.2)
+ &nbsp; &nbsp; [ 5.3地址修改](#5.3)
+ &nbsp; &nbsp; [ 5.4地址列表](#5.4)
+ &nbsp; &nbsp; [ 5.5区域列表](#5.5)
 
 
 # <h2 id='1'>1.商品信息 (需登录)</h2>
@@ -264,6 +271,112 @@ picture | string | 图片url|http://baidu.com.img1
 link | string | link地址 |
 type | string | 类型 | AD
 
+
+# <h2 id='5'>5.地址管理 (需登录)</h2>
+## <h2 id='5.1'> 5.1地址添加 </h3>
+#### URL:   * /api/account/address/create *
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+provinceId| long | 省id | 是
+cityId| long | 市id | 是
+countyId |long| 县id | 是
+defaultAddress | long | 是否默认.1 默认|否
+detail |string| 详细地址 |否
+mobile |string| 手机号 | 是
+name |string| 收件人 | 是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+
+
+## <h2 id='5.2'> 5.2地址删除 </h3>
+#### URL:   * /api/account/address/delete *
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+id| long | addressId | 是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+
+## <h2 id='5.3'> 5.3地址修改 </h3>
+### URL:   * /api/account/address/edit *
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+provinceId| long | 省id | 否
+cityId| long | 市id | 否
+countyId |long| 县id | 否
+defaultAddress | long | 是否默认.1 默认| 否
+detail |string| 详细地址 |否
+mobile |string| 手机号 | 否
+name |string| 收件人 | 否
+id| long | addressId | 是
+`推荐参数都填`
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+
+
+## <h2 id='5.4'> 5.4地址列表 </h3>
+#### URL:   * /api/account/address/list *
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+data | array |参见地址详情 | 
+
+### 地址详情
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+id| long | addressId | 4
+provinceId| long | 省id | 410000
+cityId| long | 市id | 411600
+countyId |long| 县id | 411602
+province| string | 省 | 河南省
+city| string | 市 | 周口市
+county | string | 县 | 川汇区
+detail | string | 详细地址 | 周口某某庄
+defaultAddress | long | 是否默认.1 默认| 1
+mobile |string| 手机号 | 18230909090
+name |string| 收件人 | wdw
+
+
+
+## <h2 id='5.5'> 5.5区域列表 </h3>
+#### URL:   * /api/account/region/list *
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+data | array |参见区域详情 | 
+
+### 区域详情
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+subRegions| array | 见区域详情 | 
+code| long | 编号| 110000
+name| string | 名称 | 北京
 
 
   
