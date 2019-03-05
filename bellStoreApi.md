@@ -4,7 +4,7 @@
 ---- | ------- | ----- | ----- | -------
 1.0.1 | 2019.2.28 | 2019.2.28 15：00 | wdw | 1商品信息，2订单操作
 1.0.2 | 2019.3.4 | 2019.3.4 12：00 | wdw | 3.Auth认证：sms/mobile login/wx register/wx login 
-1.0.3 | 2019.3.4 | 2019.3.5 12：00 | wdw | 更新1.2（去掉hot）,1.1字段描述（specification） 删除1.3
+1.0.3 | 2019.3.4 | 2019.3.5 12：00 | wdw | 更新1.2（去掉hot）,1.1字段描述（specification） 删除1.3,添加banner
 
 ## API请求地址
 #### http://182.92.3.98:4590
@@ -28,6 +28,9 @@
  &nbsp; &nbsp; [ 3.3微信注册](#3.3)  
  &nbsp; &nbsp; [ 3.4微信登录](#3.4)  
  &nbsp; &nbsp; [ 3.5wxUuid验证是否存在](#3,5)
+ 
+ [4.Banner (需登录)](#4)  
+ &nbsp; &nbsp; [ 4.1Banner列表](#4.1)  
 
 
 # <h2 id='1'>1.商品信息 (需登录)</h2>
@@ -247,7 +250,7 @@ accountId  | long | 用户id | 123456
 
 
 ## <h3 id='3.5'>3.5 微信wxUuid验证是否存在</h3>
-#### URL:   */api/auth/wxuuididcheck*
+#### URL:   */api/auth/wxuuidcheck*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
@@ -260,8 +263,23 @@ wxUuid | String | 微信wxUuid|是
 ---- | ---- | ---- | ----
 isHave | boolean | 是否存在 true:存在，false:不存在，需要授权后先获取手机号码|
 
+# <h2 id='4'>4.Banner (需登录)</h2>
+## <h2 id='4.1'> 4.1Banner列表 </h3>
+#### URL:   * /api/banner*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+id | long | |是
 
-
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+id | long | banner标识 |1
+picture | string | 图片url|http://baidu.com.img1
+link | string | link地址 |
+type | string | 类型 | AD
 
 
 
