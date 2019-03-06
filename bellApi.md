@@ -80,6 +80,7 @@
  &nbsp; &nbsp; [ 10.2手机登录](#10.2)  
  &nbsp; &nbsp; [ 10.3 获取微信跳转路径](#10.3)  
  &nbsp; &nbsp; [ 10.4 微信认证登录](#10.4)  
+ &nbsp; &nbsp; [ 10.5 充值订单信息](#10.5)  
 
 [11.微信订阅号平台上账户操作(需登录)](#11)  
  &nbsp; &nbsp; [ 11.1 充值](#11.1)  
@@ -864,6 +865,24 @@ accountId  | long | 用户id | 123456
 nickname | String | 用户昵称 | 
 
 
+## <h3 id='10.5'>10.5 充值列表</h3>
+
+#### URL:   */api/auth/officialaccount/rechargeinfo*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+rechargeNo | String | 充值订单号| 是
+
+
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+info | Obejct | 充值订单 | 参见 [RechargeBean](#RechargeBean)
+
+
 # <h2 id='11'>11. 微信订阅号平台上账户操作(需登录)</h2>
 ## <h3 id='11.1'>11.1 充值</h3>
 
@@ -1075,17 +1094,21 @@ timestamp | String | 时间戳（10位，秒）
 ### <h3 id='RechargeBean'> RechargeBean </h3>
 参数名 | 类型 | 含义 
 ---- | ---- | ---- 
-id| long | 订单id
 accountId | long | 账户id
 billNo | String | 充值订单号
 amount | double | 充值金额
 num | Double | 充值等换贝壳数量
-channel | String | 充值渠道 WX_APP：微信 ALI_APP：支付宝 IAP：IOS内购
-status | String | 状态 I：未支付 S:充值成功 F:充值失败
+channel | String | 充值渠道 WX_APP：微信 ALI_APP：支付宝 IAP：IOS内购 WX_JSAPI:微信公众号
+status | String | 状态 I：未支付 S:充值成功 F:充值失败 P:秒支付button，等待充值回调
 remark | String | 备注
 finisTime | Date | 订单完成时间
 createTime | Date | 订单创建时间
 tradeNo | String | 外部订单号
+title| String | 充值标题
+ip| String | 充值ip
+tradeNo | String | 外部订单号
+bcId | String | beecloud 订单id
+source | String | 支付来源
 
 
 
