@@ -5,7 +5,8 @@
 1.0.1 | 2019.2.28 | 2019.2.28 15：00 | wdw | 1商品信息，2订单操作
 1.0.2 | 2019.3.4 | 2019.3.4 12：00 | wdw | 3.Auth认证：sms/mobile login/wx register/wx login 
 1.0.3 | 2019.3.4 | 2019.3.5 12：00 | wdw | 更新1.2（去掉hot）,1.1字段描述（specification） 删除1.3,添加banner
-
+1.0.4 | 2019.3.5 | 2019.3.5 19：00 | wdw | 5.添加地址信息
+1.0.4 | 2019.3.6 | 2019.3.6 14：20 | wdw | 6.添加购物车信息
 ## API请求地址
 #### http://182.92.3.98:4590
 #### 请求头里面 token 身份认证
@@ -232,7 +233,7 @@ avatar| String | 头像 | 否
 city| String | 城市 | 否
 country| String | 国家 | 否
 province| String | 省份 | 否
-sex| int | 性别 性别 0:女 1：男 | 是
+sex| int | 性别 性别 0:女 1：男 | 否
 mobile| String | 手机号码 | 1.8 false 未注册过必传
 code| String | 手机验证码 | 1.8 false 未注册过必传
 nickname | String | 昵称 | 否
