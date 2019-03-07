@@ -1132,6 +1132,7 @@ shareImage | String | 分享图片
 shareContent | String | 分享文案
 androidShareUrl| String | 安卓分享路径
 iosShareUrl | String | ios 分享路劲
+version | int | 版本号
 
 ### <h3 id='UnitBean'> UnitBean </h3>
 参数名 | 类型 | 含义 
@@ -1160,6 +1161,7 @@ title | String | 标题
 image | String | image
 categorySrc | String | 分类描述
 collect | boolean | 是否收藏
+version | int | 版本号
 
 
 
