@@ -7,7 +7,7 @@
 1.0.3 | 2019.3.4 | 2019.3.5 12：00 | wdw | 更新1.2（去掉hot）,1.1字段描述（specification） 删除1.3,添加banner
 1.0.4 | 2019.3.5 | 2019.3.5 19：00 | wdw | 5.添加地址信息
 1.0.5 | 2019.3.6 | 2019.3.6 14：20 | wdw | 6.添加购物车信息
-1.0.6 | 2019.3.7 | 2019.3.8 10：00 | wdw | 1.1.添加优惠券信息,2.4显示下单商品信息  5.6领取优惠券
+1.0.6 | 2019.3.7 | 2019.3.8 10：00 | wdw | 1.1.添加优惠券信息,2.4显示下单商品信息  5.6领取优惠券，5.7用户优惠券列表
 ## API请求地址
 #### http://182.92.3.98:4590
 #### 请求头里面 token 身份认证
@@ -40,6 +40,7 @@
   	&nbsp; &nbsp; [ 5.4地址列表](#5.4)   
 	&nbsp; &nbsp; [ 5.5区域列表](#5.5)  
 	&nbsp; &nbsp; [ 5.6优惠券领取](#5.6)  
+	&nbsp; &nbsp; [ 5.7用户优惠券列表](#5.7)  
 
 [6.购物车管理 (需登录)](#6)  
 &nbsp; &nbsp; [ 6.1添加购物车](#6.1)  
@@ -99,7 +100,7 @@ properties| string | 属性| 绿色
 ---- | ---- | ---- | ----
 id  | long | 优惠券id | 1
 title  | string | 说明 | 用于贝尔商城各类实物商品的购买。
-type  | string | 优惠券类型 | STORE
+type  | string | 优惠券类型 | CASH
 num  | int | 商品id | 5000分
 fullPrice  | int | 商品id | 10000分
 startTime  | long | 优惠券可以使用的起始日期，毫秒| 1551369600000
@@ -238,14 +239,16 @@ source | string |BUYNOW/SHOPPINGCART 购物车或者立即购买 |是
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-list  | array | | 见商品描述  | 
-shoppingcart  | boolean | | 来自购物车 | true
+list  | array | 见商品描述 |  商品列表 
+shoppingcart  | boolean | 是否来自购物车|  true
 
 ### 商品描述
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
 commodityId  | long | | 商品id  | 1
 resourceId  | long | | 资源 id  | 1
 colorNum  | string |色号 | 颜色
-goodsId | long |购物车id | 1
+shoppingCartId | long |购物车id | 1
 title | string |名称 | 台湾weplay原装进口幼儿童早教平衡幼儿园感统教具豌豆荚豆荳夹
 thumbnail | string |缩率图 | http://preqiniu.beecloud.cn/7077109cbc2e47a2bc4432ea00ca2792
 properties | string |型号 | 红色
@@ -445,8 +448,8 @@ couponId | long | 优惠券id| 123
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 
-## <h2 id='5.7'> 5.7用户优惠券 </h3>
-#### URL:   * /api/account/receive/coupon *
+## <h2 id='5.7'> 5.7用户优惠券列表 </h3>
+#### URL:   * /api/account/coupons *
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
