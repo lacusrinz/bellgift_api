@@ -7,6 +7,7 @@
 1.0.3 | 2019.3.4 | 2019.3.5 12：00 | wdw | 更新1.2（去掉hot）,1.1字段描述（specification） 删除1.3,添加banner
 1.0.4 | 2019.3.5 | 2019.3.5 19：00 | wdw | 5.添加地址信息
 1.0.5 | 2019.3.6 | 2019.3.6 14：20 | wdw | 6.添加购物车信息
+1.0.6 | 2019.3.7 | 2019.3.8 10：00 | wdw | 1.1.添加优惠券信息,2.4显示下单商品信息  5.6领取优惠券
 ## API请求地址
 #### http://182.92.3.98:4590
 #### 请求头里面 token 身份认证
@@ -21,7 +22,8 @@
 [2.订单操作（需登录）](#2)  
 &nbsp; &nbsp; [ 2.1下单](#2.1)  
 &nbsp; &nbsp; [ 2.2取消订单](#2.2)  
-&nbsp; &nbsp; [ 2.3订单列表](#2.3) 
+&nbsp; &nbsp; [ 2.3订单列表](#2.3)  
+&nbsp; &nbsp; [ 2.4显示下单商品信息](#2.4) 
 
 [3.AUTH (无需登录)](#3)  
 &nbsp; &nbsp; [ 3.1获取短信验证码](#3.1)  
@@ -31,12 +33,13 @@
 [4.Banner (需登录)](#4)  
 &nbsp; &nbsp; [ 4.1Banner列表](#4.1)  
 
-[5.地址管理 (需登录)](#5)  
+[5.用户管理 (需登录)](#5)  
 	&nbsp; &nbsp; [ 5.1地址添加](#5.1)  
 	&nbsp; &nbsp; [ 5.2地址删除](#5.2)  
 	&nbsp; &nbsp; [ 5.3地址修改](#5.3)   
   	&nbsp; &nbsp; [ 5.4地址列表](#5.4)   
 	&nbsp; &nbsp; [ 5.5区域列表](#5.5)  
+	&nbsp; &nbsp; [ 5.6优惠券领取](#5.6)  
 
 [6.购物车管理 (需登录)](#6)  
 &nbsp; &nbsp; [ 6.1添加购物车](#6.1)  
@@ -74,6 +77,7 @@ context | string |商品描述 | `<p><img src="http://preqiniu.beecloud.cn/1dcc0
 resources | array |见商品资源详情 | 
 specifications |array |见产品参数 | 
 colorNum| string | 色号| 颜色/尺寸等
+coupons | array |见优惠券信息 |
 
 ### 商品资源详情 
 参数名 | 类型 | 含义 | 示例
@@ -89,6 +93,17 @@ price |int | 产品价格,单位分 | 37800
 thumbnail |string | 缩率图 | http://qimg.hxnews.com/2019/0130/1548847547525.jpg
 stock |int | 库存 | 2344
 properties| string | 属性| 绿色
+
+### 优惠券信息
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+id  | long | 优惠券id | 1
+title  | string | 说明 | 用于贝尔商城各类实物商品的购买。
+type  | string | 优惠券类型 | STORE
+num  | int | 商品id | 5000分
+fullPrice  | int | 商品id | 10000分
+startTime  | long | 优惠券可以使用的起始日期，毫秒| 1551369600000
+endTime  | long | 优惠券可以使用的截止日期，毫秒 | 1553961600000
 
  
             
@@ -131,6 +146,7 @@ subtitle |string | 副产品副标题（特点） | `自主品牌 | 包换包退
 label |string | 主产品标签 | 课程配套教具
 showPrice |int | 产品价格,单位分 | 37800
 sales |int | 销量 | 100
+
 
 
 # <h2 id='2'>2.订单操作 (需登录)</h2>
@@ -206,6 +222,36 @@ colorNum |string |型号 |颜色
 properties|string | 内容 | 百变方块
 num| int |件数|4
 price|long | 价格 | 233
+
+## <h3 id='2.4'>2.4显示下单商品信息</h3>
+#### URL:   * /api/order/show *
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+commodityId | long | | 商品id |立即购买必填
+resourceId |long | 资源id |立即购买必填
+shoppingCartIds | array |购物车id列表 |购物车结算必填
+source | string |BUYNOW/SHOPPINGCART 购物车或者立即购买 |是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+list  | array | | 见商品描述  | 
+shoppingcart  | boolean | | 来自购物车 | true
+
+### 商品描述
+commodityId  | long | | 商品id  | 1
+resourceId  | long | | 资源 id  | 1
+colorNum  | string |色号 | 颜色
+goodsId | long |购物车id | 1
+title | string |名称 | 台湾weplay原装进口幼儿童早教平衡幼儿园感统教具豌豆荚豆荳夹
+thumbnail | string |缩率图 | http://preqiniu.beecloud.cn/7077109cbc2e47a2bc4432ea00ca2792
+properties | string |型号 | 红色
+price | int |商品价格 | 23800
+num | int |商品数量 | 1
+    
 
 
 
@@ -384,6 +430,41 @@ data | array |参见区域详情 |
 subRegions| array | 见区域详情 | 
 code| long | 编号| 110000
 name| string | 名称 | 北京
+
+## <h2 id='5.6'> 5.6优惠券领取 </h3>
+#### URL:   * /api/account/receive/coupon *
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+commodityId | long | 商品id| 12344
+couponId | long | 优惠券id| 123
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+
+## <h2 id='5.7'> 5.7用户优惠券 </h3>
+#### URL:   * /api/account/receive/coupon *
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+commodityId | long | 商品id| 12344
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+id | long | 优惠券id| 414
+title| string | 名称|
+describe| string | 描述 |
+num |int |优惠金额（分）|
+fullPrice|int |满多少可食用（分）| 1000
+startTime|long |活动开始时间| 1551369600000
+endTime|long |活动结束时间| 1553961600000
+ 
 
 
 # <h2 id='6'>6.购物车管理 (需登录)</h2>
