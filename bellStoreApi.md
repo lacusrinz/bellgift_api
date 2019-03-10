@@ -7,7 +7,8 @@
 1.0.3 | 2019.3.4 | 2019.3.5 12：00 | wdw | 更新1.2（去掉hot）,1.1字段描述（specification） 删除1.3,添加banner
 1.0.4 | 2019.3.5 | 2019.3.5 19：00 | wdw | 5.添加地址信息
 1.0.5 | 2019.3.6 | 2019.3.6 14：20 | wdw | 6.添加购物车信息
-1.0.6 | 2019.3.7 | 2019.3.8 10：00 | wdw | 1.1.添加优惠券信息,2.4显示下单商品信息  5.6领取优惠券，5.7用户优惠券列表
+1.0.6 | 2019.3.7 | 2019.3.8 10：00 | wdw | 1.1.添加优惠券信息（update）, 2.4显示下单商品信息 2.5退换货申请 2.6退换货图片上传 5.6领取优惠券，5.7用户优惠券列表 
+
 ## API请求地址
 #### http://182.92.3.98:4590
 #### 请求头里面 token 身份认证
@@ -23,7 +24,9 @@
 &nbsp; &nbsp; [ 2.1下单](#2.1)  
 &nbsp; &nbsp; [ 2.2取消订单](#2.2)  
 &nbsp; &nbsp; [ 2.3订单列表](#2.3)  
-&nbsp; &nbsp; [ 2.4显示下单商品信息](#2.4) 
+&nbsp; &nbsp; [ 2.4显示下单商品信息](#2.4)  
+&nbsp; &nbsp; [ 2.5退换货申请](#2.5)  
+&nbsp; &nbsp; [ 2.6退换货图片上传](#2.6)  
 
 [3.AUTH (无需登录)](#3)  
 &nbsp; &nbsp; [ 3.1获取短信验证码](#3.1)  
@@ -98,11 +101,12 @@ properties| string | 属性| 绿色
 ### 优惠券信息
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-id  | long | 优惠券id | 1
-title  | string | 说明 | 用于贝尔商城各类实物商品的购买。
-type  | string | 优惠券类型 | CASH
-num  | int | 商品id | 5000分
-fullPrice  | int | 商品id | 10000分
+id  | long | 优惠券id | 125
+title  | string | 名称 | 用于贝尔商城各类实物商品的购买。
+describe | string | 说明 | 贝尔商城优惠券2
+type  | string | 优惠券类型 | STORE
+num  | int | 优惠金额 | 5000 分
+fullPrice  | int | 满多少可减| 10000 分
 startTime  | long | 优惠券可以使用的起始日期，毫秒| 1551369600000
 endTime  | long | 优惠券可以使用的截止日期，毫秒 | 1553961600000
 
@@ -159,6 +163,8 @@ sales |int | 销量 | 100
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
 addressId | long | 用户收件地址id | 是
+shoppingCart | int |直接购买0，从购物车进来：1|是
+source | string | 来源 |
 remark | string |备注 | 否
 couponId | long |使用优惠券id | 否
 orders | array | 见商品资源信息 | 是
@@ -168,6 +174,7 @@ orders | array | 见商品资源信息 | 是
 ---- | ---- | ---- | ----
 commodityId | long |商品id | 是
 resourceId | long | 商品资源id | 是
+couponId | long |使用优惠券id | 否
 num | int |数量 | 是
 
 ### 返回参数
@@ -176,14 +183,14 @@ num | int |数量 | 是
 orderNo | string | 订单号 | BSP9F4H5A7K688U0U8
 payAmount | int |支付费用 | 29900
   
-## <h3 id='2.2'>2.2取消订单(暂时不用)</h3>
+## <h3 id='2.2'>2.2取消订单</h3>
 #### URL:   * /api/order/cancel *
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-orderId | long | 订单号 | 是
+orderNo | string | 订单号 | 是
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
@@ -203,15 +210,17 @@ limit| int |查询总数
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-total  | long |总数 |
+total  | long |总数 | 10
 list  | array |具体见商品列表 |
 
 ### 商品列表
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 orderNo | string |订单号 | BS3332L028Q9B952E3
-leftTime | int | 剩余支付时间| 60 
 payAmount  | int | 支付金额 |2000 
+createTime | long | 订单创建时间 | 1551860588000
+deliveryNo | string|物流号 | RSA723UIDE
+deliveryName | string |物流名 |中通
 orderCommodities | array|见orderCommodities
 
 ### orderCommodities
@@ -231,7 +240,7 @@ price|long | 价格 | 233
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-commodityId | long | | 商品id |立即购买必填
+commodityId | long | 商品id |立即购买必填
 resourceId |long | 资源id |立即购买必填
 shoppingCartIds | array |购物车id列表 |购物车结算必填
 source | string |BUYNOW/SHOPPINGCART 购物车或者立即购买 |是
@@ -239,14 +248,17 @@ source | string |BUYNOW/SHOPPINGCART 购物车或者立即购买 |是
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-list  | array | 见商品描述 |  商品列表 
-shoppingcart  | boolean | 是否来自购物车|  true
+list  | array | 见商品描述 |  [{},{}] 
+commodityId | long | 商品id |1
+resourceId |long | 资源id |1
+shoppingCartIds | array |购物车id列表 | [1,2]
+source | string |BUYNOW/SHOPPINGCART | SHOPPINGCART
 
 ### 商品描述
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-commodityId  | long | | 商品id  | 1
-resourceId  | long | | 资源 id  | 1
+commodityId  | long | 商品id  | 1
+resourceId  | long | 资源 id  | 1
 colorNum  | string |色号 | 颜色
 shoppingCartId | long |购物车id | 1
 title | string |名称 | 台湾weplay原装进口幼儿童早教平衡幼儿园感统教具豌豆荚豆荳夹
@@ -255,8 +267,38 @@ properties | string |型号 | 红色
 price | int |商品价格 | 23800
 num | int |商品数量 | 1
     
+## <h3 id='2.5'>2.5退换货申请</h3>
+#### URL:   * /api/order/return/apply *
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+imgs | array | 图片链接|是
+mobile |string | 申请人手机号 | 是
+name | string | 申请人姓名 | 是
+orderNo | string | 单号 |是
+reason | string |BUYNOW/SHOPPINGCART 购物车或者立即购买 |是
+type | string |RETURN/EXCHANGE 退货/换货 |是
 
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
 
+## <h3 id='2.6'>2.6 退换货图片上传</h3>
+#### URL:   * /api/order/return/upload *
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | string | token |是
+file |file | 图片文件 |是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+url|string |图片上传地址 |http://preqiniu.beecloud.cn/9ff9ebb1555249028a7659a67f6f15a5
 
 # <h2 id='3'>3. AUTH (无需登录)</h2>
 
@@ -441,8 +483,7 @@ name| string | 名称 | 北京
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-commodityId | long | 商品id| 12344
-couponId | long | 优惠券id| 123
+couponId | long | 优惠券id|是
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
@@ -455,16 +496,16 @@ couponId | long | 优惠券id| 123
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-commodityId | long | 商品id| 12344
+commodityIds | array | 商品id集合| 否
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 id | long | 优惠券id| 414
-title| string | 名称|
-describe| string | 描述 |
-num |int |优惠金额（分）|
-fullPrice|int |满多少可食用（分）| 1000
+title| string | 名称|贝尔商城2
+describe| string | 描述 |贝尔商城优惠券2
+num |int |优惠金额（分）| 500
+fullPrice|int |满多少可使用（分）| 1000
 startTime|long |活动开始时间| 1551369600000
 endTime|long |活动结束时间| 1553961600000
  
