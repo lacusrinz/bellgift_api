@@ -165,8 +165,9 @@ sales |int | 销量 | 100
 ---- | ---- | ---- | ----
 commodityId | long | 商品id |立即购买必填
 resourceId |long | 资源id |立即购买必填
+num | int | 购买数量 | 立即购买必填
 shoppingCartIds | array |购物车id列表 |购物车结算必填
-source | string |BUYNOW/SHOPPINGCART 购物车或者立即购买 |是
+shoppingCart | string |BUYNOW/SHOPPINGCART 购物车或者立即购买 |是
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
@@ -174,8 +175,9 @@ source | string |BUYNOW/SHOPPINGCART 购物车或者立即购买 |是
 list  | array | 见商品描述 |  [{},{}] 
 commodityId | long | 商品id |1
 resourceId |long | 资源id |1
+num | int |购买数量 | 2
 shoppingCartIds | array |购物车id列表 | [1,2]
-source | string |BUYNOW/SHOPPINGCART | SHOPPINGCART
+shoppingCart | string |BUYNOW/SHOPPINGCART | SHOPPINGCART
 
 ### 商品描述
 参数名 | 类型 | 含义 | 示例
@@ -198,19 +200,15 @@ num | int |商品数量 | 1
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
 addressId | long | 用户收件地址id | 是
-shoppingCart | int |直接购买0，从购物车进来：1|是
+shoppingCart | string |BUYNOW/SHOPPINGCART 直接购买/从购物车|是
 source | string | 来源 | 否
 remark | string |备注 | 否
-couponId | long |使用优惠券id | 否
-orders | array | 见商品资源信息 | 是
+couponIds | array |优惠券集合 | 否
+commodityId| long |商品id | 直接购买必填
+resourceId | long | 资源id |直接购买必填
+num | int | 购买数量 | 直接购买必填
+shoppingCartIds | array | 购物车ids | 从购物车购买时必填
 
-### 商品资源信息 
-参数名 | 类型 | 含义  | 是否必填
----- | ---- | ---- | ----
-commodityId | long |商品id | 是
-resourceId | long | 商品资源id | 是
-couponId | long |使用优惠券id | 否
-num | int |数量 | 是
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
