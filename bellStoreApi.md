@@ -164,7 +164,7 @@ sales |int | 销量 | 100
 ---- | ---- | ---- | ----
 addressId | long | 用户收件地址id | 是
 shoppingCart | int |直接购买0，从购物车进来：1|是
-source | string | 来源 |
+source | string | 来源 | 否
 remark | string |备注 | 否
 couponId | long |使用优惠券id | 否
 orders | array | 见商品资源信息 | 是
@@ -204,8 +204,8 @@ orderNo | string | 订单号 | 是
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
 orderStatus | string |订单状态 PAYING(待付款)/CANCEL(已取消)/PAID（待发货）/SENT（已发货）/COMPLETED（已完成） | 是
-skip |int | 从第几条查询
-limit| int |查询总数
+skip |int | 从第几条查询，默认0|否
+limit| int |查询总数，默认20 | 否
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
@@ -580,8 +580,8 @@ shopCartCommodities| array | 见购物车信息 |
 ### 购物车信息
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-id| long | 购物车id |
-num| int | 商品数量 |
+id| long | 购物车id | 是
+num| int | 商品数量 | 是
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
