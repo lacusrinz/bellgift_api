@@ -7,7 +7,7 @@
 1.0.3 | 2019.3.4 | 2019.3.5 12：00 | wdw | 更新1.2（去掉hot）,1.1字段描述（specification） 删除1.3,添加banner
 1.0.4 | 2019.3.5 | 2019.3.5 19：00 | wdw | 5.添加地址信息
 1.0.5 | 2019.3.6 | 2019.3.6 14：20 | wdw | 6.添加购物车信息
-1.0.6 | 2019.3.7 | 2019.3.8 10：00 | wdw | 1.1.添加优惠券信息（update）, 2.4显示下单商品信息 2.5退换货申请 2.6退换货图片上传 5.6领取优惠券，5.7用户优惠券列表 
+1.0.6 | 2019.3.7 | 2019.3.8 10：00 | wdw | 1.1.添加优惠券信息（update）, 2.1显示下单商品信息,2.2下单(update),2.3取消订单（update), 2.5退换货图片上传 2.6退换货申请  5.6领取优惠券，5.7用户优惠券列表 
 
 ## API请求地址
 #### http://182.92.3.98:4590
@@ -21,17 +21,18 @@
 &nbsp; &nbsp; [ 1.2商品列表](#1.2)  
 
 [2.订单操作（需登录）](#2)  
-&nbsp; &nbsp; [ 2.1下单](#2.1)  
-&nbsp; &nbsp; [ 2.2取消订单](#2.2)  
-&nbsp; &nbsp; [ 2.3订单列表](#2.3)  
-&nbsp; &nbsp; [ 2.4显示下单商品信息](#2.4)  
-&nbsp; &nbsp; [ 2.5退换货申请](#2.5)  
-&nbsp; &nbsp; [ 2.6退换货图片上传](#2.6)  
+&nbsp; &nbsp; [ 2.1显示下单商品信息](#2.1)  
+&nbsp; &nbsp; [ 2.2下单](#2.2)  
+&nbsp; &nbsp; [ 2.3取消订单](#2.3)  
+&nbsp; &nbsp; [ 2.4订单列表](#2.4)  
+&nbsp; &nbsp; [ 2.5退换货图片上传](#2.5)  
+&nbsp; &nbsp; [ 2.6退换货申请](#2.6)  
+ 
 
-[3.AUTH (无需登录)](#3)  
-&nbsp; &nbsp; [ 3.1获取短信验证码](#3.1)  
-&nbsp; &nbsp; [ 3.2微信登录](#3.2)  
-&nbsp; &nbsp; [ 3.3wxUuid验证是否存在](#3.3)
+[3.AUTH (无需登录)](#3)   
+&nbsp; &nbsp; [ 3.1wxUuid验证是否存在](#3.1)  
+&nbsp; &nbsp; [ 3.2微信登录](#3.2)    
+&nbsp; &nbsp; [ 3.3获取短信验证码](#3.3) 
 
 [4.Banner (需登录)](#4)  
 &nbsp; &nbsp; [ 4.1Banner列表](#4.1)  
@@ -155,7 +156,41 @@ sales |int | 销量 | 100
 
 
 # <h2 id='2'>2.订单操作 (需登录)</h2>
-## <h3 id='2.1'>2.1下单</h3>
+## <h3 id='2.1'>2.1显示下单商品信息</h3>
+#### URL:   * /api/order/show *
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+commodityId | long | 商品id |立即购买必填
+resourceId |long | 资源id |立即购买必填
+shoppingCartIds | array |购物车id列表 |购物车结算必填
+source | string |BUYNOW/SHOPPINGCART 购物车或者立即购买 |是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+list  | array | 见商品描述 |  [{},{}] 
+commodityId | long | 商品id |1
+resourceId |long | 资源id |1
+shoppingCartIds | array |购物车id列表 | [1,2]
+source | string |BUYNOW/SHOPPINGCART | SHOPPINGCART
+
+### 商品描述
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+commodityId  | long | 商品id  | 1
+resourceId  | long | 资源 id  | 1
+colorNum  | string |色号 | 颜色
+shoppingCartId | long |购物车id | 1
+title | string |名称 | 台湾weplay原装进口幼儿童早教平衡幼儿园感统教具豌豆荚豆荳夹
+thumbnail | string |缩率图 | http://preqiniu.beecloud.cn/7077109cbc2e47a2bc4432ea00ca2792
+properties | string |型号 | 红色
+price | int |商品价格 | 23800
+num | int |商品数量 | 1
+
+## <h3 id='2.2'>2.2下单</h3>
 #### URL:   * /api/order/create*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -183,7 +218,7 @@ num | int |数量 | 是
 orderNo | string | 订单号 | BSP9F4H5A7K688U0U8
 payAmount | int |支付费用 | 29900
   
-## <h3 id='2.2'>2.2取消订单</h3>
+## <h3 id='2.3'>2.3取消订单</h3>
 #### URL:   * /api/order/cancel *
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -196,7 +231,7 @@ orderNo | string | 订单号 | 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 
-## <h3 id='2.3'>2.3订单列表</h3>
+## <h3 id='2.4'>2.4订单列表</h3>
 #### URL:   * /api/order *
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -233,41 +268,23 @@ properties|string | 内容 | 百变方块
 num| int |件数|4
 price|long | 价格 | 233
 
-## <h3 id='2.4'>2.4显示下单商品信息</h3>
-#### URL:   * /api/order/show *
+## <h3 id='2.5'>2.5退换货图片上传</h3>
+#### URL:   * /api/order/return/upload *
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-commodityId | long | 商品id |立即购买必填
-resourceId |long | 资源id |立即购买必填
-shoppingCartIds | array |购物车id列表 |购物车结算必填
-source | string |BUYNOW/SHOPPINGCART 购物车或者立即购买 |是
+token | string | token |是
+file |file | 图片文件 |是
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-list  | array | 见商品描述 |  [{},{}] 
-commodityId | long | 商品id |1
-resourceId |long | 资源id |1
-shoppingCartIds | array |购物车id列表 | [1,2]
-source | string |BUYNOW/SHOPPINGCART | SHOPPINGCART
+url|string |图片上传地址 |http://preqiniu.beecloud.cn/9ff9ebb1555249028a7659a67f6f15a5
 
-### 商品描述
-参数名 | 类型 | 含义 | 示例
----- | ---- | ---- | ----
-commodityId  | long | 商品id  | 1
-resourceId  | long | 资源 id  | 1
-colorNum  | string |色号 | 颜色
-shoppingCartId | long |购物车id | 1
-title | string |名称 | 台湾weplay原装进口幼儿童早教平衡幼儿园感统教具豌豆荚豆荳夹
-thumbnail | string |缩率图 | http://preqiniu.beecloud.cn/7077109cbc2e47a2bc4432ea00ca2792
-properties | string |型号 | 红色
-price | int |商品价格 | 23800
-num | int |商品数量 | 1
-    
-## <h3 id='2.5'>2.5退换货申请</h3>
+  
+## <h3 id='2.6'>2.6退换货申请</h3>
 #### URL:   * /api/order/return/apply *
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -285,31 +302,23 @@ type | string |RETURN/EXCHANGE 退货/换货 |是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 
-## <h3 id='2.6'>2.6 退换货图片上传</h3>
-#### URL:   * /api/order/return/upload *
+
+# <h2 id='3'>3. AUTH (无需登录)</h2>
+
+## <h3 id='3.1'>3.1 微信wxUuid验证是否存在</h3>
+#### URL:   */api/auth/wxuuidcheck*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-token | string | token |是
-file |file | 图片文件 |是
+wxUuid | String | 微信wxUuid|是
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-url|string |图片上传地址 |http://preqiniu.beecloud.cn/9ff9ebb1555249028a7659a67f6f15a5
+isHave | boolean | 是否存在 true:存在，false:不存在，需要授权后先获取手机号码|
 
-# <h2 id='3'>3. AUTH (无需登录)</h2>
-
-## <h3 id='3.1'>3.1 获取短信验证码</h3>
-#### URL:   * /api/auth/sms *
-#### Method: *POST*
-#### 请求参数格式: *JSON: Map*
-### 传入参数
-参数名 | 类型 | 含义  | 是否必填
----- | ---- | ---- | ----
-mobile | String | 手机号码|是
 
 
 ## <h3 id='3.2'>3.2 微信登录</h3>
@@ -336,19 +345,14 @@ token  | String | token | 79767d55b2544d2c8594fecf1c21fa15
 accountId  | long | 用户id | 123456 
 
 
-## <h3 id='3.3'>3.3 微信wxUuid验证是否存在</h3>
-#### URL:   */api/auth/wxuuidcheck*
+## <h3 id='3.3'>3.3 获取短信验证码</h3>
+#### URL:   * /api/auth/sms *
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-wxUuid | String | 微信wxUuid|是
-
-### 返回参数
-参数名 | 类型 | 含义 | 示例
----- | ---- | ---- | ----
-isHave | boolean | 是否存在 true:存在，false:不存在，需要授权后先获取手机号码|
+mobile | String | 手机号码|是
 
 # <h2 id='4'>4.Banner (需登录)</h2>
 ## <h2 id='4.1'> 4.1Banner列表 </h3>
