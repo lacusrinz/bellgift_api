@@ -62,7 +62,7 @@
 
  [5.宝宝相关](#5)  
 &nbsp; &nbsp; [ 5.1学习/(获取/上传 学习记录)](#5.1)  
-&nbsp; &nbsp; [ 5.2收藏](#5.2)  
+&nbsp; &nbsp; [ 5.2收藏/取消收藏](#5.2)  
 
 [6.配置相关(无需登录)](#6)  
 &nbsp; &nbsp; [ 6.1 主页配置](#6.1)  
@@ -700,6 +700,7 @@ flag | int |学习位置 0:从新开始| 0
 ---- | ---- | ---- | ----
 type | String | 类型 LESSON:课件/PICTUREBOOK：绘本 UNIT:课包 KIDSONG:儿歌| 是
 targetId | long | 对应类型的 材料id |是
+collect | booean | 不传或者 true为 收藏, false:取消收藏 | 否
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
