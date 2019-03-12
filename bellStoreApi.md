@@ -8,6 +8,7 @@
 1.0.4 | 2019.3.5 | 2019.3.5 19：00 | wdw | 5.添加地址信息
 1.0.5 | 2019.3.6 | 2019.3.6 14：20 | wdw | 6.添加购物车信息
 1.0.6 | 2019.3.7 | 2019.3.8 10：00 | wdw | 1.1.添加优惠券信息（update）, 2.1显示下单商品信息,2.2下单(update),2.3取消订单（update), 2.5退换货图片上传 2.6退换货申请  5.6领取优惠券，5.7用户优惠券列表 
+1.0.7 | 2019.3.12 | 2019.3.12 11：00 | wdw | 1.1 coupons中添加是否已领取 2.6可退换货列表  2.8退换货处理中列表 2.9退换货详情
 
 ## API请求地址
 #### http://182.92.3.98:4590
@@ -26,7 +27,11 @@
 &nbsp; &nbsp; [ 2.3取消订单](#2.3)  
 &nbsp; &nbsp; [ 2.4订单列表](#2.4)  
 &nbsp; &nbsp; [ 2.5退换货图片上传](#2.5)  
-&nbsp; &nbsp; [ 2.6退换货申请](#2.6)  
+&nbsp; &nbsp; [ 2.6可退换货列表](#2.6) 
+&nbsp; &nbsp; [ 2.7退换货申请](#2.7)  
+&nbsp; &nbsp; [ 2.8退换货处理中列表](#2.8)  
+&nbsp; &nbsp; [ 2.9退换货详情](#2.9)  
+
  
 
 [3.AUTH (无需登录)](#3)   
@@ -110,7 +115,7 @@ num  | int | 优惠金额 | 5000 分
 fullPrice  | int | 满多少可减| 10000 分
 startTime  | long | 优惠券可以使用的起始日期，毫秒| 1551369600000
 endTime  | long | 优惠券可以使用的截止日期，毫秒 | 1553961600000
-
+receive | boolean | 是否已领取 | false
  
             
 ## <h3 id='1.2'>1.2商品列表</h3>
@@ -281,8 +286,41 @@ file |file | 图片文件 |是
 ---- | ---- | ---- | ----
 url|string |图片上传地址 |http://preqiniu.beecloud.cn/9ff9ebb1555249028a7659a67f6f15a5
 
-  
-## <h3 id='2.6'>2.6退换货申请</h3>
+
+## <h3 id='2.6'>2.6可退换货列表</h3>
+#### URL:   * /api/order/canreturn *
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+data  | array |见商品列表 | 
+
+### 商品列表
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+orderNo | string |订单号 | BS3332L028Q9B952E3
+payAmount  | int | 支付金额 |2000 
+createTime | long | 订单创建时间 | 1551860588000
+deliveryNo | string|物流号 | RSA723UIDE
+deliveryName | string |物流名 |中通
+orderCommodities | array|见orderCommodities
+
+### orderCommodities
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+title| string |标题 |贴纸
+thumbnail|string |缩略图 |http://qimg.hxnews.com/2019/0130/1548847547525.jpg
+colorNum |string |型号 |颜色
+properties|string | 内容 | 百变方块
+num| int |件数|4
+price|long | 价格 | 233
+
+## <h3 id='2.7'>2.7退换货申请</h3>
 #### URL:   * /api/order/return/apply *
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -293,13 +331,64 @@ imgs | array | 图片链接|是
 mobile |string | 申请人手机号 | 是
 name | string | 申请人姓名 | 是
 orderNo | string | 单号 |是
-reason | string |BUYNOW/SHOPPINGCART 购物车或者立即购买 |是
+reason | string |退换货原因 |是
 type | string |RETURN/EXCHANGE 退货/换货 |是
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
+## <h3 id='2.8'>2.8可退换货列表</h3>
+#### URL:   * /api/order/return/dealing *
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
 
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+data  | array |见商品列表 | 
+
+### 商品列表
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+orderNo | string |订单号 | BS3332L028Q9B952E3
+payAmount  | int | 支付金额 |2000 
+createTime | long | 订单创建时间 | 1551860588000
+deliveryNo | string|物流号 | RSA723UIDE
+deliveryName | string |物流名 |中通
+orderCommodities | array|见orderCommodities
+
+### orderCommodities
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+title| string |标题 |贴纸
+thumbnail|string |缩略图 |http://qimg.hxnews.com/2019/0130/1548847547525.jpg
+colorNum |string |型号 |颜色
+properties|string | 内容 | 百变方块
+num| int |件数|4
+price|long | 价格 | 233
+
+## <h3 id='2.9'>2.9退换货详情</h3>
+#### URL:   * /api/order/return/detail *
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+orderNo | string | 订单号| 是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+type |string | 退货/换货 RETURN/EXCHAGE | RETURN
+imgs | array | 图片列表 | ["http://img3","http://img1", "http://img2"]
+reason | string | 退货理由 | 不喜欢
+applyMobile | string | 申请手机号 | 15289765432
+applyName | string | 申请人 | 小明
+status | string | 申请状态 申请中APPLYING/申请通过PASS/处理完成COMPLETED| APPLYING
+result | string | 申请结果 |
 
 # <h2 id='3'>3. AUTH (无需登录)</h2>
 
@@ -360,7 +449,6 @@ mobile | String | 手机号码|是
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-id | long | |是
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
