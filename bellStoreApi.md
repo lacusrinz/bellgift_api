@@ -261,6 +261,8 @@ paidTime | long | 订单支付时间 | 1551860588000
 finishTime | long | 订单完成时间 | 1551860588000
 deliveryNo | string|物流号 | RSA723UIDE
 deliveryName | string |物流名 |中通
+name | string |收件人 | 小明
+phone | string |收件人手机号 |123459087233
 orderCommodities | array|见orderCommodities
 
 ### orderCommodities
@@ -313,6 +315,8 @@ paidTime | long | 订单支付时间 | 1551860588000
 finishTime | long | 订单完成时间 | 1551860588000
 deliveryNo | string|物流号 | RSA723UIDE
 deliveryName | string |物流名 |中通
+name | string |收件人 | 小明
+phone | string |收件人手机号 |123459087233
 orderCommodities | array|见orderCommodities
 
 ### orderCommodities
@@ -350,6 +354,7 @@ type | string |RETURN/EXCHANGE 退货/换货 |是
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
+status | string | 申请中/已完成:APPLYING/COMPLETED | 是
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
@@ -366,7 +371,10 @@ createTime | long | 订单创建时间 | 1551860588000
 paidTime | long | 订单支付时间 | 1551860588000
 deliveryNo | string|物流号 | RSA723UIDE
 deliveryName | string |物流名 |中通
+name | string |收件人 | 小明
+phone | string |收件人手机号 |123459087233
 orderCommodities | array|见orderCommodities
+
 
 ### orderCommodities
 参数名 | 类型 | 含义 | 示例
@@ -394,8 +402,8 @@ orderNo | string | 订单号| 是
 type |string | 退货/换货 RETURN/EXCHAGE | RETURN
 imgs | array | 图片列表 | ["http://img3","http://img1", "http://img2"]
 reason | string | 退货理由 | 不喜欢
-applyMobile | string | 申请手机号 | 15289765432
-applyName | string | 申请人 | 小明
+phone | string | 申请手机号 | 15289765432
+name | string | 申请人 | 小明
 status | string | 申请状态 申请中APPLYING/申请通过PASS/处理完成COMPLETED| APPLYING
 result | string | 申请结果 |
 
