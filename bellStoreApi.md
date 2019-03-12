@@ -8,7 +8,7 @@
 1.0.4 | 2019.3.5 | 2019.3.5 19：00 | wdw | 5.添加地址信息
 1.0.5 | 2019.3.6 | 2019.3.6 14：20 | wdw | 6.添加购物车信息
 1.0.6 | 2019.3.7 | 2019.3.8 10：00 | wdw | 1.1.添加优惠券信息（update）, 2.1显示下单商品信息,2.2下单(update),2.3取消订单（update), 2.5退换货图片上传 2.6退换货申请  5.6领取优惠券，5.7用户优惠券列表 
-1.0.7 | 2019.3.12 | 2019.3.12 11：00 | wdw | 1.1 coupons中添加是否已领取 2.6可退换货列表  2.8退换货处理中列表 2.9退换货详情
+1.0.7 | 2019.3.12 | 2019.3.12 11：00 | wdw | 1.1 coupons中添加是否已领取 2.6可退换货列表  2.8退换货处理中列表 2.9退换货详情，2.4返回结果中添加 支付时间/完成时间/订单号
 
 ## API请求地址
 #### http://182.92.3.98:4590
@@ -257,6 +257,8 @@ list  | array |具体见商品列表 |
 orderNo | string |订单号 | BS3332L028Q9B952E3
 payAmount  | int | 支付金额 |2000 
 createTime | long | 订单创建时间 | 1551860588000
+paidTime | long | 订单支付时间 | 1551860588000
+finishTime | long | 订单完成时间 | 1551860588000
 deliveryNo | string|物流号 | RSA723UIDE
 deliveryName | string |物流名 |中通
 orderCommodities | array|见orderCommodities
@@ -264,6 +266,7 @@ orderCommodities | array|见orderCommodities
 ### orderCommodities
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
+commodityId | long | 商品id|2
 title| string |标题 |贴纸
 thumbnail|string |缩略图 |http://qimg.hxnews.com/2019/0130/1548847547525.jpg
 colorNum |string |型号 |颜色
@@ -306,6 +309,8 @@ data  | array |见商品列表 |
 orderNo | string |订单号 | BS3332L028Q9B952E3
 payAmount  | int | 支付金额 |2000 
 createTime | long | 订单创建时间 | 1551860588000
+paidTime | long | 订单支付时间 | 1551860588000
+finishTime | long | 订单完成时间 | 1551860588000
 deliveryNo | string|物流号 | RSA723UIDE
 deliveryName | string |物流名 |中通
 orderCommodities | array|见orderCommodities
@@ -313,6 +318,7 @@ orderCommodities | array|见orderCommodities
 ### orderCommodities
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
+commodityId | long | 商品id|2
 title| string |标题 |贴纸
 thumbnail|string |缩略图 |http://qimg.hxnews.com/2019/0130/1548847547525.jpg
 colorNum |string |型号 |颜色
@@ -356,6 +362,8 @@ data  | array |见商品列表 |
 orderNo | string |订单号 | BS3332L028Q9B952E3
 payAmount  | int | 支付金额 |2000 
 createTime | long | 订单创建时间 | 1551860588000
+createTime | long | 订单创建时间 | 1551860588000
+paidTime | long | 订单支付时间 | 1551860588000
 deliveryNo | string|物流号 | RSA723UIDE
 deliveryName | string |物流名 |中通
 orderCommodities | array|见orderCommodities
@@ -363,6 +371,7 @@ orderCommodities | array|见orderCommodities
 ### orderCommodities
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
+commodityId| long |商品id |1
 title| string |标题 |贴纸
 thumbnail|string |缩略图 |http://qimg.hxnews.com/2019/0130/1548847547525.jpg
 colorNum |string |型号 |颜色
