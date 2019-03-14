@@ -13,6 +13,7 @@
  &nbsp; &nbsp; [ 1.2热门帖子列表](#1.2)  
  &nbsp; &nbsp; [ 1.3帖子列表](#1.3)  
  &nbsp; &nbsp; [ 1.4权限列表](#1.4)  
+ &nbsp; &nbsp; [ 1.5社区主页](#1.5)  
  
 
 
@@ -40,7 +41,7 @@ list  | List<Object> | 社区模块列表 | 参见附录 [ForumCommonityBean](#F
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-list  | List<Object> | 社区模块列表 | 参见附录 [HotPostDto](#HotPostDto)
+list  | List| 社区模块列表 | 参见附录 [HotPostDto](#HotPostDto)
 
 
 ## <h3 id='1.3'>1.3 帖子列表</h3>
@@ -61,7 +62,7 @@ skip | int | 分页其实位置| 否
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-list  | List<Object> | 社区模块列表 | 参见附录 [ForumPostListDto](#ForumPostListDto)
+list  | List| 帖子列表 | 参见附录 [ForumPostListDto](#ForumPostListDto)
 
 
 
@@ -72,7 +73,6 @@ list  | List<Object> | 社区模块列表 | 参见附录 [ForumPostListDto](#For
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-token | String | heard 参数| 否 
 
 
 ### 返回参数
@@ -81,6 +81,23 @@ token | String | heard 参数| 否
 KIDSONG  | List<Long> | 儿歌权限id集合 | 
 UNIT  | List<Long> | 课包权限id集合 | 
 PICTUREBOOK  | List<Long> | 绘本权限id集合 | 
+
+
+## <h3 id='1.5'>1.5 社区主页</h3>
+#### URL:   */api/forum/commonityhome*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+key | String | 社区key | 是
+
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+commonity | Object | 社区信息 |参见附录 [ForumCommonityBean](#ForumCommonityBean)
+activePostList  | List| 活动帖子列表 | 参见附录 [ForumPostListDto](#ForumPostListDto)
 
 
 
@@ -96,6 +113,7 @@ key | String | 社区key
 title| String | 社区名称
 icon| String | 社区图标
 describe| String | 社区描述
+postCount | long | 帖子数量
 
 
 ### <h3 id='HotPostDto'>HotPostDto</h3>
@@ -125,6 +143,7 @@ authId | Long | 权限id（需购买指定素材）
 label | int | 标签 权限 参见 [LABEL](#LABEL)
 authorId|long | 发布者id 
 avatar | String | 发布者头像
+nickname| String | 发布者昵称
 context | String |发布内容
 releaseTime | Date | 发布时间
 image | String | 单张图片url
