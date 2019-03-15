@@ -16,6 +16,10 @@
  &nbsp; &nbsp; [ 1.5社区主页](#1.5)  
  &nbsp; &nbsp; [ 1.6帖子详情(部分需要登录购买)](#1.6)  
  &nbsp; &nbsp; [ 1.7论坛综合事件](#1.7)  
+ &nbsp; &nbsp; [ 1.8上传文件](#1.8)  
+ &nbsp; &nbsp; [ 1.9删除文件](#1.9)  
+ &nbsp; &nbsp; [ 1.10回复](#1.10)  
+ &nbsp; &nbsp; [ 1.11回复列表](#1.11) 
  
 
 
@@ -134,6 +138,82 @@ cancel | boolean | true: 取消/撤回  false:(默认)|
 ### 返回参数
 
 
+##  <h3 id='1.8'>1.8 上传文件</h3>
+#### URL:   */api/forum/uploadfile*
+#### Method: *POST*
+#### 请求参数格式: *form-data* !!!!!
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+file | File | 文件 | 是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+fileId | long | 上传文件id |
+
+
+## <h3 id='1.9'>1.9 删除文件</h3>
+#### URL:   */api/forum/action*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+fileId | long | 文件id | 是
+
+### 返回参数
+
+
+## <h3 id='1.10'>1.10 回复</h3>
+#### URL:   */api/forum/reply*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+postId | long | 帖子id | 是
+replyId | long | 上级回复id | 否
+context | String | 回复内容 | 否
+imageFileId | long |图片文件id | 否
+voiceFileId| long |音频文件id | 否
+videoFileId| long |视频文件id | 否
+
+
+### 返回参数
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+reply | Object | 回复对象 |参见附录 [ForumReplyDto](#ForumReplyDto)
+
+
+## <h3 id='1.11'>1.11 回复列表</h3>
+#### URL:   */api/forum/replylist*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+postId | long | 帖子id | 是
+flag | int | 1: 只看楼主  2：倒序查看 3：正序查看 | 是
+limit | int | 分页数量| 否 
+skip | int | 分页其实位置| 否 
+
+ 
+
+
+### 返回参数
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+list | List | 回复对象 |参见附录 [ForumReplyDto](#ForumReplyDto)
+
+
+
+
+
 
 
 
@@ -209,6 +289,28 @@ collect| boolean |是否收藏
 praise | boolean | 是否点赞
 report | boolean | 是否举报
 
+
+
+### <h3 id='ForumReplyDto'> ForumReplyDto </h3>
+参数名 | 类型 | 含义 
+---- | ---- | ---- 
+key | String | 社区key
+postId|Long|帖子id
+replyId | Long | 当条回复id
+floor | int | 楼层
+accountId | long |回复者id
+nickname| String | 回复者昵称
+avatar| String | 回复者头像
+replyAccountId| long |回复上一层回复者的id
+replyNickname| String |回复上一层回复者的昵称
+replyAvatar| String |回复上一层回复者的头像
+context | String |回复内容
+voice | String |回复语音
+video | String |回复视频
+videoImage | String |回复视频截图
+image | String |回复图片
+childs  |List|子回复集合 [ForumReplyDto](#ForumReplyDto)
+ 
 
 
 ### <h3 id='VIP'> VIP </h3>
