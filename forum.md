@@ -26,7 +26,7 @@
 
 # <h2 id='1'>1. 论坛</h2>
 ## <h3 id='1.1'>1.1 社区模块列表</h3>
-#### URL:   */api/forum/commonities*
+#### URL:   */api/forum/communities*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
@@ -35,7 +35,7 @@
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-list  | List<Object> | 社区模块列表 | 参见附录 [ForumCommonityBean](#ForumCommonityBean)
+list  | List<Object> | 社区模块列表 | 参见附录 [ForumCommunityBean](#ForumCommunityBean)
 
 ## <h3 id='1.2'>1.2 热门帖子列表</h3>
 #### URL:   */api/forum/hotpost*
@@ -90,7 +90,7 @@ PICTUREBOOK  | List<Long> | 绘本权限id集合 |
 
 
 ## <h3 id='1.5'>1.5 社区主页</h3>
-#### URL:   */api/forum/commonityhome*
+#### URL:   */api/forum/communityhome*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
@@ -102,12 +102,12 @@ key | String | 社区key | 是
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-commonity | Object | 社区信息 |参见附录 [ForumCommonityBean](#ForumCommonityBean)
+community | Object | 社区信息 |参见附录 [ForumCommunityBean](#ForumCommunityBean)
 activePostList  | List| 活动帖子列表 | 参见附录 [ForumPostListDto](#ForumPostListDto)
 
 
 ## <h3 id='1.6'>1.6 帖子详情(部分需要登录购买)</h3>
-#### URL:   */api/forum/commonityhome*
+#### URL:   */api/forum/postdetail*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
@@ -130,7 +130,7 @@ post | Object | 帖子详情信息 |参见附录 [ForumPostDetailDto](#ForumPost
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-action | int | 1:帖子收藏,2:帖子点赞，3：帖子举报  13：回复举报 | 是
+action | int | 1:帖子收藏,2:帖子点赞，3：帖子举报  12:回复点赞 13：回复举报 | 是
 tId | long | 帖子id ,回复id | 是
 cancel | boolean | true: 取消/撤回  false:(默认)| 
 
@@ -222,7 +222,7 @@ list | List | 回复对象 |参见附录 [ForumReplyDto](#ForumReplyDto)
 
 
 ## 附录
-### <h3 id='ForumCommonityBean'>ForumCommonityBean</h3>
+### <h3 id='ForumCommunityBean'>ForumCommunityBean</h3>
 参数名 | 类型 | 含义 
 ---- | ---- | ---- 
 key | String | 社区key
@@ -304,12 +304,20 @@ avatar| String | 回复者头像
 replyAccountId| long |回复上一层回复者的id
 replyNickname| String |回复上一层回复者的昵称
 replyAvatar| String |回复上一层回复者的头像
+replyContext | String |回复上一层回复内容
+replyVoice | String | 回复上一层回复语音
+replyVideo | String | 回复上一层回复视频
+replyVideoImage | String |回复上一层回复视频截图
+replyImage | String |回复上一层回复图片
 context | String |回复内容
 voice | String |回复语音
 video | String |回复视频
 videoImage | String |回复视频截图
 image | String |回复图片
-childs  |List|子回复集合 [ForumReplyDto](#ForumReplyDto)
+replyCount | long |回复数
+praise | boolean | 是否点赞
+report | boolean | 是否举报
+replyDate | Date | 回复时间
  
 
 
