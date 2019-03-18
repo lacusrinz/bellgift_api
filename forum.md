@@ -19,7 +19,9 @@
  &nbsp; &nbsp; [ 1.8上传文件](#1.8)  
  &nbsp; &nbsp; [ 1.9删除文件](#1.9)  
  &nbsp; &nbsp; [ 1.10回复](#1.10)  
- &nbsp; &nbsp; [ 1.11回复列表](#1.11) 
+ &nbsp; &nbsp; [ 1.11回复列表](#1.11)  
+ &nbsp; &nbsp; [ 1.12回复详情](#1.12) 
+ 
  
 
 
@@ -196,7 +198,21 @@ reply | Object | 回复对象 |参见附录 [ForumReplyDto](#ForumReplyDto)
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
 postId | long | 帖子id | 是
-flag | int | 1: 只看楼主  2：倒序查看 3：正序查看 | 是
+flag | int |   2：倒序查看 3：正序查看 | 是
+limit | int | 分页数量| 否 
+skip | int | 分页其实位置| 否 
+
+
+## <h3 id='1.12'>1.12 回复详情</h3>
+#### URL:   */api/forum/replydetail*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+postId | long | 帖子id | 是
+replyId | long | 回复帖子的id | 是
+onlyMaster | boolean | 是否只看楼主 true:只看楼主,false(不传) 默认排序| 否
 limit | int | 分页数量| 否 
 skip | int | 分页其实位置| 否 
 
@@ -315,6 +331,7 @@ video | String |回复视频
 videoImage | String |回复视频截图
 image | String |回复图片
 replyCount | long |回复数
+praiseCount | long |点赞数
 praise | boolean | 是否点赞
 report | boolean | 是否举报
 replyDate | Date | 回复时间
