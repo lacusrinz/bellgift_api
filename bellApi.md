@@ -11,6 +11,7 @@
 2.0.2 | 2019.2.16 | 2019.2.16 11:00 | 魏德旺| 新增接口【10，11】
 2.1.0 | 2019.2.18 | 2019.2.18 16:00 | 忠琪 | 新增接口【儿歌相关,收藏相关】,账户分开Ios安卓不通用
 2.1.1 | 2019.2.25 | 2019.2.25 16:00 | 忠琪 | 新增接口【1.8，1.9】,修改【1.4 微信登录前需要调1.8验证是否注册过，未注册过的需要获取手机信息一并传入； 【全局】用户类型添加类型：TOURIST（游客模式）】
+2.1.2 | 2019.3.19 | 2019.3.2X | 忠琪 | 3.1 绘本查询条件添加vip, lesson，绘本，儿歌新增materId(运营手动约定维护,日志分析使用)
 
 
 ## API请求地址
@@ -586,6 +587,7 @@ orderNo | String | 支付订单号 | 是
 token | String | Header信息 | 是
 skip | String | 起始位置| 是
 limit | long | 条数 | 是
+vip | int | -1：全部 0（默认）:免费绘本 60：付费绘本
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
@@ -1045,6 +1047,7 @@ unlock | boolean | 是否解锁
 auth| boolean | 是否有权限，判断是否购买
 downloadSize | long | 下载文件大小 字节
 version | int | 版本号 
+materId| String | 素材ID 运营手动维护
 
 ### <h3 id='ArticleBean'> ArticleBean </h3>
 参数名 | 类型 | 含义 
@@ -1134,6 +1137,7 @@ shareContent | String | 分享文案
 androidShareUrl| String | 安卓分享路径
 iosShareUrl | String | ios 分享路劲
 version | int | 版本号
+materId| String | 素材ID 运营手动维护
 
 ### <h3 id='UnitBean'> UnitBean </h3>
 参数名 | 类型 | 含义 
@@ -1163,6 +1167,7 @@ image | String | image
 categorySrc | String | 分类描述
 collect | boolean | 是否收藏
 version | int | 版本号
+materId| String | 素材ID 运营手动维护
 
 
 
