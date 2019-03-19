@@ -21,6 +21,7 @@
  &nbsp; &nbsp; [ 1.10回复](#1.10)  
  &nbsp; &nbsp; [ 1.11回复列表](#1.11)  
  &nbsp; &nbsp; [ 1.12回复详情](#1.12) 
+ &nbsp; &nbsp; [ 1.13回复删除](#1.13) 
  
  
 
@@ -183,11 +184,10 @@ videoFileId| long |视频文件id | 否
 
 
 ### 返回参数
-
-### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 reply | Object | 回复对象 |参见附录 [ForumReplyDto](#ForumReplyDto)
+
 
 
 ## <h3 id='1.11'>1.11 回复列表</h3>
@@ -201,6 +201,11 @@ postId | long | 帖子id | 是
 flag | int |   2：倒序查看 3：正序查看 | 是
 limit | int | 分页数量| 否 
 skip | int | 分页其实位置| 否 
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+reply | Object | 回复对象 |参见附录 [ForumReplyDto](#ForumReplyDto)
 
 
 ## <h3 id='1.12'>1.12 回复详情</h3>
@@ -216,15 +221,27 @@ onlyMaster | boolean | 是否只看楼主 true:只看楼主,false(不传) 默认
 limit | int | 分页数量| 否 
 skip | int | 分页其实位置| 否 
 
- 
-
-
-### 返回参数
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 list | List | 回复对象 |参见附录 [ForumReplyDto](#ForumReplyDto)
+
+
+## <h3 id='1.13'>1.13 回复删除</h3>
+#### URL:   */api/forum/replydetail*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+replyId | long | 回复帖子的id | 是
+
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+
 
 
 
