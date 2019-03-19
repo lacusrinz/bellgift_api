@@ -229,7 +229,7 @@ list | List | 回复对象 |参见附录 [ForumReplyDto](#ForumReplyDto)
 
 
 ## <h3 id='1.13'>1.13 回复删除</h3>
-#### URL:   */api/forum/replydetail*
+#### URL:   */api/forum/replydelete*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
