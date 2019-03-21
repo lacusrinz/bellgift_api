@@ -9,6 +9,7 @@
 1.0.5 | 2019.3.6 | 2019.3.6 14：20 | wdw | 6.添加购物车信息
 1.0.6 | 2019.3.7 | 2019.3.8 10：00 | wdw | 1.1.添加优惠券信息（update）, 2.1显示下单商品信息,2.2下单(update),2.3取消订单（update), 2.5退换货图片上传 2.6退换货申请  5.6领取优惠券，5.7用户优惠券列表 
 1.0.7 | 2019.3.12 | 2019.3.12 11：00 | wdw | 1.1 coupons中添加是否已领取 2.6可退换货列表  2.8退换货处理中列表 2.9退换货详情，2.4返回结果中添加 支付时间/完成时间/订单号
+1.0.8 | 2019.3.20 | 2019.3.20 11：00 | wdw | 2.10 订单详情,2.4 2.6 2.8 
 
 ## API请求地址
 #### http://182.92.3.98:4590
@@ -31,6 +32,7 @@
 &nbsp; &nbsp; [ 2.7退换货申请](#2.7)  
 &nbsp; &nbsp; [ 2.8退换货处理中列表](#2.8)  
 &nbsp; &nbsp; [ 2.9退换货详情](#2.9)  
+&nbsp; &nbsp; [ 2.10订单详情](#2.10)
 
  
 
@@ -259,6 +261,7 @@ payAmount  | int | 支付金额 |2000
 createTime | long | 订单创建时间 | 1551860588000
 paidTime | long | 订单支付时间 | 1551860588000
 finishTime | long | 订单完成时间 | 1551860588000
+orderStatus | string |订单状态 | PAID
 deliveryNo | string|物流号 | RSA723UIDE
 deliveryName | string |物流名 |中通
 name | string |收件人 | 小明
@@ -313,6 +316,7 @@ payAmount  | int | 支付金额 |2000
 createTime | long | 订单创建时间 | 1551860588000
 paidTime | long | 订单支付时间 | 1551860588000
 finishTime | long | 订单完成时间 | 1551860588000
+orderStatus | string |订单状态 | PAID
 deliveryNo | string|物流号 | RSA723UIDE
 deliveryName | string |物流名 |中通
 name | string |收件人 | 小明
@@ -367,8 +371,9 @@ data  | array |见商品列表 |
 orderNo | string |订单号 | BS3332L028Q9B952E3
 payAmount  | int | 支付金额 |2000 
 createTime | long | 订单创建时间 | 1551860588000
-createTime | long | 订单创建时间 | 1551860588000
+finishTime | long | 订单完成时间 | 1551860588000
 paidTime | long | 订单支付时间 | 1551860588000
+orderStatus | string |订单状态 | PAID
 deliveryNo | string|物流号 | RSA723UIDE
 deliveryName | string |物流名 |中通
 name | string |收件人 | 小明
@@ -406,6 +411,55 @@ phone | string | 申请手机号 | 15289765432
 name | string | 申请人 | 小明
 status | string | 申请状态 申请中APPLYING/申请通过PASS/处理完成COMPLETED| APPLYING
 result | string | 申请结果 |
+
+## <h3 id='2.10'>2.10订单详情</h3>
+#### URL:   * /api/order/return/detail *
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+orderNo | string | 订单号| 是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+orderNo | string |订单号 | BS3332L028Q9B952E3
+payAmount  | int | 支付金额 |2000 
+createTime | long | 订单创建时间 | 1551860588000
+paidTime | long | 订单支付时间 | 1551860588000
+finishTime | long | 订单完成时间 | 1551860588000
+deliveryNo | string|物流号 | RSA723UIDE
+deliveryName | string |物流名 |中通
+orderStatus | string |订单状态 | PAID
+name | string |收件人 | 小明
+phone | string |收件人手机号 |123459087233
+city| String | 城市 | 工业园区
+country| String | 国家 | 苏州市
+province| String | 省份 | 江苏省
+detail| String | 地址详情 | 纳米大学科技园
+remark | String | 备注| 
+totalNum | int | 购买商品总数 | 1
+disAmount | int | 优惠金额，单位分| 0
+freightCost | int | 邮费，单位分 | 2000
+orderCommodities | array|见orderCommodities
+
+
+### orderCommodities
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+commodityId| long |商品id |1
+title| string |标题 |贴纸
+thumbnail|string |缩略图 |http://qimg.hxnews.com/2019/0130/1548847547525.jpg
+colorNum |string |型号 |颜色
+properties|string | 内容 | 百变方块
+num| int |件数|4
+price|long | 价格 | 233
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+
 
 # <h2 id='3'>3. AUTH (无需登录)</h2>
 
