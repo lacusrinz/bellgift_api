@@ -247,13 +247,6 @@ replyId | long | 回复帖子的id | 是
 
 
 
-
-
-
-
-
-
-
 ## 附录
 ### <h3 id='ForumCommunityBean'>ForumCommunityBean</h3>
 参数名 | 类型 | 含义 
@@ -295,7 +288,6 @@ avatar | String | 发布者头像
 nickname| String | 发布者昵称
 context | String |发布内容
 releaseTime | Date | 发布时间
-image | String | 单张图片url
 images | String[] | 图片集合
 imageCount | int | 图片集合图片数量
 videoImage | String | 视频截图
@@ -317,10 +309,19 @@ nickname| String | 发布者昵称
 releaseTime | Date | 发布时间
 clickCount | long | 点击数量
 replyCount | long | 回复数量
-html | String | 详情html 
+html | String | 详情html   {{BBS[文件id]}}
 collect| boolean |是否收藏
 praise | boolean | 是否点赞
 report | boolean | 是否举报
+sourceMap|Map| 文件对象  文件Id:文件对象 [文件对象](#文件对象)
+
+### <h3 id='文件对象'> 文件对象 </h3>
+参数名 | 类型 | 含义 
+---- | ---- | ---- 
+screenshot|String |视频截图
+category | 文件类型 | 1：图片 2：视频  3：语音
+voiceTime | int | 语音时长
+url | String | 文件url
 
 
 
