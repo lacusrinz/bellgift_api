@@ -286,7 +286,7 @@ label | int | 标签 权限 参见 [LABEL](#LABEL)
 authorId|long | 发布者id 
 avatar | String | 发布者头像
 nickname| String | 发布者昵称
-context | String |发布内容
+context | String |发布摘要
 releaseTime | Date | 发布时间
 images | String[] | 图片集合
 imageCount | int | 图片集合图片数量
@@ -309,6 +309,7 @@ nickname| String | 发布者昵称
 releaseTime | Date | 发布时间
 clickCount | long | 点击数量
 replyCount | long | 回复数量
+context | String |发布摘要
 html | String | 详情html   {{BBS[文件id]}}
 collect| boolean |是否收藏
 praise | boolean | 是否点赞
