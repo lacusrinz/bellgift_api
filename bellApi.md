@@ -12,6 +12,7 @@
 2.1.0 | 2019.2.18 | 2019.2.18 16:00 | 忠琪 | 新增接口【儿歌相关,收藏相关】,账户分开Ios安卓不通用
 2.1.1 | 2019.2.25 | 2019.2.25 16:00 | 忠琪 | 新增接口【1.8，1.9】,修改【1.4 微信登录前需要调1.8验证是否注册过，未注册过的需要获取手机信息一并传入； 【全局】用户类型添加类型：TOURIST（游客模式）】
 2.1.2 | 2019.3.19 | 2019.3.2X | 忠琪 | 3.1 绘本查询条件添加vip, lesson，绘本，儿歌新增materId(运营手动约定维护,日志分析使用)
+2.1.3 | 2019.3.26 | 2019.3.2X | 忠琪 | 新增 0.主页接口, 绘本列表 添加label字段,儿歌添加 label,count字段，6.1添加 kidsongs 儿歌列表 6.1 主页以后不再维护--尽快切到 0;
 
 
 ## API请求地址
@@ -20,6 +21,7 @@
 #### 返回 resultCode 为 0 时为正常调用
 
 ## 目录
+[0.主页 (非强制登录)](#0)  
 [1.AUTH (无需登录)](#1)  
  &nbsp; &nbsp; [ 1.1获取短信验证码](#1.1)  
  &nbsp; &nbsp; [ 1.2手机登录](#1.2)  
@@ -94,6 +96,24 @@
  &nbsp; &nbsp; [ 12.2 儿歌列表](#12.2)   
  &nbsp; &nbsp; [ 12.3 儿歌下载](#12.3)   
 
+
+
+# <h2 id='0'>0.主页(非强制登录)</h2>
+#### URL:   */api/index*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | heard 参数 只要登录状态就一定要传|非强制 
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+banners  | List | 轮播图列表 | 参见附录 [BannerBean](#BannerBean) 
+courses  | List | 课程列表 | 参见附录 [CourseDto](#CourseDto) 
+picturebooks  | List | 绘本列表 | 参见附录 [PictureBookBean](#PictureBookBean) 
+kidsongs  | List | 轮播图列表 | 参见附录 [KidSongBean](#KidSongBean) 
 
 
 
@@ -725,6 +745,7 @@ configs |Map| 模块配置是否显示 | 0 ：不显示
 activity |Map| 模块是否显示限免标签 | 0 ：不显示
 ids |Map | 模块跳转的课包id | 
 picturebooks | List<Object> | 推荐绘本列表 | 参见 [PictureBookBean](#PictureBookBean)
+kidsongs | List<Object> | 推荐儿歌列表 | 参见 [KidSongBean](#KidSongBean)
 
 ### configs/activity MAP 对应
 key| 类型 | 含义 | 示例 
@@ -1138,6 +1159,7 @@ androidShareUrl| String | 安卓分享路径
 iosShareUrl | String | ios 分享路劲
 version | int | 版本号
 materId| String | 素材ID 运营手动维护
+label | String | 列表标签
 
 ### <h3 id='UnitBean'> UnitBean </h3>
 参数名 | 类型 | 含义 
@@ -1168,7 +1190,23 @@ categorySrc | String | 分类描述
 collect | boolean | 是否收藏
 version | int | 版本号
 materId| String | 素材ID 运营手动维护
+count | long | 点击数 
+label | String | 列表标签
 
+
+### <h3 id='BannerBean'> BannerBean </h3>
+参数名 | 类型 | 含义 
+---- | ---- | ---- 
+picture | String | banner 图片url
+type | String | 类型 BLANK:只显示图片,不跳转;URL:完整的url 路径;ACTION:app内部跳转事件
+link | String | 链接/事件 URL:直接跳转 ACTION:[ unit:{课包id}// 课包详情页;  picturebook{绘本id}// 绘本详情页;kidsong:{儿歌id}// 儿歌详情页; goods:{商品id}// 商品详情页;post:{帖子id}// 帖子详情页]
+
+### <h3 id='CourseDto'> CourseDto </h3>
+参数名 | 类型 | 含义 
+---- | ---- | ---- 
+type | String |课程类型  BLANK: 站位,不跳转（即将上线); UNIT:课包;COMMUNITY:社区
+jump | String | 跳转id/key（根据type 区分）    如:课包id，社区key
+icon | String | 列表图标
 
 
  
