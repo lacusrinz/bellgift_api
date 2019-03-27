@@ -663,7 +663,7 @@ pictureBookId | long | 绘本id| 是
 
 
 ## <h3 id='3.4'>3.4 绘本信息</h3>
-#### URL:   */api/picturebook/share*
+#### URL:   */api/picturebook/info*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
