@@ -52,6 +52,7 @@
 &nbsp; &nbsp; [ 2.16 意见反馈](#2.16)  
 &nbsp; &nbsp; [ 2.17 我的推荐信息](#2.17)  
 &nbsp; &nbsp; [ 2.18 内购服务器订单验证](#2.18)  
+&nbsp; &nbsp; [ 2.19 已购课程](#2.19)  
 
  [3.绘本相关](#3)  
 &nbsp; &nbsp; [ 3.1 绘本列表](#3.1)  
@@ -591,6 +592,21 @@ orderNo | String | 支付订单号 | 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 
+
+## <h3 id='2.19'>2.19 已购课程</h3>
+#### URL:   */api/account/purchased*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | String | Header信息 | 是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+units | List | 已购课包列表 |[UnitBean](#UnitBean)
+picturebooks | List | 已购绘本列表 | [PictureBookBean](#PictureBookBean)
 
 
 
