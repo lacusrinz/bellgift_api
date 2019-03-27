@@ -67,7 +67,7 @@
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-id  | long | 商品id | 是
+commodityId **  | long | 商品id | 是
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
@@ -77,7 +77,7 @@ data  | map | 见商品详情 |
 ### 商品详情 
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-id  | long | 商品id | 1
+commodityId **  | long | 商品id | 1
 subjectPicture |string | 主图 | http://qimg.hxnews.com/2019/0130/1548847547525.jpg
 title |string | 名称 | 贴纸
 subtitle |string | 副产品副标题（特点） | `自主品牌 | 包换包退 | 官方直售`
@@ -100,7 +100,7 @@ value  | string | 值 | 毛绒
 ### 商品资源详情 
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-id  | long | 商品id | 1
+commodityId **  | long | 商品id | 1
 price |int | 产品价格,单位分 | 37800
 thumbnail |string | 缩率图 | http://qimg.hxnews.com/2019/0130/1548847547525.jpg
 stock |int | 库存 | 2344
@@ -109,7 +109,7 @@ properties| string | 属性| 绿色
 ### 优惠券信息
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-id  | long | 优惠券id | 125
+couponId **  | long | 优惠券id | 125
 title  | string | 名称 | 用于贝尔商城各类实物商品的购买。
 describe | string | 说明 | 贝尔商城优惠券2
 type  | string | 优惠券类型 | STORE
@@ -152,7 +152,7 @@ list  | array |商品列表，具体见商品概述 |
 ### 商品概述
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-id  | long | 商品id | 1
+commodityId **  | long | 商品id | 1
 thumbnail |string | 缩率图 | http://qimg.hxnews.com/2019/0130/1548847547525.jpg
 title |string | 名称 | 贴纸
 subtitle |string | 副产品副标题（特点） | `自主品牌 | 包换包退 | 官方直售`
@@ -524,7 +524,7 @@ mobile | String | 手机号码|是
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-id | long | banner标识 |1
+bannerId ** | long | banner标识 |1
 picture | string | 图片url|http://baidu.com.img1
 link | string | link地址 |
 type | string | 类型 | AD
@@ -558,7 +558,7 @@ name |string| 收件人 | 是
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-id| long | addressId | 是
+addressId **| long | addressId | 是
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
@@ -579,7 +579,7 @@ defaultAddress | long | 是否默认.1 默认| 否
 detail |string| 详细地址 |否
 mobile |string| 手机号 | 否
 name |string| 收件人 | 否
-id| long | addressId | 是
+addressId ** | long | addressId | 是
 `推荐参数都填`
 
 ### 返回参数
@@ -603,7 +603,7 @@ data | array |参见地址详情 |
 ### 地址详情
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-id| long | addressId | 4
+addressId **| long | addressId | 4
 provinceId| long | 省id | 410000
 cityId| long | 市id | 411600
 countyId |long| 县id | 411602
@@ -705,7 +705,7 @@ data | array |购物车信息 |
 ### 购物车信息
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-id | long |购物车id | 3
+shoppingCartId ** | long |购物车id | 3
 commodityId| long | 商品id | 1
 thumbnail | string | 缩率图 | http://qimg.hxnews.com/2019/0130/1548847547525.jpg
 title | string | 标题 | 早教游戏55关百变方块智力拼图儿童动手动脑益智幼教玩具礼物
@@ -723,7 +723,7 @@ num |int| 商品数量| 4
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-ids | array | 购物车id列表 | 
+shoppingCartIds ** | array | 购物车id列表 | 
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
@@ -741,7 +741,7 @@ shopCartCommodities| array | 见购物车信息 |
 ### 购物车信息
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-id| long | 购物车id | 是
+shoppingCartId **| long | 购物车id | 是
 num| int | 商品数量 | 是
 
 ### 返回参数
