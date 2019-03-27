@@ -58,6 +58,7 @@
 &nbsp; &nbsp; [ 3.1 绘本列表](#3.1)  
 &nbsp; &nbsp; [ 3.2 绘本下载](#3.2)  
 &nbsp; &nbsp; [ 3.3 绘本分享解锁](#3.3)  
+&nbsp; &nbsp; [ 3.4 绘本信息](#3.4)  
 
  [4.课件相关](#4)  
 &nbsp; &nbsp; [ 4.1 课程列表](#4.1)  
@@ -660,6 +661,20 @@ pictureBookId | long | 绘本id| 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 
+
+## <h3 id='3.4'>3.4 绘本信息</h3>
+#### URL:   */api/picturebook/share*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | String | Header信息 | 是
+pictureBookId | long | 绘本id| 是
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+picturebook | Object|  参见附录 [PictureBookBean](#PictureBookBean)
 
 
 # <h2 id='4'>4.课件相关</h2>
