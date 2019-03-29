@@ -16,8 +16,6 @@
  &nbsp; &nbsp; [ 1.5社区主页](#1.5)  
  &nbsp; &nbsp; [ 1.6帖子详情(部分需要登录购买)](#1.6)  
  &nbsp; &nbsp; [ 1.7论坛综合事件](#1.7)  
- &nbsp; &nbsp; [ 1.8上传文件](#1.8)  
- &nbsp; &nbsp; [ 1.9删除文件](#1.9)  
  &nbsp; &nbsp; [ 1.10回复](#1.10)  
  &nbsp; &nbsp; [ 1.11回复列表](#1.11)  
  &nbsp; &nbsp; [ 1.12回复详情](#1.12) 
@@ -141,31 +139,7 @@ cancel | boolean | true: 取消/撤回  false:(默认)|
 ### 返回参数
 
 
-##  <h3 id='1.8'>1.8 上传文件</h3>
-#### URL:   */api/forum/uploadfile*
-#### Method: *POST*
-#### 请求参数格式: *form-data* !!!!!
-### 传入参数
-参数名 | 类型 | 含义  | 是否必填
----- | ---- | ---- | ----
-file | File | 文件 | 是
 
-### 返回参数
-参数名 | 类型 | 含义 | 示例
----- | ---- | ---- | ----
-fileId | long | 上传文件id |
-
-
-## <h3 id='1.9'>1.9 删除文件</h3>
-#### URL:   */api/forum/action*
-#### Method: *POST*
-#### 请求参数格式: *JSON: Map*
-### 传入参数
-参数名 | 类型 | 含义  | 是否必填
----- | ---- | ---- | ----
-fileId | long | 文件id | 是
-
-### 返回参数
 
 
 ## <h3 id='1.10'>1.10 回复</h3>
@@ -178,9 +152,11 @@ fileId | long | 文件id | 是
 postId | long | 帖子id | 是
 replyId | long | 上级回复id | 否
 context | String | 回复内容 | 否
-imageFileId | long |图片文件id | 否
-voiceFileId| long |音频文件id | 否
-videoFileId| long |视频文件id | 否
+imageUrl | String |图片文件路劲 | 否
+voiceUrl| String |音频文件路劲| 否
+voiceTime| double |音频文件时长 | 否
+videoUrl| String |视频文件路劲 | 否
+videoImage| String |音频文件截图 | 否
 
 
 ### 返回参数
