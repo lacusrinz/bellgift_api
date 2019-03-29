@@ -413,7 +413,7 @@ status | string | 申请状态 申请中APPLYING/申请通过PASS/处理完成CO
 result | string | 申请结果 |
 
 ## <h3 id='2.10'>2.10订单详情</h3>
-#### URL:   * /api/order/return/detail *
+#### URL:   * /api/order/detail *
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
 ### 传入参数
@@ -669,6 +669,8 @@ num |int |优惠金额（分）| 500
 fullPrice|int |满多少可使用（分）| 1000
 startTime|long |活动开始时间| 1551369600000
 endTime|long |活动结束时间| 1553961600000
+satisfyUseCoupon | boolean | 是否满足满减 | true
+`satisfyUseCoupon目前根据商品总价判断。即使优惠券针对某个产品，单个商品不满足条件，但是总价满足即可使用`
  
 
 
