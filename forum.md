@@ -20,7 +20,7 @@
  &nbsp; &nbsp; [ 1.11回复列表](#1.11)  
  &nbsp; &nbsp; [ 1.12回复详情](#1.12)  
  &nbsp; &nbsp; [ 1.13回复删除](#1.13)  
- &nbsp; &nbsp; [ 1.14七牛tokenho获取](#1.14) 
+ &nbsp; &nbsp; [ 1.14七牛token获取](#1.14) 
  
  
 
@@ -233,6 +233,7 @@ replyId | long | 回复帖子的id | 是
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 tk | String | 七牛token|
+tp | String | 七牛文件路径域名
 
 
 
