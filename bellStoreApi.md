@@ -190,11 +190,16 @@ num | int | 购买数量 | 立即购买必填
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 list  | array | 见商品描述 |  [{},{}] 
-commodityId | long | 商品id |1
-resourceId |long | 资源id |1
-num | int |购买数量 | 2
+orders |array |订单详情列表(原样输出)，见订单详情 | "orders":[{"commodityId":14,"resourceId":17,"num":1},{"commodityId":15,"resourceId":20,"num":2}]
 shoppingCartIds | array |购物车id列表 | [1,2]
 shoppingCart | string |BUYNOW/SHOPPINGCART | SHOPPINGCART
+
+### 订单详情
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+commodityId  | long | 商品id  | 1
+resourceId  | long | 资源 id  | 1
+colorNum  | string |色号 | 颜色
 
 ### 商品描述
 参数名 | 类型 | 含义 | 示例
@@ -208,6 +213,8 @@ thumbnail | string |缩率图 | http://preqiniu.beecloud.cn/7077109cbc2e47a2bc44
 properties | string |型号 | 红色
 price | int |商品价格 | 23800
 num | int |商品数量 | 1
+
+
 
 ## <h3 id='2.2'>2.2下单</h3>
 #### URL:   * /api/order/create*
