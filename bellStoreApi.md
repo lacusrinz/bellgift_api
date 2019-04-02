@@ -217,14 +217,19 @@ num | int |商品数量 | 1
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
 addressId | long | 用户收件地址id | 是
+orders | array | 订单详情，描述见传入参数订单详情 | 立即购买必填
 shoppingCart | string |BUYNOW/SHOPPINGCART 直接购买/从购物车|是
 source | string | 来源 | 否
 remark | string |备注 | 否
 couponIds | array |优惠券集合 | 否
-commodityId| long |商品id | 直接购买必填
-resourceId | long | 资源id |直接购买必填
-num | int | 购买数量 | 直接购买必填
 shoppingCartIds | array | 购物车ids | 从购物车购买时必填
+
+### 传入参数订单详情
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+commodityId | long | 商品id |立即购买必填
+resourceId |long | 资源id |立即购买必填
+num | int | 购买数量 | 立即购买必填
 
 
 ### 返回参数
