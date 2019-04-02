@@ -11,6 +11,7 @@
 1.0.7 | 2019.3.12 | 2019.3.12 11：00 | wdw | 1.1 coupons中添加是否已领取 2.6可退换货列表  2.8退换货处理中列表 2.9退换货详情，2.4返回结果中添加 支付时间/完成时间/订单号
 1.0.8 | 2019.3.20 | 2019.3.20 11：00 | wdw | 2.10 订单详情,2.4 2.6 2.8 
 1.0.9 | 2019.3.29 | 2019.3.29 15：00 | wdw | 更新5.7 新增7.1
+1.0.9 | 2019.3.29 | 2019.3.29 15：00 | wdw | 更新2.1,5.7 立即购买支持数组  更新2.4,2.6,2.8 新增resourceId
 
 ## API请求地址
 #### http://182.92.3.98:4590
@@ -174,11 +175,16 @@ sales |int | 销量 | 100
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
+orders | array | 订单详情，描述见传入参数订单详情 | 立即购买必填
+shoppingCartIds | array |购物车id列表 |购物车结算必填
+shoppingCart | string |BUYNOW/SHOPPINGCART 购物车或者立即购买 |是
+
+### 传入参数订单详情
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
 commodityId | long | 商品id |立即购买必填
 resourceId |long | 资源id |立即购买必填
 num | int | 购买数量 | 立即购买必填
-shoppingCartIds | array |购物车id列表 |购物车结算必填
-shoppingCart | string |BUYNOW/SHOPPINGCART 购物车或者立即购买 |是
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
@@ -276,6 +282,7 @@ orderCommodities | array|见orderCommodities
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 commodityId | long | 商品id|2
+resourceId | long | 资源id|12
 title| string |标题 |贴纸
 thumbnail|string |缩略图 |http://qimg.hxnews.com/2019/0130/1548847547525.jpg
 colorNum |string |型号 |颜色
@@ -389,6 +396,7 @@ orderCommodities | array|见orderCommodities
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 commodityId| long |商品id |1
+resourceId | long | 资源id|12
 title| string |标题 |贴纸
 thumbnail|string |缩略图 |http://qimg.hxnews.com/2019/0130/1548847547525.jpg
 colorNum |string |型号 |颜色
@@ -661,12 +669,18 @@ couponId | long | 优惠券id|是
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-addressId | long | 地址id |立即购买必填
+addressId | long | 地址id |必填
+orders | array | 订单详情，描述见传入参数订单详情 | 立即购买必填
+shoppingCartIds | array |购物车id列表 |购物车结算必填
+shoppingCart | string |BUYNOW/SHOPPINGCART 购物车或者立即购买 |是
+
+
+### 传入参数订单详情
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
 commodityId | long | 商品id |立即购买必填
 resourceId |long | 资源id |立即购买必填
 num | int | 购买数量 | 立即购买必填
-shoppingCartIds | array |购物车id列表 |购物车结算必填
-shoppingCart | string |BUYNOW/SHOPPINGCART 购物车或者立即购买 |是
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
