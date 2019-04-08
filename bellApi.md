@@ -13,6 +13,7 @@
 2.1.1 | 2019.2.25 | 2019.2.25 16:00 | 忠琪 | 新增接口【1.8，1.9】,修改【1.4 微信登录前需要调1.8验证是否注册过，未注册过的需要获取手机信息一并传入； 【全局】用户类型添加类型：TOURIST（游客模式）】
 2.1.2 | 2019.3.19 | 2019.3.2X | 忠琪 | 3.1 绘本查询条件添加vip, lesson，绘本，儿歌新增materId(运营手动约定维护,日志分析使用)
 2.1.3 | 2019.3.26 | 2019.3.2X | 忠琪 | 新增 0.主页接口, 绘本列表 添加label字段,儿歌添加 label,count字段，6.1添加 kidsongs 儿歌列表 6.1 主页以后不再维护--尽快切到 0;
+2.1.4 | 2019.4.8 | 2019.4.10 | 忠琪 | 0.主页 CourseDto 新增字段；课程相关添加 原价和标签；绘本添加原价 
 
 
 ## API请求地址
@@ -1180,6 +1181,7 @@ image | String | 封面图片路径
 author | String | 作者
 vip | int | 参见 [VIP](#VIP)
 needShare | int | 是否需要 分享解锁 （VIP=0 时判断）
+originalPrice | double | 原始价格 大于0,则有效;0 只显示 price
 price| double | 单价
 count| long | 显示点击数
 auth | boolean |是否有权限
@@ -1201,8 +1203,10 @@ describe | String | 描述
 image | String | 图片路径
 minAge | int | 适合最小年龄
 maxAge | int | 适合最大年龄
+originalPrice | double | 原始价格 大于0,则有效;0 只显示 price
 price | double | 售价
 vip | int | 参见 [VIP](#VIP)
+label | String | 标签
 
 
 ### <h3 id='SelectedDto'> SelectedDto </h3>
@@ -1238,7 +1242,12 @@ link | String | 链接/事件 URL:直接跳转 ACTION:[ unit:{课包id}// 课包
 type | String |课程类型  BLANK: 站位,不跳转（即将上线); UNIT:课包;COMMUNITY:社区
 jump | String | 跳转id/key（根据type 区分）    如:课包id，社区key
 icon | String | 列表图标
-
+vip | int |  参见 [VIP](#VIP)
+label | String | 标签
+originalPrice | double | 原始价格 大于0,则有效;0 只显示 price
+price | double | 目前真实售价
+title | String | 课程名称
+color | String | 课程名称背景色号
 
  
 
