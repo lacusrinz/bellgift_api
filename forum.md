@@ -117,6 +117,8 @@ activePostList  | List| 活动帖子列表 | 参见附录 [ForumPostListDto](#Fo
 ---- | ---- | ---- | ----
 token | heard 参数 | token | 否
 postId | long | 帖子id | 是
+timestamp | long | 时间戳 | 否
+sign | String | 签名（规则口口相传）| 否
 
 
 ### 返回参数
@@ -307,6 +309,7 @@ collect| boolean |是否收藏
 praise | boolean | 是否点赞
 report | boolean | 是否举报
 sourceMap|Map| 文件对象  文件Id:文件对象 [文件对象](#文件对象)
+inApp | boolean | 是否在app内
 
 ### <h3 id='文件对象'> 文件对象 </h3>
 参数名 | 类型 | 含义 
