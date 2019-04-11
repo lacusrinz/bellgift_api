@@ -33,6 +33,8 @@
  &nbsp; &nbsp; [ 1.7 预约账户绑定](#1.7)  
  &nbsp; &nbsp; [ 1.8 openId 验证是否存在](#1.8)  
  &nbsp; &nbsp; [ 1.9 游客登录](#1.9) 
+ &nbsp; &nbsp; [ 1.10 三方账户验证](#1.10)  
+ &nbsp; &nbsp; [ 1.11 三方登录](#1.11)  
  
  [2.账户操作](#2)  
 &nbsp; &nbsp; [ 2.1 账户信息](#2.1)  
@@ -270,6 +272,47 @@ isHave | boolean | 是否存在 true:存在，false:不存在，需要授权后�
 ---- | ---- | ---- | ----
 deviceType | String | 设备类型 IOS/ANDROID|是
 deviceId | String | 设备ID|是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+token  | String | token | 79767d55b2544d2c8594fecf1c21fa15 
+accountId  | long | 用户id | 123456 
+
+
+
+## <h3 id='1.10'>1.10 三方账户验证是否存在</h3>
+#### URL:   */api/auth/sfcheck*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+type | String | 三方渠道类型 :HUAWEI|是
+uuid | String | 三方渠道唯一ID | 是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+isHave | boolean | 是否存在 true:存在，false:不存在，需要授权后先获取手机号码|
+
+
+##  <h3 id='1.11'>1.11 三方登录</h3>
+#### URL:   */api/auth/sflogin*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+deviceId | String | 设备唯一id | 是
+deviceType | String | 设备类型 IOS/ANDROID |是
+type | String | 三方渠道类型 :HUAWEI|是
+uuid | String | 三方渠道唯一ID | 是
+nickname | String | 昵称 | 否
+avatar| String | 头像 | 否
+sex| int | 性别 性别 0:女 1：男 | 是
+mobile| String | 手机号码 | 1.10 false 未注册过必传
+code| String | 手机验证码 | 1.10 false 未注册过必传
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
