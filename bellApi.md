@@ -34,7 +34,8 @@
  &nbsp; &nbsp; [ 1.8 openId 验证是否存在](#1.8)  
  &nbsp; &nbsp; [ 1.9 游客登录](#1.9) 
  &nbsp; &nbsp; [ 1.10 三方账户验证](#1.10)  
- &nbsp; &nbsp; [ 1.11 三方登录](#1.11)  
+ &nbsp; &nbsp; [ 1.11 三方登录](#1.11) 
+ &nbsp; &nbsp; [ 1.12 设备记录](#1.12)   
  
  [2.账户操作](#2)  
 &nbsp; &nbsp; [ 2.1 账户信息](#2.1)  
@@ -319,6 +320,22 @@ code| String | 手机验证码 | 1.10 false 未注册过必传
 ---- | ---- | ---- | ----
 token  | String | token | 79767d55b2544d2c8594fecf1c21fa15 
 accountId  | long | 用户id | 123456 
+
+
+##  <h3 id='1.12'>1.12 设备记录</h3>
+#### URL:   */api/auth/deviceflag*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+deviceId | String | 设备唯一id | 是
+deviceType | String | 设备类型 IOS/ANDROID |是
+electricNum | double | 设备电量
+timestamp | long | 时间戳 毫秒
+sign | String | 签名 （口述,不外传）
+
+
 
 # <h2 id='2'>2.账户相关</h2>
 
