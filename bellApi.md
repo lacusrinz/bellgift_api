@@ -333,6 +333,7 @@ deviceId | String | 设备唯一id | 是
 deviceType | String | 设备类型 IOS/ANDROID |是
 electricNum | double | 设备电量
 timestamp | long | 时间戳 毫秒
+source | String | 来源 如：（官方,华为,H5活动） 标识key
 sign | String | 签名 （口述,不外传）
 
 
