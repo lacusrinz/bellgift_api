@@ -331,10 +331,11 @@ accountId  | long | 用户id | 123456
 ---- | ---- | ---- | ----
 deviceId | String | 设备唯一id | 是
 deviceType | String | 设备类型 IOS/ANDROID |是
-electricNum | double | 设备电量
-timestamp | long | 时间戳 毫秒
-source | String | 来源 如：（官方,华为,H5活动） 标识key
-sign | String | 签名 （口述,不外传）
+electricNum | double | 设备电量|是
+timestamp | long | 时间戳 毫秒 |是
+source | String | 来源 如：（官方,华为,H5活动） 标识key|否
+area | String | 地区金纬度|否
+sign | String | 签名 （口述,不外传） | 是
 
 
 
