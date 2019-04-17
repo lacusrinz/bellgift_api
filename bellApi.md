@@ -1198,6 +1198,7 @@ startTime | long | coupon 使用的开始时间戳
 endTime | long | coupon 使用的结束时间戳
 status | String | 状态 A:未使用  S:已使用 I:已过期作废
 orderNo | String | 使用的订单号
+color | String | 优惠券颜色 yellow,cyan,purple,green 对应关系问设计
 
 ### <h3 id='WEIXINPAYMAP'> WEIXINPAYMAP </h3>
 参数名 | 类型 | 含义 
