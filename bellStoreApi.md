@@ -22,46 +22,46 @@ http://182.92.3.98:4590
 
 返回 resultCode 为 0 时为正常调用
 
--   [贝尔商城接口](#贝尔商城接口)
--   [1.商品信息 (需登录)](#商品信息-需登录)
-    -   [1.1商品详情](#商品详情)
-    -   [1.2商品列表](#商品列表)
--   [2.订单操作 (需登录)](#订单操作-需登录)
-    -   [2.1显示下单商品信息](#显示下单商品信息)
-    -   [2.2下单](#下单)
-    -   [2.3取消订单](#取消订单)
-    -   [2.4订单列表](#订单列表)
-    -   [2.5退换货图片上传](#退换货图片上传)
-    -   [2.6可退换货列表](#可退换货列表)
-    -   [2.7退换货申请](#退换货申请)
-    -   [2.8退换货处理中列表](#退换货处理中列表)
-    -   [2.9退换货详情](#退换货详情)
-    -   [2.10订单详情](#订单详情)
--   [3. AUTH (无需登录)](#auth-无需登录)
-    -   [3.1 微信wxUuid验证是否存在](#微信wxuuid验证是否存在)
-    -   [3.2 微信登录](#微信登录)
-    -   [3.3 获取短信验证码](#获取短信验证码)
--   [4.Banner (需登录)](#banner-需登录)
-    -   [4.1Banner列表](#banner列表)
--   [5.地址管理 (需登录)](#地址管理-需登录)
-    -   [5.1地址添加](#地址添加)
-    -   [5.2地址删除](#地址删除)
-    -   [5.3地址修改](#地址修改)
-    -   [5.4地址列表](#地址列表)
-    -   [5.5区域列表](#区域列表)
-    -   [5.6优惠券领取](#优惠券领取)
-    -   [5.7用户优惠券列表](#用户优惠券列表)
--   [6.购物车管理 (需登录)](#购物车管理-需登录)
-    -   [6.1添加购物车](#添加购物车)
-    -   [6.2查询购物车](#查询购物车)
-    -   [6.3删除购物车](#删除购物车)
-    -   [6.4更新购物车](#更新购物车)
--   [7.邮费管理 (需登录)](#邮费管理-需登录)
-    -   [7.1计算邮费](#计算邮费)
+- [贝尔商城接口](#贝尔商城接口)    
+- [1.商品信息 (需登录)](#1商品信息-需登录)        
+    - [1.1商品详情](#11商品详情)        	
+    - [1.2商品列表](#12商品列表)    
+- [2.订单操作 (需登录)](#2订单操作-需登录)        
+    - [2.1显示下单商品信息](#21显示下单商品信息)        
+    - [2.2下单](#22下单)        
+    - [2.3取消订单](#23取消订单)        
+    - [2.4订单列表](#24订单列表)        
+    - [2.5退换货图片上传](#25退换货图片上传)        
+    - [2.6可退换货列表](#26可退换货列表)        
+    - [2.7退换货申请](#27退换货申请)        
+    - [2.8退换货处理中列表](#28退换货处理中列表)        
+    - [2.9退换货详情](#29退换货详情)        
+    - [2.10订单详情](#210订单详情)    
+- [3. AUTH (无需登录)](#3-auth-无需登录)        
+    - [3.1 微信wxUuid验证是否存在](#31-微信wxuuid验证是否存在)        
+    - [3.2 微信登录](#32-微信登录)        
+    - [3.3 获取短信验证码](#33-获取短信验证码)    
+- [4.Banner (需登录)](#4banner-需登录)        
+    - [4.1Banner列表](#41banner列表)    
+- [5.地址管理 (需登录)](#5地址管理-需登录)        
+    - [5.1地址添加](#51地址添加)        
+    - [5.2地址删除](#52地址删除)        
+    - [5.3地址修改](#53地址修改)        
+    - [5.4地址列表](#54地址列表)        
+    - [5.5区域列表](#55区域列表)        
+    - [5.6优惠券领取](#56优惠券领取)        
+    - [5.7用户优惠券列表](#57用户优惠券列表)    
+- [6.购物车管理 (需登录)](#6购物车管理-需登录)        
+    - [6.1添加购物车](#61添加购物车)        
+    - [6.2查询购物车](#62查询购物车)        
+    - [6.3删除购物车](#63删除购物车)        
+    - [6.4更新购物车](#64更新购物车)    
+- [7.邮费管理 (需登录)](#7邮费管理-需登录)        
+    - [7.1计算邮费](#71计算邮费)
 
-# 1.商品信息 (需登录)
+## 1.商品信息 (需登录)
 
-## 1.1商品详情
+### 1.1商品详情
 URL:   * /api/commodity/detail*
 
 Method: *POST*
@@ -130,7 +130,7 @@ endTime  | long | 优惠券可以使用的截止日期，毫秒 | 1553961600000
 receive | boolean | 是否已领取 | false
 
 
-## 1.2商品列表
+### 1.2商品列表
 URL:   * /api/commodity*
 
 Method: *POST*
@@ -178,8 +178,8 @@ label |string | 主产品标签 | 课程配套教具
 showPrice |int | 产品价格,单位分 | 37800
 sales |int | 销量 | 100
 
-# 2.订单操作 (需登录)
-## 2.1显示下单商品信息
+## 2.订单操作 (需登录)
+### 2.1显示下单商品信息
 URL:   * /api/order/show *
 
 Method: *POST*
@@ -234,7 +234,7 @@ price | int |商品价格 | 23800
 num | int |商品数量 | 1
 stock | int |库存 | 99 
 
-## 2.2下单
+### 2.2下单
 URL:   * /api/order/create*
 
 Method: *POST*
@@ -268,7 +268,7 @@ num | int | 购买数量 | 立即购买必填
 orderNo | string | 订单号 | BSP9F4H5A7K688U0U8
 payAmount | int |支付费用 | 29900
 
-## 2.3取消订单
+### 2.3取消订单
  URL:   * /api/order/cancel *
 
  Method: *POST*
@@ -287,7 +287,7 @@ orderNo | string | 订单号 | 是
 | ------ | ---- | ---- | ---- |
 |        |      |      |      |
 
-## 2.4订单列表
+### 2.4订单列表
  URL:   * /api/order *
 
  Method: *POST*
@@ -338,7 +338,7 @@ properties|string | 内容 | 百变方块
 num| int |件数|4
 price|long | 价格 | 233
 
-## 2.5退换货图片上传
+### 2.5退换货图片上传
 URL:   * /api/order/return/upload *
 
 Method: *POST*
@@ -359,7 +359,7 @@ file |file | 图片文件 |是
 url|string |图片上传地址 |http://preqiniu.beecloud.cn/9ff9ebb1555249028a7659a67f6f15a5
 
 
-## 2.6可退换货列表
+### 2.6可退换货列表
 URL:   * /api/order/canreturn *
 
 Method: *POST*
@@ -406,7 +406,7 @@ properties|string | 内容 | 百变方块
 num| int |件数|4
 price|long | 价格 | 233
 
-## 2.7退换货申请
+### 2.7退换货申请
 URL:   * /api/order/return/apply *
 
 Method: *POST*
@@ -430,7 +430,7 @@ type | string |RETURN/EXCHANGE 退货/换货 |是
 | ------ | ---- | ---- | ---- |
 |        |      |      |      |
 
-## 2.8退换货处理中列表
+### 2.8退换货处理中列表
 URL:   * /api/order/return/dealing *
 
 Method: *POST*
@@ -478,7 +478,7 @@ properties|string | 内容 | 百变方块
 num| int |件数|4
 price|long | 价格 | 233
 
-## 2.9退换货详情
+### 2.9退换货详情
 URL:   * /api/order/return/detail *
 
 Method: *POST*
@@ -503,7 +503,7 @@ name | string | 申请人 | 小明
 status | string | 申请状态 申请中APPLYING/申请通过PASS/处理完成COMPLETED| APPLYING
 result | string | 申请结果 |
 
-## 2.10订单详情
+### 2.10订单详情
 URL:   * /api/order/detail *
 
 Method: *POST*
@@ -553,9 +553,9 @@ num| int |件数|4
 price|long | 价格 | 233
 
 
-# 3. AUTH (无需登录)
+## 3. AUTH (无需登录)
 
-## 3.1 微信wxUuid验证是否存在
+### 3.1 微信wxUuid验证是否存在
 URL:   */api/auth/wxuuidcheck*
 
 Method: *POST*
@@ -574,7 +574,7 @@ wxUuid | String | 微信wxUuid|是
 ---- | ---- | ---- | ----
 isHave | boolean | 是否存在 true:存在，false:不存在，需要授权后先获取手机号码|
 
-## 3.2 微信登录
+### 3.2 微信登录
 URL:   * /api/auth/wxlogin *
 
 Method: *POST*
@@ -604,7 +604,7 @@ token  | String | token | 79767d55b2544d2c8594fecf1c21fa15
 accountId  | long | 用户id | 123456 
 
 
-## 3.3 获取短信验证码
+### 3.3 获取短信验证码
 URL:   * /api/auth/sms *
 
 Method: *POST*
@@ -617,8 +617,8 @@ Method: *POST*
 ---- | ---- | ---- | ----
 mobile | String | 手机号码|是
 
-# 4.Banner (需登录)
-## 4.1Banner列表 
+## 4.Banner (需登录)
+### 4.1Banner列表 
 URL:   * /api/banner*
 
 Method: *POST*
@@ -641,8 +641,8 @@ link | string | link地址 |
 type | string | 类型 | AD
 
 
-# 5.地址管理 (需登录)
-## 5.1地址添加
+## 5.地址管理 (需登录)
+### 5.1地址添加
 URL:   * /api/account/address/create *
 
 Method: *POST*
@@ -667,7 +667,7 @@ name |string| 收件人 | 是
 | ------ | ---- | ---- | ---- |
 |        |      |      |      |
 
-## 5.2地址删除
+### 5.2地址删除
 
 URL:   * /api/account/address/delete *
 
@@ -688,7 +688,7 @@ addressId **| long | addressId | 是
 |        |      |      |      |
 
 
-## 5.3地址修改
+### 5.3地址修改
 URL:   * /api/account/address/edit *
 
 Method: *POST*
@@ -716,7 +716,7 @@ addressId ** | long | addressId | 是
 |        |      |      |      |
 
 
-## 5.4地址列表
+### 5.4地址列表
 URL:   * /api/account/address/list *
 
 Method: *POST*
@@ -751,7 +751,7 @@ defaultAddress | long | 是否默认.1 默认| 1
 mobile |string| 手机号 | 18230909090
 name |string| 收件人 | wdw
 
-## 5.5区域列表
+### 5.5区域列表
 URL:   * /api/account/region/list *
 
 Method: *POST*
@@ -778,7 +778,7 @@ subRegions| array | 见区域详情 |
 code| long | 编号| 110000
 name| string | 名称 | 北京
 
-##  5.6优惠券领取 
+###  5.6优惠券领取 
 URL:   * /api/account/receive/coupon *
 
 Method: *POST*
@@ -797,7 +797,7 @@ couponId | long | 优惠券id|是
 | ------ | ---- | ---- | ---- |
 |        |      |      |      |
 
-##  5.7用户优惠券列表
+###  5.7用户优惠券列表
 URL:   * /api/account/coupons *
 
 Method: *POST*
@@ -836,8 +836,8 @@ satisfyUseCoupon | boolean | 是否满足满减 | true
 
 `satisfyUseCoupon目前根据商品总价判断。即使优惠券针对某个产品，单个商品不满足条件，但是总价满足即可使用`
 
-# 6.购物车管理 (需登录)
-## 6.1添加购物车 
+## 6.购物车管理 (需登录)
+### 6.1添加购物车 
 URL:   * /api/shopcart/add *
 
 Method: *POST*
@@ -859,7 +859,7 @@ num |int| 商品数量| 是
 |        |      |      |      |
 
 
-## 6.2查询购物车 
+### 6.2查询购物车 
 URL:   * /api/shopcart/list *
 
 Method: *POST*
@@ -894,7 +894,7 @@ num |int| 商品数量| 4
 offShelves |Int| 下架 | 0:未架 1：已下架 
 
 
-## 6.3删除购物车
+### 6.3删除购物车
 URL:   * /api/shopcart/delete *
 
 Method: *POST*
@@ -913,7 +913,7 @@ shoppingCartIds ** | array | 购物车id列表 |
 | ------ | ---- | ---- | ---- |
 |        |      |      |      |
 
-## 6.4更新购物车 
+### 6.4更新购物车 
 URL:   * /api/shopcart/update *
 
 Method: *POST*
@@ -940,8 +940,8 @@ num| int | 商品数量 | 是
 |        |      |      |      |
 
 
-# 7.邮费管理 (需登录)
-## 7.1计算邮费
+## 7.邮费管理 (需登录)
+### 7.1计算邮费
 URL:   * /api/postage/calculation *
 
 Method: *POST*
