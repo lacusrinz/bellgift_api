@@ -12,7 +12,7 @@
 1.0.8 | 2019.3.20 | 2019.3.20 11：00 | wdw | 2.10 订单详情,2.4 2.6 2.8 
 1.0.9 | 2019.3.29 | 2019.3.29 15：00 | wdw | 更新5.7 新增7.1
 1.0.10 | 2019.3.29 | 2019.3.29 15：00 | wdw | 更新2.1,5.7 立即购买支持数组  更新2.4,2.6,2.8 新增resourceId
-1.0.11 | 2019.4.18 |  | wdw | 更新2.1加入库存,6.2 新增 offShelves 3.2加入注册来源 
+1.0.11 | 2019.4.18 | 2019.4.22 10：00 | wdw | 更新2.1加入库存,6.2 新增 offShelves 3.2加入注册来源 
 
 **API请求地址**
 
@@ -23,8 +23,6 @@ http://182.92.3.98:4590
 返回 resultCode 为 0 时为正常调用
 
 [TOC]
-
-
 
 # 1.商品信息 (需登录)
 
@@ -254,8 +252,6 @@ orderNo | string | 订单号 | 是
 | ------ | ---- | ---- | ---- |
 |        |      |      |      |
 
----- | ---- | ---- | ----
-
 ## 2.4订单列表
  URL:   * /api/order *
 
@@ -310,11 +306,11 @@ price|long | 价格 | 233
 ## 2.5退换货图片上传
 URL:   * /api/order/return/upload *
 
- Method: *POST*
+Method: *POST*
 
- 请求参数格式: *JSON: Map*
+请求参数格式: *JSON: Map*
 
- 传入参数
+传入参数
 
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
@@ -331,11 +327,11 @@ url|string |图片上传地址 |http://preqiniu.beecloud.cn/9ff9ebb1555249028a76
 ## 2.6可退换货列表
 URL:   * /api/order/canreturn *
 
- Method: *POST*
+Method: *POST*
 
- 请求参数格式: *JSON: Map*
+请求参数格式: *JSON: Map*
 
- 传入参数
+传入参数
 
 | 参数名 | 类型 | 含义 | 是否必填 |
 | ------ | ---- | ---- | -------- |
@@ -378,11 +374,11 @@ price|long | 价格 | 233
 ## 2.7退换货申请
 URL:   * /api/order/return/apply *
 
- Method: *POST*
+Method: *POST*
 
- 请求参数格式: *JSON: Map*
+请求参数格式: *JSON: Map*
 
- 传入参数
+传入参数
 
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
@@ -402,11 +398,11 @@ type | string |RETURN/EXCHANGE 退货/换货 |是
 ## 2.8退换货处理中列表
 URL:   * /api/order/return/dealing *
 
- Method: *POST*
+Method: *POST*
 
- 请求参数格式: *JSON: Map*
+请求参数格式: *JSON: Map*
 
- 传入参数
+传入参数
 
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
@@ -450,11 +446,11 @@ price|long | 价格 | 233
 ## 2.9退换货详情
 URL:   * /api/order/return/detail *
 
- Method: *POST*
+Method: *POST*
 
- 请求参数格式: *JSON: Map*
+请求参数格式: *JSON: Map*
 
- 传入参数
+传入参数
 
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
@@ -475,11 +471,11 @@ result | string | 申请结果 |
 ## 2.10订单详情
 URL:   * /api/order/detail *
 
- Method: *POST*
+Method: *POST*
 
- 请求参数格式: *JSON: Map*
+请求参数格式: *JSON: Map*
 
- 传入参数
+传入参数
 
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
@@ -523,8 +519,9 @@ price|long | 价格 | 233
 
 返回参数
 
-参数名 | 类型 | 含义 | 示例
----- | ---- | ---- | ----
+| 参数名 | 类型 | 含义 | 示例 |
+| ------ | ---- | ---- | ---- |
+|        |      |      |      |
 
 
 # 3. AUTH (无需登录)
@@ -532,11 +529,11 @@ price|long | 价格 | 233
 ## 3.1 微信wxUuid验证是否存在
 URL:   */api/auth/wxuuidcheck*
 
- Method: *POST*
+Method: *POST*
 
- 请求参数格式: *JSON: Map*
+请求参数格式: *JSON: Map*
 
- 传入参数
+传入参数
 
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
@@ -551,11 +548,11 @@ isHave | boolean | 是否存在 true:存在，false:不存在，需要授权后�
 ## 3.2 微信登录
 URL:   * /api/auth/wxlogin *
 
- Method: *POST*
+Method: *POST*
 
- 请求参数格式: *JSON: Map*
+请求参数格式: *JSON: Map*
 
- 传入参数
+传入参数
 
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
@@ -581,11 +578,11 @@ accountId  | long | 用户id | 123456
 ## 3.3 获取短信验证码
 URL:   * /api/auth/sms *
 
- Method: *POST*
+Method: *POST*
 
- 请求参数格式: *JSON: Map*
+请求参数格式: *JSON: Map*
 
- 传入参数
+传入参数
 
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
@@ -595,11 +592,11 @@ mobile | String | 手机号码|是
 ## 4.1Banner列表 
 URL:   * /api/banner*
 
- Method: *POST*
+Method: *POST*
 
- 请求参数格式: *JSON: Map*
+请求参数格式: *JSON: Map*
 
- 传入参数
+传入参数
 
 | 参数名 | 类型 | 含义 | 是否必填 |
 | ------ | ---- | ---- | -------- |
@@ -619,11 +616,11 @@ type | string | 类型 | AD
 ## 5.1地址添加
 URL:   * /api/account/address/create *
 
- Method: *POST*
+Method: *POST*
 
- 请求参数格式: *JSON: Map*
+请求参数格式: *JSON: Map*
 
- 传入参数
+传入参数
 
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
@@ -645,11 +642,11 @@ name |string| 收件人 | 是
 
 URL:   * /api/account/address/delete *
 
- Method: *POST*
+Method: *POST*
 
- 请求参数格式: *JSON: Map*
+请求参数格式: *JSON: Map*
 
- 传入参数
+传入参数
 
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
@@ -665,11 +662,11 @@ addressId **| long | addressId | 是
 ## 5.3地址修改
 URL:   * /api/account/address/edit *
 
- Method: *POST*
+Method: *POST*
 
- 请求参数格式: *JSON: Map*
+请求参数格式: *JSON: Map*
 
- 传入参数
+传入参数
 
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
@@ -693,11 +690,11 @@ addressId ** | long | addressId | 是
 ## 5.4地址列表
 URL:   * /api/account/address/list *
 
- Method: *POST*
+Method: *POST*
 
- 请求参数格式: *JSON: Map*
+请求参数格式: *JSON: Map*
 
- 传入参数
+传入参数
 
 | 参数名 | 类型 | 含义 | 是否必填 |
 | ------ | ---- | ---- | -------- |
@@ -728,11 +725,11 @@ name |string| 收件人 | wdw
 ## 5.5区域列表
 URL:   * /api/account/region/list *
 
- Method: *POST*
+Method: *POST*
 
- 请求参数格式: *JSON: Map*
+请求参数格式: *JSON: Map*
 
- 传入参数
+传入参数
 
 | 参数名 | 类型 | 含义 | 是否必填 |
 | ------ | ---- | ---- | -------- |
@@ -755,11 +752,11 @@ name| string | 名称 | 北京
 ##  5.6优惠券领取 
 URL:   * /api/account/receive/coupon *
 
- Method: *POST*
+Method: *POST*
 
- 请求参数格式: *JSON: Map*
+请求参数格式: *JSON: Map*
 
- 传入参数
+传入参数
 
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
@@ -774,11 +771,11 @@ couponId | long | 优惠券id|是
 ##  5.7用户优惠券列表
 URL:   * /api/account/coupons *
 
- Method: *POST*
+Method: *POST*
 
- 请求参数格式: *JSON: Map*
+请求参数格式: *JSON: Map*
 
- 传入参数
+传入参数
 
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
@@ -811,14 +808,14 @@ satisfyUseCoupon | boolean | 是否满足满减 | true
 `satisfyUseCoupon目前根据商品总价判断。即使优惠券针对某个产品，单个商品不满足条件，但是总价满足即可使用`
 
 # 6.购物车管理 (需登录)
-##  6.1添加购物车 
+## 6.1添加购物车 
 URL:   * /api/shopcart/add *
 
- Method: *POST*
+Method: *POST*
 
- 请求参数格式: *JSON: Map*
+请求参数格式: *JSON: Map*
 
- 传入参数
+传入参数
 
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
@@ -833,7 +830,7 @@ num |int| 商品数量| 是
 |        |      |      |      |
 
 
-##  6.2查询购物车 
+## 6.2查询购物车 
 URL:   * /api/shopcart/list *
 
 Method: *POST*
@@ -871,11 +868,11 @@ offShelves |Int| 下架 | 0:未架 1：已下架
 ## 6.3删除购物车
 URL:   * /api/shopcart/delete *
 
- Method: *POST*
+Method: *POST*
 
- 请求参数格式: *JSON: Map*
+请求参数格式: *JSON: Map*
 
- 传入参数
+传入参数
 
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
@@ -887,12 +884,14 @@ shoppingCartIds ** | array | 购物车id列表 |
 | ------ | ---- | ---- | ---- |
 |        |      |      |      |
 
-##  6.4更新购物车 
- Method: *POST*
+## 6.4更新购物车 
+URL:   * /api/shopcart/update *
 
- 请求参数格式: *JSON: Map*
+Method: *POST*
 
- 传入参数
+请求参数格式: *JSON: Map*
+
+传入参数
 
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
