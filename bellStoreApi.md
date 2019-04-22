@@ -892,6 +892,7 @@ properties | string | 属性 | 百变方块
 price | long | 售价 | 1600
 num |int| 商品数量| 4
 offShelves |Int| 下架 | 0:未架 1：已下架 
+stock |Int| 库存 | 8 
 
 
 ### 6.3删除购物车
