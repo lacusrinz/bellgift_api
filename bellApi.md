@@ -1155,6 +1155,7 @@ lesson | int | 第几节课
 title | String | 标题
 describe | String | 描述
 image | String | 图片路径
+assistImage | String | 辅助图片路径(未解锁图片)
 duration | int | 时长 单位：分钟
 scoreRule | String | 得分规则
 vip | int | 权限  参见 [VIP](#VIP)
