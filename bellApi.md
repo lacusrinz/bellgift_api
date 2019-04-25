@@ -1297,14 +1297,14 @@ label | String | 列表标签
 参数名 | 类型 | 含义 
 ---- | ---- | ---- 
 picture | String | banner 图片url
-type | String | 类型 BLANK:只显示图片,不跳转;URL:完整的url 路径;ACTION:app内部跳转事件
-link | String | 链接/事件 URL:直接跳转 ACTION:[ unit:{课包id}// 课包详情页;  picturebook{绘本id}// 绘本详情页;kidsong:{儿歌id}// 儿歌详情页; goods:{商品id}// 商品详情页;post:{帖子id}// 帖子详情页]
+type | String | 参见 [JumpType](#JumpType)
+jump | String | 参见 [JumpType](#JumpType)
 
 ### <h3 id='CourseDto'> CourseDto </h3>
 参数名 | 类型 | 含义 
 ---- | ---- | ---- 
-type | String |课程类型  BLANK: 站位,不跳转（即将上线); UNIT:课包;COMMUNITY:社区
-jump | String | 跳转id/key（根据type 区分）    如:课包id，社区key
+type | String |参见 [JumpType](#JumpType)
+jump | String | 参见 [JumpType](#JumpType)
 icon | String | 列表图标
 vip | int |  参见 [VIP](#VIP)
 label | String | 标签
@@ -1321,6 +1321,25 @@ color | String | 课程名称背景色号
 0|  没有权限限制
 50 | 部分免费 部分需要购买
 60 | 需要购买
+
+
+
+### <h3 id='JumpType'> JumpType </h3>
+类型 | 跳转目标 | demo 
+----  | ---- |----
+BLANK |  不跳转 |
+UNIT |  课包ID(跳课包详情) | 108
+PICTUREBOOK |  绘本ID(跳绘本详情页) | 4
+KIDSONG |  儿歌ID(跳儿歌详情页) | 10
+STORE | 商城主页 | 
+GOODS | 商城商品ID(打开商品详情页) | 10
+FORUM | 论坛主页 |
+COMMUNITY | 社区主页KEY(拼接命令打开h5) |VIDEO_COURSE
+POST | 论坛帖子ID(打开论坛帖子详情) |75
+URL | 完整外链url | https://beecloud.cn
+
+
+    
 
 
 
