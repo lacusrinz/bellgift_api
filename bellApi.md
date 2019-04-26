@@ -58,6 +58,7 @@
 &nbsp; &nbsp; [ 2.18 内购服务器订单验证](#2.18)  
 &nbsp; &nbsp; [ 2.19 已购课程](#2.19)  
 
+
  [3.绘本相关](#3)  
 &nbsp; &nbsp; [ 3.1 绘本列表](#3.1)  
 &nbsp; &nbsp; [ 3.2 绘本下载](#3.2)  
@@ -101,6 +102,13 @@
  &nbsp; &nbsp; [ 12.1 儿歌分类列表](#12.1)  
  &nbsp; &nbsp; [ 12.2 儿歌列表](#12.2)   
  &nbsp; &nbsp; [ 12.3 儿歌下载](#12.3)   
+ 
+  [13.消息中心](#13)  
+ &nbsp; &nbsp; [ 13.1 消息小红点](#13.1)  
+ &nbsp; &nbsp; [ 13.2 消息列表](#13.2)  
+ &nbsp; &nbsp; [ 13.3 消息已读](#13.3)  
+ &nbsp; &nbsp; [ 13.4 消息删除](#13.4)  
+
 
 
 
@@ -1108,6 +1116,59 @@ songId | long | 课程id | 是
 url  | String | 下载链接 | 有效时间 1小时
 
 
+# <h2 id='13'>13.消息中心</h2>
+##<h3 id='13.1'> 13.1 小红点</h3>
+#### URL:   */api/message/reddot*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | String | Header信息 | 是
+device_type | String | Header信息 | 是
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+data | boolean | 展示小红点 | true:展示小红点，false:无小红点
+
+##<h3 id='13.2'> 13.2 消息列表</h3>
+#### URL:   */api/message/list*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | String | Header信息 | 是
+device_type | String | Header信息 | 是
+skip | int | 分页其实位置 |是
+limit | int | 分页数量 | 是
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+list | List | 消息列表 | 参见 [MessageBean](#MessageBean)
+
+
+##<h3 id='13.3'> 13.3 消息已读</h3>
+#### URL:   */api/message/read*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | String | Header信息 | 是
+messageId | long | 消息id | 是
+
+##<h3 id='13.4'> 13.4 消息删除</h3>
+#### URL:   */api/message/delete*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | String | Header信息 | 是
+messageId | long | 消息id | 是
+
+
 
 ## 附录
 ### <h3 id='AccountCacheBean'>AccountCacheBean</h3>
@@ -1312,6 +1373,28 @@ originalPrice | double | 原始价格 大于0,则有效;0 只显示 price
 price | double | 目前真实售价
 title | String | 课程名称
 color | String | 课程名称背景色号
+
+
+### <h3 id='MessageBean'> MessageBean </h3>
+参数名 | 类型 | 含义 
+---- | ---- | ---- 
+id | long | 消息id
+title | String | 消息标题
+context | String | 消息内容
+source | String | 消息来源
+icon | String | 消息图标
+jumpType | String |参见 [JumpType](#JumpType)
+jump | String | 参见 [JumpType](#JumpType)
+icon | String | 列表图标
+createTime | Date |  消息时间
+read | boolean | 是否已读  true :已读
+
+
+
+
+
+
+
 
  
 
