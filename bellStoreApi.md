@@ -640,7 +640,7 @@ Method: *POST*
 ---- | ---- | ---- | ----
 bannerId | long | banner标识 |1
 picture | string | 图片url|http://baidu.com.img1
-link | string | link地址 |
+jump | string | jump地址，用法https://github.com/lacusrinz/bellgift_api/blob/master/bellApi.md#JumpType |
 type | string | 类型 | AD
 
 
