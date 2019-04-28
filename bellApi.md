@@ -560,6 +560,7 @@ channel | String | 渠道信息。ANDROID可选值WX\_APP / ALI\_APP。IOS值为
 amount | int | 充值金额，单位元 | 是
 title | String | 充值标题| 是
 deviceType | String | 设备类型，ANDROID/IOS| 是
+source | String | 充值来源
 
 ### 微信支付和支付宝支付返回公共参数
 参数名 | 类型 | 含义 | 示例
