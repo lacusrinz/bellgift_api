@@ -1386,6 +1386,7 @@ source | String | 消息来源
 icon | String | 消息图标
 jumpType | String |参见 [JumpType](#JumpType)
 jump | String | 参见 [JumpType](#JumpType)
+jumpParam | String | 参见 [JumpType](#JumpType)
 icon | String | 列表图标
 createTime | Date |  消息时间
 read | boolean | 是否已读  true :已读
@@ -1409,18 +1410,18 @@ read | boolean | 是否已读  true :已读
 
 
 ### <h3 id='JumpType'> JumpType </h3>
-类型 | 跳转目标 | demo 
-----  | ---- |----
-BLANK |  不跳转 |
-UNIT |  课包ID(跳课包详情) | 108
-PICTUREBOOK |  绘本ID(跳绘本详情页) | 4
-KIDSONG |  儿歌ID(跳儿歌详情页) | 10
-STORE | 商城主页 | 
-GOODS | 商城商品ID(打开商品详情页) | 10
-FORUM | 论坛主页 |
-COMMUNITY | 社区主页KEY(拼接命令打开h5) |VIDEO_COURSE
-POST | 论坛帖子ID(打开论坛帖子详情) |75
-URL | 完整外链url | https://beecloud.cn
+类型 | 跳转目标 | demo | jumpParam
+----  | ---- |----|----
+BLANK |  不跳转 | |
+UNIT |  课包ID(跳课包详情) | 108 |
+PICTUREBOOK |  绘本ID(跳绘本详情页) | 4 |
+KIDSONG |  儿歌ID(跳儿歌详情页) | 10 |
+STORE | 商城主页 |  |
+GOODS | 商城商品ID(打开商品详情页) | 10|
+FORUM | 论坛主页 ||
+COMMUNITY | 社区主页KEY(拼接命令打开h5) |VIDEO_COURSE|
+POST | 论坛帖子ID(打开论坛帖子详情) |75| 1696(帖子回复id)
+URL | 完整外链url | https://beecloud.cn|
 
 
     
