@@ -72,7 +72,8 @@
 
  [5.宝宝相关](#5)  
 &nbsp; &nbsp; [ 5.1学习/(获取/上传 学习记录)](#5.1)  
-&nbsp; &nbsp; [ 5.2收藏/取消收藏](#5.2)  
+&nbsp; &nbsp; [ 5.2上传得分(获取铃铛)](#5.2)  
+&nbsp; &nbsp; [ 5.3收藏/取消收藏](#5.3)  
 
 [6.配置相关(无需登录)](#6)  
 &nbsp; &nbsp; [ 6.1 主页配置](#6.1)  
@@ -119,7 +120,9 @@
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-token | heard 参数 只要登录状态就一定要传|非强制 
+token | heard 参数 token|是
+devicetype | heard 参数 设备类型|是
+umtoken | String | 友盟token
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
@@ -128,7 +131,7 @@ banners  | List | 轮播图列表 | 参见附录 [BannerBean](#BannerBean)
 courses  | List | 课程列表 | 参见附录 [CourseDto](#CourseDto) 
 picturebooks  | List | 绘本列表 | 参见附录 [PictureBookBean](#PictureBookBean) 
 kidsongs  | List | 轮播图列表 | 参见附录 [KidSongBean](#KidSongBean) 
-
+reddot | boolean | 消息红点 | true 有新消息  false:无新消息
 
 
 
@@ -815,8 +818,27 @@ finish| boolean | 是否已学完 （true:表示已学完,解锁下节课时）|
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
 flag | int |学习位置 0:从新开始| 0
+maxScore | double | 最大学习分数
 
-## <h3 id='5.2'>5.2 收藏</h3>
+## <h3 id='5.2'>5.2 上传学习成绩(获取铃铛)</h3>
+#### URL:   */api/kid/score*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+### !!打开任何素材前需要调用此方法，每个课件解锁需要保存进度上传自定义flag
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+type | String | 学习类型 LESSON:课件/PICTUREBOOK：绘本| 是
+id | long | 更新type LESSON：课件id/PICTUREBOOK：绘本id |是
+flag |int | 自定义学习位置 与study 保持一致| 是 
+score| double | 学习分数| 是
+bellAmount | double | 获取铃铛数量 最大：50 只有大于最高得分才有效 | 是
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+bellAmount | double |真实获得铃铛数量| 0
+
+## <h3 id='5.3'>5.3 收藏</h3>
 #### URL:   */api/kid/collect*
 #### Method: *POST*
 #### 请求参数格式: *JSON: Map*
@@ -1246,6 +1268,9 @@ accountId | long | 用户账户id
 amount | Double | 账户总金额
 freezeAmount | Double | 账户冻结金额
 useableAmount | Double | 真实可用金额
+bellAmount | Double | 账户总铃铛数量
+bellFreezeAmount | Double | 账户冻结铃铛数量
+bellUseableAmount | Double | 真实可用铃铛数量
 
 ### <h3 id='AccountCouponBean'> AccountCouponBean </h3>
 参数名 | 类型 | 含义 
