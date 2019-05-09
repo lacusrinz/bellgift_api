@@ -1448,6 +1448,7 @@ COMMUNITY | 社区主页KEY(拼接命令打开h5) |VIDEO_COURSE|
 POST | 论坛帖子ID(打开论坛帖子详情) |75| 1696(帖子回复id)
 URL | 完整外链url | https://beecloud.cn|
 STORE_ORDER | 商城订单 | BS0709Y505L95963A4 |
+IMAGE | 图片URL | https://beecloud.cn/... |
 
 
     
