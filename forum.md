@@ -59,7 +59,7 @@ list  | List| 社区模块列表 | 参见附录 [HotPostDto](#HotPostDto)
 ### 传入参数
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
-flag | int | 分类标签  1: 推荐 2：收藏 3：发帖 4：已回复 5:热门帖子(点击数)| 否 
+flag | int | 分类标签  1: 推荐 2：收藏 3：发帖 4：已回复 5:热门帖子(点击数) 6:app专区| 否 
 key | String | 社区key| 否 
 vip | int | 参见 [VIP](#VIP)  不限权限的 不传或传null,别传0| 否 
 loadReplyCount|boolean | 是否加载回复数 true:加载(默认)|否
@@ -287,6 +287,8 @@ imageCount | int | 图片集合图片数量
 videoImage | String | 视频截图
 clickCount | long | 点击数量
 replyCount | long | 回复数量
+appSort| int | app排序权重
+appIcon | String | app图标
 
 
 ### <h3 id='ForumPostDetailDto'>ForumPostDetailDto</h3>

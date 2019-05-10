@@ -700,6 +700,7 @@ token | String | Header信息 | 是
 skip | String | 起始位置| 是
 limit | long | 条数 | 是
 vip | int | -1：全部 0（默认）:免费绘本 60：付费绘本
+type | int | 绘本类型   1:Craw 0-3岁  2:Stand 2-5岁 3:Walk 4-6岁 4:Run 5-7岁 |否 
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
