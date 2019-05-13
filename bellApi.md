@@ -36,6 +36,7 @@
  &nbsp; &nbsp; [ 1.10 三方账户验证](#1.10)  
  &nbsp; &nbsp; [ 1.11 三方登录](#1.11) 
  &nbsp; &nbsp; [ 1.12 设备记录](#1.12)   
+ &nbsp; &nbsp; [ 1.13 微信外部登录](#1.13)  
  
  [2.账户操作](#2)  
 &nbsp; &nbsp; [ 2.1 账户信息](#2.1)  
@@ -347,6 +348,36 @@ timestamp | long | 时间戳 毫秒 |是
 source | String | 来源 如：（官方,华为,H5活动） 标识key|否
 area | String | 地区金纬度|否
 sign | String | 签名 （口述,不外传） | 是
+
+
+##  <h3 id='1.13'>1.13 微信外部登录</h3>
+#### URL:   */api/auth/wxoutlogin*
+
+Method: *POST*
+
+请求参数格式: *JSON: Map*
+
+传入参数
+
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+wxUuid | String | 微信unionid | 是
+avatar| String | 头像 | 否
+city| String | 城市 | 否
+country| String | 国家 | 否
+province| String | 省份 | 否
+sex| int | 性别 性别 0:女 1：男 | 否
+mobile| String | 手机号码 | 1.8 false 未注册过必传
+code| String | 手机验证码 | 1.8 false 未注册过必传
+nickname | String | 昵称 | 否
+source | String | 用户来源【如华为，小米，商城】 | 否 
+
+返回参数
+
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+token  | String | token | 79767d55b2544d2c8594fecf1c21fa15 
+accountId  | long | 用户id | 123456 
 
 
 
