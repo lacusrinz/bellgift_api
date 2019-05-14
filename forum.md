@@ -294,6 +294,7 @@ clickCount | long | 点击数量
 replyCount | long | 回复数量
 appSort| int | app排序权重
 appIcon | String | app图标
+appTitle | String | app标题
 
 
 ### <h3 id='ForumPostDetailDto'>ForumPostDetailDto</h3>
