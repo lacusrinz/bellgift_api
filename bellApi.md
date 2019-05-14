@@ -1476,7 +1476,8 @@ KIDSONG |  儿歌ID(跳儿歌详情页) | 10 |
 STORE | 商城主页 |  |
 GOODS | 商城商品ID(打开商品详情页) | 10|
 FORUM | 论坛主页 ||
-COMMUNITY | 社区主页KEY(拼接命令打开h5) |VIDEO_COURSE|
+COMMUNITY | 社区主页KEY(进出app论坛专区列表) |VIDEO_COURSE|
+H5_COMMUNITY | 社区主页KEY(拼接命令打开h5) |VIDEO_COURSE|
 POST | 论坛帖子ID(打开论坛帖子详情) |75| 1696(帖子回复id)
 URL | 完整外链url | https://beecloud.cn|
 STORE_ORDER | 商城订单 | BS0709Y505L95963A4 |
