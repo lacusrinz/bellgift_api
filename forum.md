@@ -121,6 +121,7 @@ timestamp | long | 时间戳 | 否
 sign | String | 签名（规则口口相传）| 否
 
 
+
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
@@ -181,7 +182,8 @@ flag | int |   2：倒序查看 3：正序查看 | 是
 aId | long | 分享人的id,（第一页传, timestamps 失效）第二页起别传,传timestamps
 timestamps | long | 时间传  配合flag
 limit | int | 分页数量| 否 
-skip | int | 分页其实位置| 否 
+skip | int | 分页其实位置| 否
+loadrank |boolean |是否加载点赞排名 
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
@@ -356,6 +358,7 @@ replyDate | Date | 回复时间
 forumLevel | String | 论坛等级 SPROUTING_NEW:萌新,DAREN:达人
 appellation | String | 称号 本月之星
 score | double | 评分 （0-5）分
+isrank|boolean | 是否排名数据
  
 
 
