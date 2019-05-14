@@ -180,7 +180,8 @@ reply | Object | 回复对象 |参见附录 [ForumReplyDto](#ForumReplyDto)
 postId | long | 帖子id | 是
 flag | int |   2：倒序查看 3：正序查看 | 是
 aId | long | 分享人的id,（第一页传, timestamps 失效）第二页起别传,传timestamps
-timestamps | long | 时间传  配合flag
+getimestamps | long | 大于该时间戳的数据  配合flag
+letimestamps | long | 小于该时间戳的数据  配合flag
 limit | int | 分页数量| 否 
 skip | int | 分页其实位置| 否
 loadrank |boolean |是否加载点赞排名 

@@ -133,6 +133,7 @@ courses  | List | 课程列表 | 参见附录 [CourseDto](#CourseDto)
 picturebooks  | List | 绘本列表 | 参见附录 [PictureBookBean](#PictureBookBean) 
 kidsongs  | List | 轮播图列表 | 参见附录 [KidSongBean](#KidSongBean) 
 reddot | boolean | 消息红点 | true 有新消息  false:无新消息
+ad |List| 每日开机弹屏广告 |参见附录 [BannerBean](#BannerBean) 
 
 
 
