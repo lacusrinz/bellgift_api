@@ -1281,6 +1281,7 @@ auth| boolean | 是否有权限，判断是否购买
 downloadSize | long | 下载文件大小 字节
 version | int | 版本号 
 materId| String | 素材ID 运营手动维护
+unit | String | 单元名称
 
 ### <h3 id='ArticleBean'> ArticleBean </h3>
 参数名 | 类型 | 含义 
