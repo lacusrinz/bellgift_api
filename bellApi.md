@@ -1378,6 +1378,7 @@ iosShareUrl | String | ios 分享路劲
 version | int | 版本号
 materId| String | 素材ID 运营手动维护
 label | String | 列表标签
+followUp | int | 是否有跟读功能 0:没有 1：有
 
 ### <h3 id='UnitBean'> UnitBean </h3>
 参数名 | 类型 | 含义 
