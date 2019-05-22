@@ -957,6 +957,7 @@ Method: *POST*
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
 addressId  | long | 地址id | 是
+amount | Int | 订单金额 | 是 
 
 返回参数
 
