@@ -32,10 +32,10 @@
  &nbsp; &nbsp; [ 1.6 微信授权](#1.6)  
  &nbsp; &nbsp; [ 1.7 预约账户绑定](#1.7)  
  &nbsp; &nbsp; [ 1.8 openId 验证是否存在](#1.8)  
- &nbsp; &nbsp; [ 1.9 游客登录](#1.9) 
- &nbsp; &nbsp; [ 1.10 三方账户验证](#1.10)  
- &nbsp; &nbsp; [ 1.11 三方登录](#1.11) 
- &nbsp; &nbsp; [ 1.12 设备记录](#1.12)   
+ &nbsp; &nbsp; [ 1.9 游客登录](#1.9)  
+ &nbsp; &nbsp; [ 1.10 三方账户验证](#1.10)   
+ &nbsp; &nbsp; [ 1.11 三方登录](#1.11)  
+ &nbsp; &nbsp; [ 1.12 设备记录](#1.12)    
  &nbsp; &nbsp; [ 1.13 微信外部登录](#1.13)  
  
  [2.账户操作](#2)  
@@ -51,6 +51,7 @@
 &nbsp; &nbsp; [ 2.10 微信绑定](#2.10)  
 &nbsp; &nbsp; [ 2.11 微信解绑](#2.11)  
 &nbsp; &nbsp; [ 2.12 兑换](#2.12)  
+&nbsp; &nbsp; [ 2.12.1 公共优惠券领取](#2.12.1)  
 &nbsp; &nbsp; [ 2.13 变更绑定手机号码](#2.13)  
 &nbsp; &nbsp; [ 2.14 充值](#2.14)  
 &nbsp; &nbsp; [ 2.15 充值列表](#2.15)  
@@ -111,6 +112,12 @@
  &nbsp; &nbsp; [ 13.2 消息列表](#13.2)  
  &nbsp; &nbsp; [ 13.3 消息已读](#13.3)  
  &nbsp; &nbsp; [ 13.4 消息删除](#13.4)  
+ 
+   [14.活动](#14)  
+ &nbsp; &nbsp; [ 14.1 活动信息](#14.1)  
+ &nbsp; &nbsp; [ 14.2 参加活动](#14.2)  
+ &nbsp; &nbsp; [ 14.3 中奖纪录](#14.3)  
+
 
 
 
@@ -568,6 +575,20 @@ exchangeCode| String| 兑换码 | 是
 ---- | ---- | ---- | ----
 goodsName | String | 商品名称 | 10元优惠券一张
 
+## <h3 id='2.12'>2.12 兑换</h3>
+#### URL:   */api/account/exchange*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+exchangeCode| String| 兑换码 | 是
+
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+goodsName | String | 商品名称 | 10元优惠券一张
+
 ## <h3 id='2.13'>2.13 变更绑定手机号码</h3>
 #### URL:   */api/account/changemobile*
 #### Method: *POST*
@@ -581,6 +602,8 @@ code| String| 手机验证码 | 是
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
+
+
 
 
 ## <h3 id='2.14'>2.14 充值</h3>
@@ -1245,6 +1268,57 @@ token | String | Header信息 | 是
 messageId | long | 消息id | 是
 
 
+# <h2 id='14'>14.活动</h2>
+##<h3 id='14.1'> 14.1 活动信息</h3>
+#### URL:   */api/activity/info*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | String | Header信息 | 是
+key | String | 活动key |是
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+activity | Object | 活动信息 | 参见 [ActivityBean](#ActivityBean)
+items | List | 奖品列表 | 参见 [ActivityItemBean](#ActivityItemBean)
+partake_count | long | 当前剩余参加次数| 1
+
+
+##<h3 id='14.2'> 14.2 参加活动</h3>
+#### URL:   */api/activity/play*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | String | Header信息 | 是
+key | String | 活动key |是
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+prize | Object | 奖品 | 参见 [ActivityItemBean](#ActivityItemBean)
+
+##<h3 id='14.3'> 14.3 中奖纪录</h3>
+#### URL:   */api/activity/logs*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | String | Header信息 | 是
+key | String | 活动key |否
+skip | int | 分页其实位置
+limit | int | 分页数量
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+list | List | 中奖纪录 | 参见 [ActivityLogBean](#ActivityLogBean)
+
+
+
+
 
 ## 附录
 ### <h3 id='AccountCacheBean'>AccountCacheBean</h3>
@@ -1472,7 +1546,40 @@ icon | String | 列表图标
 createTime | Date |  消息时间
 read | boolean | 是否已读  true :已读
 
+### <h3 id='ActivityBean'> ActivityBean </h3>
+参数名 | 类型 | 含义 
+---- | ---- | ---- 
+key | String | 活动key
+title | String | 活动名称
+describe| String | 活动描述
+rule | String | 活动规则介绍
+type | int | 类型  1：终生固定次数 2：每日固定次数 3：特定规则
+partakeCount |int | 活动可玩次数 1：终生次数量 2：每日固定次数量
+status | String |状态  A:正常  I:已结束
 
+### <h3 id='ActivityItemBean'> ActivityItemBean </h3>
+参数名 | 类型 | 含义 
+---- | ---- | ---- 
+id| long | 奖品id
+key | String | 活动key
+title | String | 奖品名称
+icon | String | 奖品图标
+prizeType | String | 奖品类型
+prizeId | long | 奖品id
+
+### <h3 id='ActivityLogBean'> ActivityLogBean </h3>
+参数名 | 类型 | 含义 
+---- | ---- | ---- 
+id| long | 奖品id
+accountId | long | 用户id 
+key | String | 活动key
+itemId | long | 奖品id
+itemIcon| String |奖品图标
+itemTitle| String |奖品名称
+prizeType | String | 奖品类型
+prizeId | long | 奖品id
+createTime| Date | 中奖日期
+relationId | String | 关联id 或订单号
 
 
 
