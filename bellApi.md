@@ -1283,7 +1283,7 @@ key | String | 活动key |是
 ---- | ---- | ---- | ----
 activity | Object | 活动信息 | 参见 [ActivityBean](#ActivityBean)
 items | List | 奖品列表 | 参见 [ActivityItemBean](#ActivityItemBean)
-partake_count | long | 当前剩余参加次数| 1
+partakeCount | long | 当前剩余参加次数| 1
 
 
 ##<h3 id='14.2'> 14.2 参加活动</h3>
