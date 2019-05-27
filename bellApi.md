@@ -1556,6 +1556,18 @@ rule | String | 活动规则介绍
 type | int | 类型  1：终生固定次数 2：每日固定次数 3：特定规则
 partakeCount |int | 活动可玩次数 1：终生次数量 2：每日固定次数量
 status | String |状态  A:正常  I:已结束
+partakeRule | List | type:3 时生效 ,参见 [ActivityRuleBean](#ActivityRuleBean)
+partakeRuleUnlock | boolean | type:3 规则是否全部完成
+
+### <h3 id='ActivityRuleBean'> ActivityRuleBean </h3>
+参数名 | 类型 | 含义 
+---- | ---- | ---- 
+title | String | 任务名称
+type | String | 任务类型
+id | long | 目标id
+num | long | 任务完成数量
+unlock | boolean | 是否解锁
+
 
 ### <h3 id='ActivityItemBean'> ActivityItemBean </h3>
 参数名 | 类型 | 含义 
