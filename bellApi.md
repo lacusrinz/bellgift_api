@@ -1612,7 +1612,8 @@ relationId | String | 关联id 或订单号
 ### <h3 id='JumpType'> JumpType </h3>
 类型 | 跳转目标 | demo | jumpParam
 ----  | ---- |----|----
-BLANK |  不跳转 | |
+BLANK |  不跳转提示 即将上线 | |
+BLANK\_NO\_TIP | 不跳转不提示
 UNIT |  课包ID(跳课包详情) | 108 |
 PICTUREBOOK |  绘本ID(跳绘本详情页) | 4 |
 KIDSONG |  儿歌ID(跳儿歌详情页) | 10 |
