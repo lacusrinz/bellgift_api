@@ -733,12 +733,14 @@ orderNo | String | 支付订单号 | 是
 参数名 | 类型 | 含义  | 是否必填
 ---- | ---- | ---- | ----
 token | String | Header信息 | 是
+type | String | 已购类型 UNIT（默认),PICTUREBOOK,GOODS | 否
 
 ### 返回参数
 参数名 | 类型 | 含义 | 示例
 ---- | ---- | ---- | ----
-units | List | 已购课包列表 |[UnitBean](#UnitBean)
-picturebooks | List | 已购绘本列表 | [PictureBookBean](#PictureBookBean)
+units | List | 已购课包列表 (UNIT 时返回数据)|[UnitBean](#UnitBean)
+picturebooks | List | 已购绘本列表 (PICTUREBOOK 时返回数据)| [PictureBookBean](#PictureBookBean)
+goods | List | 已购商品列表 (GOODS 时返回数据)| [OrderListDTO](#OrderListDTO)
 
 
 
@@ -1595,6 +1597,37 @@ relationId | String | 关联id 或订单号
 
 
 
+### <h3 id='OrderListDTO'> OrderListDTO </h3>
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+orderNo | string |订单号 | BS3332L028Q9B952E3
+payAmount  | int | 支付金额 |2000 
+createTime | long | 订单创建时间 | 1551860588000
+paidTime | long | 订单支付时间 | 1551860588000
+finishTime | long | 订单完成时间 | 1551860588000
+orderStatus | string |订单状态 |  参见 [StoreOrderStatus](#StoreOrderStatus)
+deliveryNo | string|物流号 | RSA723UIDE
+deliveryName | string |物流名 |中通
+name | string |收件人 | 小明
+phone | string |收件人手机号 |123459087233
+orderCommodities | array|订单商品明细|参见[StoreOrderCommodityBean](#StoreOrderCommodityBean)
+
+
+### <h3 id='StoreOrderCommodityBean'> StoreOrderCommodityBean </h3>
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+commodityId | long | 商品id|2
+resourceId | long | 资源id|12
+title| string |标题 |贴纸
+thumbnail|string |缩略图 |http://qimg.hxnews.com/2019/0130/1548847547525.jpg
+colorNum |string |型号 |颜色
+properties|string | 内容 | 百变方块
+num| int |件数|4
+price|long | 价格 | 233
+stock|int | 库存 | 7 
+
+
+
 
 
 
@@ -1606,6 +1639,23 @@ relationId | String | 关联id 或订单号
 0|  没有权限限制
 50 | 部分免费 部分需要购买
 60 | 需要购买
+
+
+### <h3 id='StoreOrderStatus'> StoreOrderStatus </h3>
+数值 | 含义 
+----  | ---- 
+PAYING |  待支付
+CANCEL | 取消订单
+PAID | 支付完成
+SENT | 已发货
+COMPLETED | 已完成
+TIMEOUT | 支付超时
+RETURN | 发起退货申请
+RETURNING | 退货中
+REFUND | 退货完成
+EXCHANGE |发起换货申请
+EXCHANGING |换货中
+EXCHANGED |换货完成
 
 
 
