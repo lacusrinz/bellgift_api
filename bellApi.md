@@ -59,6 +59,7 @@
 &nbsp; &nbsp; [ 2.17 我的推荐信息](#2.17)  
 &nbsp; &nbsp; [ 2.18 内购服务器订单验证](#2.18)  
 &nbsp; &nbsp; [ 2.19 已购课程](#2.19)  
+&nbsp; &nbsp; [ 2.20 账户设置](#2.20)  
 
 
  [3.绘本相关](#3)  
@@ -743,6 +744,17 @@ picturebooks | List | 已购绘本列表 (PICTUREBOOK 时返回数据)| [Picture
 goods | List | 已购商品列表 (GOODS 时返回数据)| [OrderListDTO](#OrderListDTO)
 
 
+## <h3 id='2.20'>2.20 账户设置</h3>
+#### URL:   */api/account/install*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+token | String | Header信息 | 是
+setPush| int | 推送是否开启 | -1:关闭推送   1：开启推送
+
+
 
 
 
@@ -1344,6 +1356,7 @@ kidId  | long | 选中的宝宝id
 askCode | String | 自己的邀请码 唯一（注册时自动生成）
 recommendCode | String | 推荐人/代理商的 邀请码
 shareImage | String | 分享url 含自己推广二维码图片的url
+setPush | int | -1:未开启推送  1：开启推送设置
 
 
 ### <h3 id='KidBean'> KidBean </h3>
