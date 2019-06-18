@@ -118,6 +118,9 @@
  &nbsp; &nbsp; [ 14.1 活动信息](#14.1)  
  &nbsp; &nbsp; [ 14.2 参加活动](#14.2)  
  &nbsp; &nbsp; [ 14.3 中奖纪录](#14.3)  
+ 
+  [15.报表（无需登录）](#15)  
+ &nbsp; &nbsp; [ 15.1 每日宝宝学习日报](#15.1)  
 
 
 
@@ -1332,6 +1335,39 @@ list | List | 中奖纪录 | 参见 [ActivityLogBean](#ActivityLogBean)
 
 
 
+# <h2 id='15'>15.报表（无需登录）</h2>
+##<h3 id='15.1'> 15.1 宝宝每日学习日报</h3>
+#### URL:   */api/report/daily/kidlearn*
+#### Method: *POST*
+#### 请求参数格式: *JSON: Map*
+### 传入参数
+参数名 | 类型 | 含义  | 是否必填
+---- | ---- | ---- | ----
+learnId | long | 学习报表id |是
+### 返回参数
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+learnId | long | 学习日报id
+startTime | Date | 报表日期 零点
+accountId | long | 账户id
+kidId | long | 宝宝id
+kidAvatar | String | 宝宝头像
+kidName | String | 宝宝昵称
+dailyWordsCount|long | 今日学习单词数量
+dailyLearnTime|long | 今日学习时间  分钟
+rankPer | double | 超越全国多少百分比
+dailyItem | Object | 今日学习数据（当天内去重过）|参见[DailyKidLearnReportItemDto](#DailyKidLearnReportItemDto)
+dailyNewItem | Object | 今日新学习数据 |参见[DailyKidLearnReportItemDto](#DailyKidLearnReportItemDto)
+totalItem |Object | 历史学习数据（去重过）|参见[DailyKidLearnReportItemDto](#DailyKidLearnReportItemDto)
+
+
+
+  
+
+
+
+
+
 
 
 ## 附录
@@ -1638,6 +1674,18 @@ properties|string | 内容 | 百变方块
 num| int |件数|4
 price|long | 价格 | 233
 stock|int | 库存 | 7 
+
+
+### <h3 id='DailyKidLearnReportItemDto'> DailyKidLearnReportItemDto </h3>
+参数名 | 类型 | 含义 | 示例
+---- | ---- | ---- | ----
+courseCount | int | 课程数量
+wordsCount | int |单词数量
+sentenceCount | int | 句子数量
+booksCount | int | 绘本数量
+videoCount | int | 儿歌视频数量
+
+
 
 
 
